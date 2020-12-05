@@ -1,3 +1,9 @@
 [submodule "modules/RoactMaterial2"]
 	path = modules/RoactMaterial2
 	url = https://github.com/howmanysmall/RoactMaterial2.git
+[submodule "modules/rodux"]
+	path = modules/rodux
+	url = https://github.com/Roblox/rodux.git
+[submodule "modules/roact-rodux"]
+	path = modules/roact-rodux
+	url = https://github.com/Roblox/roact-rodux.git
