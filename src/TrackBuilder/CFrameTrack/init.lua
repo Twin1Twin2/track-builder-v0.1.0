@@ -4,13 +4,13 @@ local CFrameTrack = {}
 CFrameTrack.CFrameTrack = require(script.CFrameTrack)
 CFrameTrack.IsType = CFrameTrack.CFrameTrack.IsType
 
-CFrameTrack.PointToPointCFrameTrack = require(script.PointToPointCFrameTrack)
-CFrameTrack.PointToPointCFrameTrack2 = require(script.PointToPointCFrameTrack2)
+CFrameTrack.PointToPoint = require(script.PointToPointCFrameTrack)
+CFrameTrack.PointToPoint2 = require(script.PointToPointCFrameTrack2)
 
 
 local TRACKS = {
-    PointToPoint = CFrameTrack.PointToPointCFrameTrack;
-    PointToPoint2 = CFrameTrack.PointToPointCFrameTrack2;
+    PointToPoint = CFrameTrack.PointToPoint;
+    PointToPoint2 = CFrameTrack.PointToPoint2;
 }
 
 local function CreateFromData(data, name)
