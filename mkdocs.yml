@@ -1,5 +1,19 @@
 site_name: Track Builder
 
+nav:
+  - Home: index.md
+  - Quick Start:
+    - About: quick_start/index.md
+    - Installation: quick_start/installation.md
+  - Examples: examples.md
+  - API:
+    - Main: api/index.md
+    - CFrameTrack: api/cframe_track.md
+    - Segment: api/segment.md
+    - Section: api/section.md
+    - TrackGroup: api/track_group.md
+    - PhysicsRails: api/physics_rails.md
+
 theme:
   name: material
   palette:
