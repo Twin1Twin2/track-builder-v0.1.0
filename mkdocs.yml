@@ -1,4 +1,6 @@
 site_name: Track Builder
+site_description: Documentation for the Track Builder Plugin
+site_author: TheEpicTwin
 
 nav:
   - Home: index.md
