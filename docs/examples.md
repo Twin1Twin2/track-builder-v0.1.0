@@ -4,11 +4,12 @@ Examples go here!
 
 Assume MainTrack is the Track you want to build on.
 
-## TrackBuilderProgram
+## Intamin Flat Track Program
 
-Creates a very odd looking track
+Builds a track similar to Intamin's 2 Rail track
 
 ```lua
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 return function(api)
@@ -17,7 +18,7 @@ return function(api)
 
 	local Segment = api.Segment
 	local RailSegment = Segment.Rail
-	local TieSegment = Segment.Tie
+	local TrackObjectSegment = Segment.TrackObject
 	local CrossbeamSegment = Segment.Crossbeam
 
 	local CFrameTrack = api.CFrameTrack
@@ -29,14 +30,21 @@ return function(api)
 	BASE_PART.BottomSurface = "Smooth"
 	BASE_PART.FormFactor = "Custom"
 	
+
 	local leftRailSection = Section.fromData({
 		Segment = RailSegment.fromData({
 			Name = "LeftRail",
 			BasePart = BASE_PART,
-			Offset = Vector3.new(-(5/2+1.6/2),0,0),
-			Horizontal = false,
+
+			Offset = Vector3.new(-3,0,0),
+			Horizontal = true,
+			Size = Vector3.new(1,1,0),--width is X, height is Y, and length is Z ALWAYS
 			Rotation = Vector3.new(),
-			Size = Vector3.new(1.6,0.8,.1),--width is X, height is Y, and length is Z ALWAYS
+			MeshData = {
+				Mesh = "CylinderMesh",
+				Scale = Vector3.new(1,1,0.2),--width is X, height is Y, and length is Z ALWAYS
+				Offset = Vector3.new(),
+			}
 		}),
 		
 		Interval = 5,
@@ -49,10 +57,16 @@ return function(api)
 		Segment = RailSegment.fromData({
 			Name = "RightRail",
 			BasePart = BASE_PART,
-			Offset = Vector3.new((5/2+1.6/2),0,0),
-			Horizontal = false,
-			Size = Vector3.new(1.6,0.8,.1),--width is X, height is Y, and length is Z ALWAYS
+
+			Offset = Vector3.new(3,0,0),
+			Horizontal = true,
+			Size = Vector3.new(1,1,0),--width is X, height is Y, and length is Z ALWAYS
 			Rotation = Vector3.new(),
+			MeshData = {
+				Mesh = "CylinderMesh",
+				Scale = Vector3.new(1,1,0.2),--width is X, height is Y, and length is Z ALWAYS
+				Offset = Vector3.new(),
+			}
 		}),
 		
 		Interval = 5,
@@ -91,7 +105,7 @@ return function(api)
 	TIE_PART.FormFactor = "Custom"
 
 	local tieSection = Section.fromData({
-		Segment = TieSegment.fromData({
+		Segment = TrackObjectSegment.fromData({
 			Name = "Tie",
 			Object = TIE_PART,
 			Offset = CFrame.new(),
@@ -113,7 +127,7 @@ return function(api)
 	
 	local model = trackGroup:Create(mainTrack, 0, mainTrack.Length)
 	model.Parent = workspace
-
+	
 	warn("Finished!")
 end
 ```
@@ -131,7 +145,7 @@ return function(api)
 
 	local Segment = api.Segment
 	local RailSegment = Segment.Rail
-	local TieSegment = Segment.Tie
+	local TrackObjectSegment = Segment.TrackObject
 	local CrossbeamSegment = Segment.Crossbeam
 	local BoxRailSegment = Segment.BoxRail
 	local RectSegment = Segment.Rect
