@@ -1,1 +1,13 @@
-site_name: My Docs
+site_name: Track Builder
+
+theme:
+  name: material
+  palette:
+    primary: blue
+
+plugins:
+  - search
+
+markdown_extensions:
+  - codehilite:
+      guess_lang: false
