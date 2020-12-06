@@ -95,17 +95,17 @@ return function
 		local endCFrame = cframeTrack:GetCFramePosition(endPosition)
 
 		if IsCFrameStraightAhead(lastUsedCFrame, endCFrame) then
-			Build(lastUsedPosition, endPosition)
+			Build(lastUsedPosition, totalLength)
 		else	-- build to previous, then finish it out
 			Build(lastUsedPosition, lastPosition)
-			Build(lastUsedPosition, endPosition)
+			Build(lastUsedPosition, totalLength)
 		end
 	else
-		Build(lastUsedPosition, endPosition)
+		Build(lastUsedPosition, totalLength)
 	end
 
 	-- build end
 	if buildEnd == true then
-        Build(endPosition, endPosition + interval)
+        Build(totalLength, totalLength + interval)
 	end
 end
