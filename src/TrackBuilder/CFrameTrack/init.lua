@@ -2,6 +2,8 @@
 local CFrameTrack = {}
 
 CFrameTrack.CFrameTrack = require(script.CFrameTrack)
+CFrameTrack.IsType = CFrameTrack.CFrameTrack.IsType
+
 CFrameTrack.PointToPointCFrameTrack = require(script.PointToPointCFrameTrack)
 CFrameTrack.PointToPointCFrameTrack2 = require(script.PointToPointCFrameTrack2)
 
