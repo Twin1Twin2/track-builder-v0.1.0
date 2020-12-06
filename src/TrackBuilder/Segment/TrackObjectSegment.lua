@@ -1,26 +1,23 @@
---- MidTieSegment
+--- TrackObjectSegment
 
 local Segment = require(script.Parent.Segment)
-
-local segmentUtil = script.Parent.Util
-local NewSmooth = require(segmentUtil.NewSmooth)
 
 local util = script.Parent.Parent.Util
 local t = require(util.t)
 local IsModelWithPrimaryPart = require(util.IsModelWithPrimaryPart)
 
-local DEFAULT_NAME = "Tie"
+local DEFAULT_NAME = "TrackObject"
 
-local MidTieSegment = {
-	ClassName = "MidTieSegment";
+local TrackObjectSegment = {
+	ClassName = "TrackObjectSegment";
 }
 
-MidTieSegment.__index = MidTieSegment
-setmetatable(MidTieSegment, Segment)
+TrackObjectSegment.__index = TrackObjectSegment
+setmetatable(TrackObjectSegment, Segment)
 
 
-function MidTieSegment.new()
-	local self = setmetatable(Segment.new(), MidTieSegment)
+function TrackObjectSegment.new()
+	local self = setmetatable(Segment.new(), TrackObjectSegment)
 
 	self.Name = DEFAULT_NAME
 
@@ -44,10 +41,10 @@ local IsData = t.interface({
 	UseLookVector = t.boolean,
 })
 
-function MidTieSegment.fromData(data)
+function TrackObjectSegment.fromData(data)
 	assert(IsData(data))
 
-	local self = MidTieSegment.new()
+	local self = TrackObjectSegment.new()
 
 	self.Name = data.Name or DEFAULT_NAME
 	self.Object = data.Object
@@ -67,31 +64,18 @@ local function GetLookVectorCFrame(cframe)
 end
 
 local checkCreate = t.tuple(
-	t.CFrame,
 	t.CFrame
 )
 
-function MidTieSegment:Create(startCFrame, endCFrame)
-	assert(checkCreate(startCFrame, endCFrame))
-
-	local cframe, _, _	-- kinda a hack. not optimized
-		= NewSmooth(
-			startCFrame,
-			self.Offset,
-			endCFrame,
-			self.Offset,
-			Vector3.new(1, 1, 1),
-			Vector3.new(0, 0, 0),
-			false,
-			nil
-		)
+function TrackObjectSegment:Create(cframe, _)
+	assert(checkCreate(cframe))
 
 	local object = self.Object:Clone()
 	local offset = self.Offset
 
-	if self.UseLookVector == true then
-		cframe = GetLookVectorCFrame(cframe)
-	end
+    if self.UseLookVector == true then
+        cframe = GetLookVectorCFrame(cframe)
+    end
 
 	local newCFrame = cframe:ToWorldSpace(offset)
 
@@ -105,4 +89,4 @@ function MidTieSegment:Create(startCFrame, endCFrame)
 end
 
 
-return MidTieSegment
+return TrackObjectSegment

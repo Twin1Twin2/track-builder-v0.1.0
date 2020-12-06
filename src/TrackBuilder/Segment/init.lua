@@ -10,11 +10,11 @@ Segment.MeshData = require(script.MeshData)
 Segment.Rail = require(script.RailSegment)
 Segment.RailBuilder = require(script.RailSegmentBuilder)
 
-Segment.Tie = require(script.TieSegment)
--- Segment.TieBuilder = require(script.TieSegmentBuilder)
+Segment.TrackObject = require(script.TrackObjectSegment)
+-- Segment.TrackObjectBuilder = require(script.TrackObjectSegmentBuilder)
 
-Segment.MidTie = require(script.MidTieSegment)
--- Segment.MidTieBuilder = require(script.MidTieSegmentBuilder)
+Segment.MidTrackObject = require(script.MidTrackObjectSegment)
+-- Segment.MidTrackObjectBuilder = require(script.MidTrackObjectSegmentBuilder)
 
 Segment.Crossbeam = require(script.CrossbeamSegment)
 -- Segment.CrossbeamBuilder = require(script.CrossbeamSegment)
