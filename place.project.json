@@ -1,0 +1,52 @@
+{
+    "name": "RobloxTrackBuilderPlugin",
+    "tree": {
+        "$className": "DataModel",
+        
+        "ServerStorage": {
+            "$className": "ServerStorage",
+
+            "RobloxTrackBuilderPlugin": {
+                "$className": "Folder",
+
+                "$path": "src",
+
+                "Modules": {
+                    "$className": "Folder",
+                    
+                    "Roact": {
+                        "$path": "modules/RoactMaterial2/modules/roact/src"
+                    },
+
+                    "Rodux": {
+                        "$path": "modules/rodux/src"
+                    },
+                    
+                    "RoactRodux": {
+                        "$path": "modules/roact-rodux/src"
+                    },
+                    
+                    "RoactAnimate": {
+                        "$path": "modules/RoactMaterial2/src/RoactAnimate"
+                    },
+        
+                    "RoactMaterial": {
+                        "$path": "modules/RoactMaterial2/src/RoactMaterial"
+                    },
+        
+                    "BoatTween": {
+                        "$path": "modules/RoactMaterial2/modules/BoatTween/src/BoatTween"
+                    },
+        
+                    "Promise": {
+                        "$path": "modules/RoactMaterial2/modules/roblox-lua-promise/lib"
+                    },
+        
+                    "t": {
+                        "$path": "modules/RoactMaterial2/modules/t/lib"
+                    }
+                }
+            }
+        }
+    }
+}
