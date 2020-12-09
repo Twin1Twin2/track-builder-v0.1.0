@@ -1,7 +1,7 @@
 
 local PluginActions = {}
 
-PluginActions.RunPrograms = require(script.RunPrograms)
+PluginActions.ProgramActions = require(script.ProgramActions)
 PluginActions.PrintTrackPositions = require(script.PrintTrackPositions)
 
 

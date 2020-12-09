@@ -23,19 +23,13 @@ local apiEnv = setmetatable({}, {
     __metatable = {};
 })
 
-local function RunProgram(moduleScript)
-    if moduleScript == nil then
-        return "Arg [1] is nil! Must be a ModuleScript"
-    elseif not (typeof(moduleScript) == "Instance" and moduleScript:IsA("ModuleScript")) then
-        return "Arg [1] is not a ModuleScript!"
-    end
 
-    local function handleError(message)
-		return debug.traceback(tostring(message), 2)
-    end
+local function handleError(message)
+	return debug.traceback(tostring(message), 2)
+end
 
-    local program
 
+local function LoadProgram(moduleScript)
 	local clonedModule = moduleScript:Clone()   -- to allow reloading
 	clonedModule.Parent = moduleScript.Parent   -- keep the same workspace env
 
@@ -47,28 +41,47 @@ local function RunProgram(moduleScript)
 
 	clonedModule:Destroy()
 
-	if requireSuccess == false then
-		return requireMessage
-	end
+	return requireSuccess, requireMessage
+end
 
-	program = requireMessage
+
+local function RunProgram(program)
 	if type(program) ~= "function" then
-		return "Program did not return a function!"
+		return "Program is not a function!"
 	end
 
-	local runSuccess, runMessage = xpcall(
+	return xpcall(
 		program,
 		handleError,
 		apiEnv
 	)
+end
+
+
+local function LoadAndRunProgram(moduleScript)
+	if moduleScript == nil then
+        return "Arg [1] is nil! Must be a ModuleScript"
+    elseif not (typeof(moduleScript) == "Instance" and moduleScript:IsA("ModuleScript")) then
+        return "Arg [1] is not a ModuleScript!"
+	end
+
+	local loadSuccess, program = LoadProgram(moduleScript)
+	if loadSuccess == false then
+		return program
+	end
+
+	local runSuccess, runMessage = RunProgram(program)
 	if runSuccess == false then
 		return runMessage
 	end
+
+	return runMessage
 end
 
-local function RunPrograms()
+
+local function RunSelectedPrograms()
 	for i, selection in ipairs(Selection:Get()) do
-		local result = RunProgram(selection)
+		local result = LoadAndRunProgram(selection)
 		if result then
 			warn(("[%d] = %s"):format(
 				i,
@@ -80,4 +93,9 @@ local function RunPrograms()
 	ChangeHistoryService:SetWaypoint("RunProgram" .. tostring(tick()))
 end
 
-return RunPrograms
+return {
+	LoadProgram = LoadProgram,
+	RunProgram = RunProgram,
+	LoadAndRunProgram = LoadAndRunProgram,
+	RunSelectedPrograms = RunSelectedPrograms
+}
