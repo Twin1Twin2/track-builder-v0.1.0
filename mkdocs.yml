@@ -7,6 +7,8 @@ nav:
   - Quick Start:
     - About: quick_start/index.md
     - Installation: quick_start/installation.md
+    - Writing A Program: quick_start/writing_a_program.md
+    - Porting From NewSmooth: quick_start/porting_from_newsmooth.md
   - Examples: examples.md
   - API:
     - Main: api/index.md
