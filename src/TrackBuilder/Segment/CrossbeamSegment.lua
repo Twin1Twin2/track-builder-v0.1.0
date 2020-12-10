@@ -25,7 +25,8 @@ function CrossbeamSegment.new()
 	self.Name = DEFAULT_RAIL_NAME
 
 	self.BasePart = nil
-	self.Offset = Vector3.new()
+	self.StartOffset = Vector3.new()
+	self.EndOffset = Vector3.new()
 	self.Size = Vector3.new()
 	self.Rotation = Vector3.new()
 	self.Horizontal = false

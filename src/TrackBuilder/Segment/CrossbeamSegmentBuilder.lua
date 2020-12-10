@@ -1,7 +1,7 @@
---- RailSegmentBuilder
---- Builder Pattern constructor for a RailSegment
+--- CrossbeamSegmentBuilder
+--- Builder Pattern constructor for a CrossbeamSegment
 
-local RailSegment = require(script.Parent.RailSegment)
+local CrossbeamSegment = require(script.Parent.CrossbeamSegment)
 local MeshData = require(script.Parent.MeshData)
 
 local root = script.Parent.Parent
@@ -11,19 +11,20 @@ local util = root.Util
 local t = require(util.t)
 
 
-local RailSegmentBuilder = {
-	ClassName = "RailSegmentBuilder";
+local CrossbeamSegmentBuilder = {
+	ClassName = "CrossbeamSegmentBuilder";
 }
 
-RailSegmentBuilder.__index = RailSegmentBuilder
-setmetatable(RailSegmentBuilder, Builder)
+CrossbeamSegmentBuilder.__index = CrossbeamSegmentBuilder
+setmetatable(CrossbeamSegmentBuilder, Builder)
 
 
-function RailSegmentBuilder.new()
-	local self = setmetatable(Builder.new(), RailSegmentBuilder)
+function CrossbeamSegmentBuilder.new()
+	local self = setmetatable(Builder.new(), CrossbeamSegmentBuilder)
 
 	self.BasePart = nil
-	self.Offset = Vector3.new()
+	self.StartOffset = Vector3.new()
+	self.EndOffset = Vector3.new()
 	self.Size = nil
 	self.Rotation = Vector3.new()
 	self.Horizontal = false
@@ -40,7 +41,7 @@ local BuilderCheck = Builder.Check({
 })
 
 
-function RailSegmentBuilder:Build()
+function CrossbeamSegmentBuilder:Build()
 	assert(BuilderCheck(self))
 
 	local size = self.Size
@@ -48,11 +49,12 @@ function RailSegmentBuilder:Build()
 		size = self.BasePart.Size
 	end
 
-	return RailSegment.fromData({
+	return CrossbeamSegment.fromData({
 		Name = self.Name,
 
 		BasePart = self.BasePart,
-		Offset = self.Offset,
+		StartOffset = self.StartOffset,
+		EndOffset = self.EndOffset,
 		Size = size,
 		Rotation = self.Rotation,
 		Horizontal = self.Horizontal,
@@ -61,7 +63,7 @@ function RailSegmentBuilder:Build()
 end
 
 
-function RailSegmentBuilder:WithBasePart(basePart)
+function CrossbeamSegmentBuilder:WithBasePart(basePart)
 	assert(t.instanceIsA("BasePart")(basePart))
 
 	self.BasePart = basePart
@@ -70,16 +72,25 @@ function RailSegmentBuilder:WithBasePart(basePart)
 end
 
 
-function RailSegmentBuilder:WithOffset(offset)
+function CrossbeamSegmentBuilder:WithStartOffset(offset)
 	assert(t.Vector3(offset))
 
-	self.Offset = offset
+	self.StartOffset = offset
 
 	return self
 end
 
 
-function RailSegmentBuilder:WithSize(size)
+function CrossbeamSegmentBuilder:WithEndOffset(offset)
+	assert(t.Vector3(offset))
+
+	self.EndOffset = offset
+
+	return self
+end
+
+
+function CrossbeamSegmentBuilder:WithSize(size)
 	assert(t.Vector3(size))
 
 	self.Size = size
@@ -88,7 +99,7 @@ function RailSegmentBuilder:WithSize(size)
 end
 
 
-function RailSegmentBuilder:WithRotation(rotation)
+function CrossbeamSegmentBuilder:WithRotation(rotation)
 	assert(t.Vector3(rotation))
 
 	self.Rotation = rotation
@@ -97,7 +108,7 @@ function RailSegmentBuilder:WithRotation(rotation)
 end
 
 
-function RailSegmentBuilder:WithHorizontal(value)
+function CrossbeamSegmentBuilder:WithHorizontal(value)
 	assert(t.boolean(value))
 
 	self.Horizontal = value
@@ -106,7 +117,7 @@ function RailSegmentBuilder:WithHorizontal(value)
 end
 
 
-function RailSegmentBuilder:WithMeshData(value)
+function CrossbeamSegmentBuilder:WithMeshData(value)
 	assert(MeshData.IsData(value))
 
 	self.MeshData = value
@@ -115,4 +126,4 @@ function RailSegmentBuilder:WithMeshData(value)
 end
 
 
-return RailSegmentBuilder
+return CrossbeamSegmentBuilder

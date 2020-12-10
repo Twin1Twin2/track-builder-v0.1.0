@@ -13,6 +13,8 @@ Builder.__index = Builder
 function Builder.new()
 	local self = setmetatable({}, Builder)
 
+	self.Name = nil
+
 
 	return self
 end
@@ -60,6 +62,15 @@ Builder.Check = function(checkTable)
 
 		return true
 	end
+end
+
+
+function Builder:WithName(name)
+	assert(t.string(name))
+
+	self.Name = name
+
+	return self
 end
 
 

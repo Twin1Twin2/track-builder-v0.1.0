@@ -11,22 +11,22 @@ Segment.Rail = require(script.RailSegment)
 Segment.RailBuilder = require(script.RailSegmentBuilder)
 
 Segment.TrackObject = require(script.TrackObjectSegment)
--- Segment.TrackObjectBuilder = require(script.TrackObjectSegmentBuilder)
+Segment.TrackObjectBuilder = require(script.TrackObjectSegmentBuilder)
 
 Segment.MidTrackObject = require(script.MidTrackObjectSegment)
--- Segment.MidTrackObjectBuilder = require(script.MidTrackObjectSegmentBuilder)
+Segment.MidTrackObjectBuilder = require(script.MidTrackObjectSegmentBuilder)
 
 Segment.Crossbeam = require(script.CrossbeamSegment)
--- Segment.CrossbeamBuilder = require(script.CrossbeamSegment)
+Segment.CrossbeamBuilder = require(script.CrossbeamSegment)
 
 Segment.Rect = require(script.RectSegment)
--- Segment.RectBuilder = require(script.RectSegmentBuilder)
+Segment.RectBuilder = require(script.RectSegmentBuilder)
 
 Segment.RectRail = require(script.RectRailSegment)
--- Segment.RectRailBuilder = require(script.RectRailSegmentBuilder)
+Segment.RectRailBuilder = require(script.RectRailSegmentBuilder)
 
 Segment.BoxRail = require(script.BoxRailSegment)
--- Segment.BoxRailBuilder = require(script.BoxRailSegmentBuilder)
+Segment.BoxRailBuilder = require(script.BoxRailSegmentBuilder)
 
 
 local SEGMENTS = {

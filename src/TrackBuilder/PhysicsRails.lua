@@ -6,6 +6,10 @@ local CreateSection = require(script.Parent.CreateSection)
 local Segment = require(script.Parent.Segment)
 local RailSegment = Segment.Rail
 
+local util = script.Parent.Util
+local t = require(util.t)
+
+
 local ZERO_FRICTION_PHYSICAL_PROPERTIES = PhysicalProperties.new(
 	1,
 	0,
@@ -18,6 +22,8 @@ local SPEED_PHYSICAL_PROPERTIES = PhysicalProperties.new(
 	0
 )
 
+local DEFAULT_NAME = "PhysicsRails"
+
 local PhysicsRails = {
 	ClassName = "PhysicsRails";
 }
@@ -29,11 +35,23 @@ setmetatable(PhysicsRails, BaseSection)
 function PhysicsRails.new()
 	local self = setmetatable(BaseSection.new(), PhysicsRails)
 
-	self.Name = "PhysicsRails"
+	self.Name = DEFAULT_NAME
 
 	self.Rails = {}
 	self.Interval = 5
 
+
+	return self
+end
+
+
+function PhysicsRails.fromData(data)
+	assert(t.table(data))
+
+	local self = PhysicsRails.new()
+
+	self.Rails = data.Rails
+	self.Interval = data.Interval
 
 	return self
 end
