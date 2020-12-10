@@ -9,6 +9,8 @@ local util = script.Parent.Parent.Util
 local t = require(util.t)
 local IsModelWithPrimaryPart = require(util.IsModelWithPrimaryPart)
 
+local VECTOR_3 = Vector3.new()
+
 local DEFAULT_NAME = "MidTrackObject"
 
 local MidTrackObjectSegment = {
@@ -114,9 +116,9 @@ function MidTrackObjectSegment:Create(startCFrame, endCFrame)
 	local cframe, _, _	-- kinda a hack. not optimized
 		= NewSmooth(
 			startCFrame,
-			self.Offset,
+			VECTOR_3,
 			endCFrame,
-			self.Offset,
+			VECTOR_3,
 			Vector3.new(1, 1, 1),
 			Vector3.new(0, 0, 0),
 			false,
