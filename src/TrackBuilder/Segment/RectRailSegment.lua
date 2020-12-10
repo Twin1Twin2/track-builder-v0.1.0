@@ -80,7 +80,7 @@ function RectRailSegment.fromData(data)
 end
 
 
-local IsInstance = t.children({
+RectRailSegment.IsInstanceData = t.children({
 	Wedge = t.optional(t.instanceOf("WedgePart")),
 
 	StartOffset1 = t.instanceOf("Vector3Value"),
@@ -90,7 +90,7 @@ local IsInstance = t.children({
 })
 
 function RectRailSegment.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(RectRailSegment.IsInstanceData(instance))
 
 	local wedge = instance:FindFirstChild("Wedge")
 

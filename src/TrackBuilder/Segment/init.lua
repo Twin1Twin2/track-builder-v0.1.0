@@ -66,18 +66,30 @@ Segment.IsInstanceData = t.children({
     SegmentType = t.instanceOf("StringValue")
 })
 
-Segment.CreateFromInstance = function(instance)
-    assert(typeof(instance) == "Instance",
-        "Arg [1] is not an Instance!")
+Segment.CheckInstance = function(instance)
+    local instanceDataSuccess, instanceDataMessage =
+        Segment.IsInstanceData(instance)
+    if instanceDataSuccess == false then
+        return false, instanceDataMessage
+    end
 
     local typeValue = instance:FindFirstChild("SegmentType")
-    assert(typeValue and typeValue:IsA("StringValue"),
-        "Missing TrackClass! A StringValue!")
-
     local className = typeValue.Value
     local segmentClass = SEGMENTS[className]
-    assert(segmentClass,
-        ("Could not find Segment with name %s!"):format(className))
+
+    if segmentClass == nil then
+        return false, ("Could not find Segment with name %s!"):format(className)
+    end
+
+    return segmentClass.IsInstanceData(instance)
+end
+
+Segment.CreateFromInstance = function(instance)
+    assert(Segment.CheckInstance(instance))
+
+    local typeValue = instance:FindFirstChild("SegmentType")
+    local className = typeValue.Value
+    local segmentClass = SEGMENTS[className]
 
     return segmentClass.fromInstance(instance)
 end

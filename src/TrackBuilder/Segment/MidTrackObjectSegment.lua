@@ -59,7 +59,7 @@ function MidTrackObjectSegment.fromData(data)
 end
 
 
-local IsInstance = t.children({
+MidTrackObjectSegment.IsInstanceData = t.children({
 	Object = t.union(
 		t.instanceIsA("BasePart"),
 		IsModelWithPrimaryPart
@@ -69,7 +69,7 @@ local IsInstance = t.children({
 })
 
 function MidTrackObjectSegment.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(MidTrackObjectSegment.IsInstanceData(instance))
 
 	local object = instance:FindFirstChild("Object")
 	local offsetValue = instance:FindFirstChild("Offset")

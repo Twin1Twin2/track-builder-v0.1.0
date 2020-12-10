@@ -23,7 +23,7 @@ function SectionBuilder.new()
 	self.Segment = nil
 
 	self.Interval = nil
-	self.StartOffset = 0
+	self.SectionStart = 0
 
 	self.Optimize = true
 	self.BuildEnd = true
@@ -49,7 +49,7 @@ function SectionBuilder:Build()
 		Segment = self.Segment,
 
 		Interval = self.Interval,
-		StartOffset = self.StartOffset,
+		SectionStart = self.SectionStart,
 		Optimize = self.Optimize,
 		BuildEnd = self.BuildEnd,
 	})
@@ -74,10 +74,10 @@ function SectionBuilder:WithInterval(interval)
 end
 
 
-function SectionBuilder:WithStartOffset(offset)
+function SectionBuilder:WithSectionStart(offset)
 	assert(t.number(offset))
 
-	self.StartOffset= offset
+	self.SectionStart = offset
 
 	return self
 end

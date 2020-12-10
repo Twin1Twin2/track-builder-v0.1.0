@@ -29,7 +29,7 @@ function Section.new(segment)
 	self.Segment = segment
 
 	self.Interval = nil
-	self.StartOffset = 0
+	self.SectionStart = 0
 
 	self.Optimize = true
 	self.BuildEnd = true
@@ -43,7 +43,7 @@ local IsData = t.interface({
 	Segment = Segment.IsType,
 
 	Interval = t.numberPositive,
-	StartOffset = t.number,
+	SectionStart = t.number,
 
 	Optimize = t.boolean,
 	BuildEnd = t.boolean,
@@ -57,7 +57,7 @@ function Section.fromData(data)
 	local self = Section.new(segment)
 
 	self.Interval = data.Interval
-	self.StartOffset = data.StartOffset
+	self.SectionStart = data.SectionStart
 
 	self.Optimize = data.Optimize
 	self.BuildEnd = data.BuildEnd
@@ -69,31 +69,48 @@ end
 
 local HasSectionInstance = t.children({
 	Interval = t.instanceIsA("NumberValue"),
-	StartOffset = t.instanceIsA("NumberValue"),
+	SectionStart = t.instanceIsA("NumberValue"),
 
 	Optimize = t.instanceOf("BoolValue"),
 	BuildEnd = t.instanceOf("BoolValue"),
+
+	Segment = t.optional(t.union(
+		t.instanceIsA("Folder"),
+		t.instanceIsA("Model")
+	))
 })
 
-local IsInstance = function(instance)
+Section.IsInstanceData = function(instance)
 	local sectionSuccess, sectionMessage = HasSectionInstance(instance)
 	if sectionSuccess == false then
 		return false, sectionMessage
 	end
 
-	local segmentSuccess, segmentMessage = Section.CheckInstance(instance)
+	local segmentInstance = instance:FindFirstChild("Segment")
+	if segmentInstance == nil then
+		segmentInstance = instance
+	end
+
+	local segmentSuccess, segmentMessage = Segment.CheckInstance(segmentInstance)
 	if segmentSuccess == false then
 		return false, segmentMessage
 	end
+
+	return true
 end
 
 function Section.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(Section.IsInstanceData(instance))
 
-	local segment = Segment.CreateFromInstance(instance)
+	local segmentInstance = instance:FindFirstChild("Segment")
+	if segmentInstance == nil then
+		segmentInstance = instance
+	end
+
+	local segment = Segment.CreateFromInstance(segmentInstance)
 
 	local intervalValue = instance:FindFirstChild("Interval")
-	local startOffsetValue = instance:FindFirstChild("StartOffset")
+	local startOffsetValue = instance:FindFirstChild("SectionStart")
 
 	local optimizeValue = instance:FindFirstChild("Optimize")
 	local buildEndValue = instance:FindFirstChild("BuildEnd")
@@ -103,7 +120,7 @@ function Section.fromInstance(instance)
 		Segment = segment,
 
 		Interval = intervalValue.Value,
-		StartOffset = startOffsetValue.Value,
+		SectionStart = startOffsetValue.Value,
 
 		Optimize = optimizeValue.Value,
 		BuildEnd = buildEndValue.Value
@@ -122,7 +139,7 @@ end
 
 function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
 	local interval = self.Interval
-	local startOffset = self.StartOffset
+	local startOffset = self.SectionStart
 
 	local optimize = self.Optimize
 	local buildEnd = self.BuildEnd

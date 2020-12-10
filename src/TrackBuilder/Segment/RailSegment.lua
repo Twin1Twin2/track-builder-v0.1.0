@@ -76,7 +76,7 @@ function RailSegment.fromData(data)
 	return self
 end
 
-local IsInstance = t.children({
+RailSegment.IsInstanceData = t.children({
 	BasePart = t.instanceIsA("BasePart"),
 	Offset = t.optional(t.instanceIsA("Vector3Value")),
 	Size = t.optional(t.instanceIsA("Vector3Value")),
@@ -86,7 +86,7 @@ local IsInstance = t.children({
 })
 
 function RailSegment.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(RailSegment.IsInstanceData(instance))
 
 	local basePart = instance:FindFirstChild("BasePart")
 	local offsetValue = instance:FindFirstChild("Offset")

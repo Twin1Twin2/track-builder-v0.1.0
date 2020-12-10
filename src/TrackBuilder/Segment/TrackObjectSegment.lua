@@ -56,7 +56,7 @@ function TrackObjectSegment.fromData(data)
 end
 
 
-local IsInstance = t.children({
+TrackObjectSegment.IsInstanceData = t.children({
 	Object = t.union(
 		t.instanceIsA("BasePart"),
 		IsModelWithPrimaryPart
@@ -66,7 +66,7 @@ local IsInstance = t.children({
 })
 
 function TrackObjectSegment.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(TrackObjectSegment.IsInstanceData(instance))
 
 	local object = instance:FindFirstChild("Object")
 	local offsetValue = instance:FindFirstChild("Offset")

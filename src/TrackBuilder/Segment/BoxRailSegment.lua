@@ -94,7 +94,7 @@ function BoxRailSegment.fromData(data)
 end
 
 
-local IsInstance = t.children({
+BoxRailSegment.IsInstanceData = t.children({
 	Wedge = t.optional(t.instanceOf("WedgePart")),
 
 	TopLeft = t.instanceOf("Vector3Value"),
@@ -109,7 +109,7 @@ local IsInstance = t.children({
 })
 
 function BoxRailSegment.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(BoxRailSegment.IsInstanceData(instance))
 
 	local wedge = instance:FindFirstChild("Wedge")
 

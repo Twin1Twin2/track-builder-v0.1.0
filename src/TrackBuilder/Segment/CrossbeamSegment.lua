@@ -71,7 +71,7 @@ function CrossbeamSegment.fromData(data)
 	return self
 end
 
-local IsInstance = t.children({
+CrossbeamSegment.IsInstanceData = t.children({
 	BasePart = t.instanceIsA("BasePart"),
 	StartOffset = t.optional(t.instanceIsA("Vector3Value")),
 	EndOffset = t.optional(t.instanceIsA("Vector3Value")),
@@ -82,7 +82,7 @@ local IsInstance = t.children({
 })
 
 function CrossbeamSegment.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(CrossbeamSegment.IsInstanceData(instance))
 
 	local basePart = instance:FindFirstChild("BasePart")
 	local startOffsetValue = instance:FindFirstChild("StartOffset")

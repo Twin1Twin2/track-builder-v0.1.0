@@ -67,7 +67,7 @@ function RectSegment.fromData(data)
 end
 
 
-local IsInstance = t.children({
+RectSegment.IsInstanceData = t.children({
 	Wedge = t.optional(t.instanceOf("WedgePart")),
 
 	P0 = t.instanceOf("Vector3Value"),
@@ -77,7 +77,7 @@ local IsInstance = t.children({
 })
 
 function RectSegment.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(RectSegment.IsInstanceData(instance))
 
 	local wedge = instance:FindFirstChild("Wedge")
 

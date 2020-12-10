@@ -91,28 +91,39 @@ function MeshData.fromData(data)
 	return self
 end
 
+-- names are hard
+local IsInstanceData1 = t.children({
+	Mesh = t.optional(t.instanceIsA("StringValue")),
+	MeshType = t.optional(t.instanceIsA("StringValue")),
+	Offset = t.instanceIsA("Vector3Value"),
+	Scale = t.instanceIsA("Vector3Value"),
+})
 
-MeshData.IsInstanceData = t.union(
-	t.every(	-- instance is a string value, use it as mesh class name
-		t.instanceIsA("StringValue"),
-		t.children({
-			MeshType = t.optional(t.instanceIsA("StringValue")),
-			Offset = t.instanceIsA("Vector3Value"),
-			Scale = t.instanceIsA("Vector3Value"),
-		})
-	),
-	t.children({
-		Mesh = t.instanceIsA("StringValue"),
-		MeshType = t.optional(t.instanceIsA("StringValue")),
+local IsInstanceData2 = t.children({
+	Mesh = t.instanceIsA("StringValue"),
+	MeshType = t.optional(t.instanceIsA("StringValue")),
 
-		Offset = t.instanceIsA("Vector3Value"),
-		Scale = t.instanceIsA("Vector3Value"),
-	})
-)
+	Offset = t.instanceIsA("Vector3Value"),
+	Scale = t.instanceIsA("Vector3Value"),
+})
+
+MeshData.IsInstanceData = function(instance)
+	local instanceSuccess, instanceMessage =
+		t.Instance(instance)
+	if instanceSuccess == false then
+		return false, instanceMessage
+	end
+
+	if instance:IsA("StringValue") then
+		return IsInstanceData1(instance)
+	else
+		return IsInstanceData2(instance)
+	end
+end
 
 
 function MeshData.fromInstance(instance)
-	assert(MeshData.IsValidInstanceData(instance))
+	assert(MeshData.IsInstanceData(instance))
 
 	local meshValue = instance:FindFirstChild("Mesh")
 	if meshValue == nil and instance:IsA("StringValue") then
