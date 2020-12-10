@@ -71,6 +71,70 @@ function CrossbeamSegment.fromData(data)
 	return self
 end
 
+local IsInstance = t.children({
+	BasePart = t.instanceIsA("BasePart"),
+	StartOffset = t.optional(t.instanceIsA("Vector3Value")),
+	EndOffset = t.optional(t.instanceIsA("Vector3Value")),
+	Size = t.optional(t.instanceIsA("Vector3Value")),
+	Rotation = t.instanceIsA("Vector3Value"),
+	Horizontal = t.optional(t.instanceOf("BoolValue")),
+	MeshData = t.optional(MeshData.IsInstanceData),
+})
+
+function CrossbeamSegment.fromInstance(instance)
+	assert(IsInstance(instance))
+
+	local basePart = instance:FindFirstChild("BasePart")
+	local startOffsetValue = instance:FindFirstChild("StartOffset")
+	local endOffsetValue = instance:FindFirstChild("EndOffset")
+	local sizeValue = instance:FindFirstChild("Size")
+	local rotationValue = instance:FindFirstChild("Rotation")
+	local horizontalValue = instance:FindFirstChild("Horizontal")
+	local meshDataValue = instance:FindFirstChild("MeshData")
+
+	local startOffset = Vector3.new()
+	if startOffsetValue then
+		startOffset = startOffsetValue.Value
+	end
+
+	local endOffset = Vector3.new()
+	if endOffsetValue then
+		endOffset = endOffsetValue.Value
+	end
+
+	local size = basePart.Size
+	if sizeValue then
+		size = sizeValue.Value
+	end
+
+	local rotation = Vector3.new()
+	if rotationValue then
+		rotation = rotationValue.Value
+	end
+
+	local horizontal = false
+	if horizontalValue then
+		horizontal = horizontalValue.Value
+	end
+
+	local meshData
+	if meshDataValue then
+		meshData = MeshData.fromInstance(meshDataValue)
+	end
+
+	return CrossbeamSegment.fromData({
+		Name = instance.Name,
+
+		BasePart = basePart,
+		StartOffset = startOffset,
+		EndOffset = endOffset,
+		Size = size,
+		Rotation = rotation,
+		Horizontal = horizontal,
+		MeshData = meshData
+	})
+end
+
 
 local checkCreate = t.tuple(
 	t.CFrame,

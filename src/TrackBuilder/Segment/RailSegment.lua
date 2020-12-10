@@ -92,7 +92,7 @@ function RailSegment.fromInstance(instance)
 	local offsetValue = instance:FindFirstChild("Offset")
 	local sizeValue = instance:FindFirstChild("Size")
 	local rotationValue = instance:FindFirstChild("Rotation")
-	local horizontalValue = instance:FindFirstChild("UseLookVector")
+	local horizontalValue = instance:FindFirstChild("Horizontal")
 	local meshDataValue = instance:FindFirstChild("MeshData")
 
 	local offset = Vector3.new()

@@ -68,7 +68,7 @@ function RectRailSegment.fromData(data)
 
 	self.Name = data.Name or DEFAULT_NAME
 
-	self.Wedge = data.Wedge or DEFAULT_WEDGE
+	self.Wedge = data.Wedge or DEFAULT_WEDGE:Clone()
 
 	self.StartOffset1 = startOffset1
 	self.StartOffset2 = startOffset2
@@ -78,6 +78,39 @@ function RectRailSegment.fromData(data)
 
 	return self
 end
+
+
+local IsInstance = t.children({
+	Wedge = t.optional(t.instanceOf("WedgePart")),
+
+	StartOffset1 = t.instanceOf("Vector3Value"),
+	StartOffset2 = t.instanceOf("Vector3Value"),
+	EndOffset1 = t.instanceOf("Vector3Value"),
+	EndOffset2 = t.instanceOf("Vector3Value"),
+})
+
+function RectRailSegment.fromInstance(instance)
+	assert(IsInstance(instance))
+
+	local wedge = instance:FindFirstChild("Wedge")
+
+	local startOffset1Value = instance:FindFirstChild("StartOffset1")
+	local startOffset2Value = instance:FindFirstChild("StartOffset2")
+	local endOffset1Value = instance:FindFirstChild("EndOffset1")
+	local endOffset2Value = instance:FindFirstChild("EndOffset2")
+
+	return RectRailSegment.fromData({
+		Name = instance.Name,
+
+		Wedge = wedge,
+
+		StartOffset1 = startOffset1Value.Value,
+		StartOffset2 = startOffset2Value.Value,
+		EndOffset1 = endOffset1Value.Value,
+		EndOffset2 = endOffset2Value.Value,
+	})
+end
+
 
 
 local checkCreate = t.tuple(

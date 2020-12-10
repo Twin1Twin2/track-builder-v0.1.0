@@ -56,6 +56,43 @@ function TrackObjectSegment.fromData(data)
 end
 
 
+local IsInstance = t.children({
+	Object = t.union(
+		t.instanceIsA("BasePart"),
+		IsModelWithPrimaryPart
+	),
+	Offset = t.optional(t.instanceOf("CFrameValue")),
+	UseLookVector = t.optional(t.instanceOf("BoolValue"))
+})
+
+function TrackObjectSegment.fromInstance(instance)
+	assert(IsInstance(instance))
+
+	local object = instance:FindFirstChild("Object")
+	local offsetValue = instance:FindFirstChild("Offset")
+	local useLookVectorValue = instance:FindFirstChild("UseLookVector")
+
+	local offset = CFrame.new()
+	if offsetValue then
+		offset = offsetValue.Value
+	end
+
+	local useLookVector = false
+	if useLookVectorValue then
+		useLookVector = useLookVectorValue.Value
+	end
+
+	return TrackObjectSegment.fromData({
+		Name = instance.Name,
+
+		Object = object,
+		Offset = offset,
+
+		UseLookVector = useLookVector,
+	})
+end
+
+
 local function GetLookVectorCFrame(cframe)
     local p = cframe.Position
     local lv = cframe.LookVector

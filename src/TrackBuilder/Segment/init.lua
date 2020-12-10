@@ -1,5 +1,8 @@
 --- Segment Module
 
+local util = script.Parent.Util
+local t = require(util.t)
+
 local Segment = {}
 
 Segment.Segment = require(script.Segment)
@@ -31,7 +34,8 @@ Segment.BoxRailBuilder = require(script.BoxRailSegmentBuilder)
 
 local SEGMENTS = {
 	Rail = Segment.Rail,
-	Tie = Segment.Tie,
+    TrackObject = Segment.TrackObject,
+	MidTrackObject = Segment.MidTrackObject,
 	Crossbeam = Segment.Crossbeam,
 	Rect = Segment.Rect,
 	RectRail = Segment.RectRail,
@@ -58,6 +62,10 @@ Segment.CreateFromData = function(data, name)
     return newTrack
 end
 
+Segment.IsInstanceData = t.children({
+    SegmentType = t.instanceOf("StringValue")
+})
+
 Segment.CreateFromInstance = function(instance)
     assert(typeof(instance) == "Instance",
         "Arg [1] is not an Instance!")
@@ -83,10 +91,6 @@ Segment.Create = function(data)
         error("Unable to Create Segment! Invalid data!")
     end
 end
-
--- Segment.IsInstanceData = function(data)
-
--- end
 
 
 return Segment
