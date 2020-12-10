@@ -159,8 +159,6 @@ end
 -- this should probably be CreateAsync():await()
 function Section:Create(cframeTrack, startPosition, endPosition)
 	assert(BaseSection.CheckCreate(cframeTrack, startPosition, endPosition))
-	assert(startPosition ~= endPosition,
-		"start position cannot be equal to end position!")
 
 	local model = Instance.new("Model")
 	model.Name = self.Name

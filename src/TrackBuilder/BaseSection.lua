@@ -30,11 +30,40 @@ function BaseSection:Destroy()
 end
 
 
-BaseSection.CheckCreate = t.tuple(
+local CheckCreateArgs = t.tuple(
 	CFrameTrack.IsType,
 	t.number,
 	t.number
 )
+
+BaseSection.CheckCreate = function(cframeTrack, startPosition, endPosition)
+	local argsSuccess, argsMessage
+		= CheckCreateArgs(cframeTrack, startPosition, endPosition)
+	if argsSuccess == false then
+		return false, argsMessage
+	end
+
+	if startPosition == endPosition then
+		return false, "startPosition cannot equal endPosition"
+	end
+
+	if startPosition > endPosition then
+		local constrainToTrack = t.numberConstrained(0, cframeTrack.Length)
+		local startSuccess, startMessage =
+			constrainToTrack(startPosition)
+		if startSuccess == false then
+			return false, startMessage
+		end
+
+		local endSuccess, endMessage =
+			constrainToTrack(endPosition)
+		if endSuccess == false then
+			return false, endMessage
+		end
+	end
+
+	return true
+end
 
 
 -- CFrame
