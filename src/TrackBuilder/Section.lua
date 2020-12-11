@@ -28,7 +28,9 @@ function Section.new(segment)
 
 	self.Segment = segment
 
-	self.Interval = nil
+	self.SegmentLength = nil
+	self.SegmentOffset = 0
+
 	self.SectionStart = 0
 
 	self.Optimize = true
@@ -42,8 +44,10 @@ end
 local IsData = t.interface({
 	Segment = Segment.IsType,
 
-	Interval = t.numberPositive,
-	SectionStart = t.number,
+	SegmentLength = t.numberPositive,
+	SegmentOffset = t.optional(t.number),
+
+	SectionStart = t.optional(t.number),
 
 	Optimize = t.boolean,
 	BuildEnd = t.boolean,
@@ -56,8 +60,10 @@ function Section.fromData(data)
 
 	local self = Section.new(segment)
 
-	self.Interval = data.Interval
-	self.SectionStart = data.SectionStart
+	self.SegmentLength = data.SegmentLength
+	self.SegmentOffset = data.SegmentOffset or 0
+
+	self.SectionStart = data.SectionStart or 0
 
 	self.Optimize = data.Optimize
 	self.BuildEnd = data.BuildEnd
@@ -68,7 +74,8 @@ end
 
 
 local HasSectionInstance = t.children({
-	Interval = t.instanceIsA("NumberValue"),
+	SegmentLength = t.instanceIsA("NumberValue"),
+	SegmentOffset = t.instanceIsA("NumberValue"),
 	SectionStart = t.instanceIsA("NumberValue"),
 
 	Optimize = t.instanceOf("BoolValue"),
@@ -109,7 +116,9 @@ function Section.fromInstance(instance)
 
 	local segment = Segment.CreateFromInstance(segmentInstance)
 
-	local intervalValue = instance:FindFirstChild("Interval")
+	local segmentLengthValue = instance:FindFirstChild("SegmentLength")
+	local segmentOffsetValue = instance:FindFirstChild("SegmentOffset")
+
 	local startOffsetValue = instance:FindFirstChild("SectionStart")
 
 	local optimizeValue = instance:FindFirstChild("Optimize")
@@ -119,7 +128,9 @@ function Section.fromInstance(instance)
 	return Section.fromData({
 		Segment = segment,
 
-		Interval = intervalValue.Value,
+		SegmentLength = segmentLengthValue.Value,
+		SegmentOffset = segmentOffsetValue.Value,
+
 		SectionStart = startOffsetValue.Value,
 
 		Optimize = optimizeValue.Value,
@@ -138,7 +149,8 @@ end
 
 
 function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
-	local interval = self.Interval
+	local segmentLength = self.SegmentLength
+	local segmentOffset = self.SegmentOffset
 	local startOffset = self.SectionStart
 
 	local optimize = self.Optimize
@@ -149,7 +161,8 @@ function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
 		startPosition,
 		endPosition,
 		startOffset,
-		interval,
+		segmentLength,
+		segmentOffset,
 		optimize,
 		buildEnd,
 		buildSegment

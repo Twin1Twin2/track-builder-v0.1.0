@@ -22,7 +22,9 @@ function SectionBuilder.new()
 
 	self.Segment = nil
 
-	self.Interval = nil
+	self.SegmentLength = nil
+	self.SectionOffset = 0
+
 	self.SectionStart = 0
 
 	self.Optimize = true
@@ -36,7 +38,7 @@ end
 -- runs an "any" check on the following properties
 local BuilderCheck = Builder.Check({
 	"Segment",
-	"Interval"
+	"SegmentLength"
 })
 
 
@@ -48,7 +50,8 @@ function SectionBuilder:Build()
 
 		Segment = self.Segment,
 
-		Interval = self.Interval,
+		SegmentLength = self.SegmentLength,
+		SegmentOffset = self.SectionOffset,
 		SectionStart = self.SectionStart,
 		Optimize = self.Optimize,
 		BuildEnd = self.BuildEnd,
@@ -65,10 +68,19 @@ function SectionBuilder:WithSegment(segment)
 end
 
 
-function SectionBuilder:WithInterval(interval)
-	assert(t.numberPositive(interval))
+function SectionBuilder:WithSegmentLength(length)
+	assert(t.numberPositive(length))
 
-	self.Interval = interval
+	self.SegmentLength = length
+
+	return self
+end
+
+
+function SectionBuilder:WithSegmentOffset(offset)
+	assert(t.number(offset))
+
+	self.SegmentOffset = offset
 
 	return self
 end

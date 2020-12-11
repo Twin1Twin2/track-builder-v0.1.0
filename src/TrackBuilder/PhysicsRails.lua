@@ -38,7 +38,7 @@ function PhysicsRails.new()
 	self.Name = DEFAULT_NAME
 
 	self.Rails = {}
-	self.Interval = 5
+	self.SegmentLength = 5
 
 
 	return self
@@ -51,7 +51,7 @@ function PhysicsRails.fromData(data)
 	local self = PhysicsRails.new()
 
 	self.Rails = data.Rails
-	self.Interval = data.Interval
+	self.SegmentLength = data.SegmentLength
 
 	return self
 end
@@ -89,7 +89,7 @@ function PhysicsRails:Create(cframeTrack, startPosition, endPosition, speed)
 	speed = speed or 0	-- if added to a TrackSection, default to 0
 
 	local startOffset = 0
-	local interval = self.Interval
+	local segmentLength = self.SegmentLength
 	local optimize = false
 	local buildEnd = false
 
@@ -115,7 +115,8 @@ function PhysicsRails:Create(cframeTrack, startPosition, endPosition, speed)
 		startPosition,
 		endPosition,
 		startOffset,
-		interval,
+		segmentLength,
+		0,	-- do not use segmentOffset for rails
 		optimize,
 		buildEnd,
 		buildSegment
