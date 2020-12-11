@@ -1,6 +1,7 @@
 --- TrackGroup
 
 local BaseSection = require(script.Parent.BaseSection)
+local Section = require(script.Parent.Section)
 
 local util = script.Parent.Util
 local t = require(util.t)
@@ -47,48 +48,81 @@ function TrackGroup.fromData(data)
 end
 
 
--- local IsChildInstanceData = t.union(
--- 	Section.IsInstanceData,
--- 	t.every(
--- 		t.instanceOf("Configuration"),
--- 		IsInstanceData
--- 	)
--- )
+-- -- assumes every table needs to be turned into a Section class
+-- function TrackGroup.fromRawData(data)
+-- 	assert(IsData(data))
 
--- local IsInstanceData = function(instance)
--- 	local instanceSuccess, instanceMessage
--- 		= t.Instance(instance)
--- 	if instanceSuccess == false then
--- 		return false, instanceMessage
--- 	end
+-- 	local self = TrackGroup.new()
 
--- 	local childrenSuccess = true
--- 	local childrenMessages = {}
+-- 	self.Name = data.Name or DEFAULT_NAME
+-- 	self.Sections = data.Sections
 
--- 	local children = instance:GetChildren()
--- 	for _, child in pairs(children) do
--- 		local sectionSuccess, sectionMessage
--- 			= IsChildInstanceData(child)
--- 		if sectionSuccess == false then
--- 			childrenSuccess = false
--- 			table.insert(childrenMessages, sectionMessage)
--- 		end
--- 	end
 
--- 	if childrenSuccess == false then
--- 		local message = "Invalid!"
--- 		for _, childrenMessage in ipairs(childrenMessages) do
--- 			message = message .. "\n" .. childrenMessage
--- 		end
-
--- 		return false, message
--- 	end
-
--- 	return true
+-- 	return self
 -- end
 
-function TrackGroup.fromInstance(instance)
 
+TrackGroup.IsInstanceData = function(instance)
+	local instanceSuccess, instanceMessage
+		= t.Instance(instance)
+	if instanceSuccess == false then
+		return false, instanceMessage
+	end
+
+	local childrenSuccess = true
+	local childrenMessages = {}
+
+	local children = instance:GetChildren()
+	for _, child in pairs(children) do
+		local sectionSuccess, sectionMessage
+
+		if child:IsA("Configuration") then
+			sectionSuccess, sectionMessage
+				= TrackGroup.IsInstanceData(child)
+		else
+			sectionSuccess, sectionMessage
+				= Section.IsInstanceData(child)
+		end
+
+		if sectionSuccess == false then
+			childrenSuccess = false
+			table.insert(childrenMessages, sectionMessage)
+		end
+	end
+
+	if childrenSuccess == false then
+		local message = "Invalid!"
+		for _, childrenMessage in ipairs(childrenMessages) do
+			message = message .. "\n" .. childrenMessage
+		end
+
+		return false, message
+	end
+
+	return true
+end
+
+function TrackGroup.fromInstance(instance)
+	assert(TrackGroup.IsInstanceData(instance))
+
+	local sections = {}
+
+	for _, child in pairs(instance:GetChildren()) do
+		local section
+
+		if child:IsA("Configuration") then
+			section = TrackGroup.fromInstance(child)
+		else
+			section = Section.fromInstance(child)
+		end
+
+		table.insert(sections, section)
+	end
+
+	return TrackGroup.fromData({
+		Name = instance.Name,
+		Sections = sections,
+	})
 end
 
 

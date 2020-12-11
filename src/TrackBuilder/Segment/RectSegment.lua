@@ -55,15 +55,47 @@ function RectSegment.fromData(data)
 
 	self.Name = data.Name or DEFAULT_NAME
 
-	self.Wedge = data.Wedge or DEFAULT_WEDGE
+	self.Wedge = data.Wedge or DEFAULT_WEDGE:Clone()
 
 	self.P0 = data.P0
 	self.P1 = data.P1
-
 	self.P2 = data.P2
 	self.P3 = data.P3
 
+
 	return self
+end
+
+
+RectSegment.IsInstanceData = t.children({
+	Wedge = t.optional(t.instanceOf("WedgePart")),
+
+	P0 = t.instanceOf("Vector3Value"),
+	P1 = t.instanceOf("Vector3Value"),
+	P2 = t.instanceOf("Vector3Value"),
+	P3 = t.instanceOf("Vector3Value"),
+})
+
+function RectSegment.fromInstance(instance)
+	assert(RectSegment.IsInstanceData(instance))
+
+	local wedge = instance:FindFirstChild("Wedge")
+
+	local p0Value = instance:FindFirstChild("P0")
+	local p1Value = instance:FindFirstChild("P1")
+	local p2Value = instance:FindFirstChild("P2")
+	local p3Value = instance:FindFirstChild("P3")
+
+	return RectSegment.fromData({
+		Name = instance.Name,
+
+		Wedge = wedge,
+
+		P0 = p0Value.Value,
+		P1 = p1Value.Value,
+		P2 = p2Value.Value,
+		P3 = p3Value.Value,
+	})
 end
 
 

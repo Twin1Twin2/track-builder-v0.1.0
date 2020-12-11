@@ -86,7 +86,7 @@ function App:render()
 							SortOrder = Enum.SortOrder.LayoutOrder,
 						}),
 						StartTextField = Roact.createElement(TextField, {
-							Size = UDim2.new(0.5, -4, 1, 0),
+							Size = UDim2.new(0.5, -14, 1, 0),
 							LayoutOrder = 1,
 
 							Title = "Start:",
@@ -98,7 +98,7 @@ function App:render()
 							end,
 						}),
 						EndTextField = Roact.createElement(TextField, {
-							Size = UDim2.new(0.5, -4, 1, 0),
+							Size = UDim2.new(0.5, -14, 1, 0),
 							LayoutOrder = 2,
 
 							Title = "End:",
@@ -108,7 +108,25 @@ function App:render()
 							enterPressed = function(value)
 								PluginManager:SetEndPosition(value)
 							end,
-						})
+						}),
+						ToTrackEnd = Roact.createElement(RoactMaterial.TransparentButton, {
+							Size = UDim2.new(0, 20, 1, 0),
+							AnchorPoint = Vector2.new(1, 0.5),
+
+							LayoutOrder = 3,
+
+							OnClicked = function()
+								PluginManager:SetEndPositionAsTrackEnd()
+							end
+						}, {
+							Icon = Roact.createElement(RoactMaterial.Icon, {
+								Icon = "keyboard_tab",
+								AnchorPoint = Vector2.new(0.5, 0.5),
+								Position = UDim2.fromScale(0.5, 0.5),
+								Size = UDim2.fromOffset(24, 24),
+								IconColor3 = Color3.new(),
+							}),
+						}),
 					}),
 					CurrentTrackGroup = Roact.createElement(TextWithTitle, {
 						Class = "Button",

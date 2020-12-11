@@ -98,7 +98,7 @@ end
 
 function PluginManager:SetTrackGroup(trackGroup)
 	self.CurrentTrackGroup = trackGroup
-    self.Store:dispatch(Actions.SetCurrentTrack(trackGroup and trackGroup.Name or nil, ""))
+    self.Store:dispatch(Actions.SetCurrentTrackGroup(trackGroup and trackGroup.Name or nil, ""))
 end
 
 local XpcallTrackGroupFromData = WrapXpcall(TrackGroup.fromData)
@@ -157,6 +157,7 @@ function PluginManager:SetStartPosition(position)
 	assert(t.tuple(t.number(position)))
 
 	self.StartPosition = position
+	self.Store:dispatch(Actions.SetStartPosition(self.StartPosition))
 end
 
 
@@ -164,14 +165,73 @@ function PluginManager:SetEndPosition(position)
 	assert(t.tuple(t.number(position)))
 
 	self.EndPosition = position
+	self.Store:dispatch(Actions.SetEndPosition(self.EndPosition))
+end
+
+
+function PluginManager:SetEndPositionAsTrackEnd(position)
+	assert(t.tuple(t.number(position)))
+
+	if self.CurrentTrack == nil then
+		return
+	end
+
+	self.EndPosition = self.CurrentTrack.Length
+	self.Store:dispatch(Actions.SetEndPosition(self.EndPosition))
+end
+
+
+function PluginManager:_Build(cframeTrack, trackGroup, startPosition, endPosition)
+	if cframeTrack == nil then
+		return false, "Track not set!"
+	end
+
+	if trackGroup == nil then
+		return false, "TrackGroup not set!"
+	end
+
+	if startPosition == endPosition then
+		return false, "Start cannot equal End Position!"
+	end
+
+	if startPosition > endPosition then
+		local constrainToTrack = t.numberConstrained(0, cframeTrack.Length)
+		local startSuccess, startMessage =
+			constrainToTrack(startPosition)
+		if startSuccess == false then
+			return false, startMessage
+		end
+
+		local endSuccess, endMessage =
+			constrainToTrack(endPosition)
+		if endSuccess == false then
+			return false, endMessage
+		end
+	end
+
+	local model = trackGroup:Create(
+		cframeTrack,
+		startPosition,
+		endPosition
+	)
+	model.Parent = workspace
+
+	return true
 end
 
 
 function PluginManager:Build()
-	print("Track = ", self.CurrentTrack and self.CurrentTrack.Name or "[NOTHING]")
-	print("TrackGroup = ", self.CurrentTrackGroup and self.CurrentTrackGroup.Name or "[NOTHING]")
-	print("Start = ", self.StartPosition)
-	print("End = ", self.EndPosition)
+	local cframeTrack = self.CurrentTrack
+	local trackGroup = self.CurrentTrackGroup
+	local startPosition = self.StartPosition
+	local endPosition = self.EndPosition
+
+	local success, message
+		= self:_Build(cframeTrack, trackGroup, startPosition, endPosition)
+
+	if success == false then
+		warn(message)
+	end
 end
 
 

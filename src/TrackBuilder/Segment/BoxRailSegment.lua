@@ -77,7 +77,7 @@ function BoxRailSegment.fromData(data)
 
 	self.Name = data.Name or DEFAULT_NAME
 
-	self.Wedge = data.Wedge or DEFAULT_WEDGE
+	self.Wedge = data.Wedge or DEFAULT_WEDGE:Clone()
 
 	self.TopLeft = data.TopLeft
 	self.TopRight = data.TopRight
@@ -89,8 +89,66 @@ function BoxRailSegment.fromData(data)
 	self.DrawLeft = drawLeft
 	self.DrawRight = drawRight
 
+
 	return self
 end
+
+
+BoxRailSegment.IsInstanceData = t.children({
+	Wedge = t.optional(t.instanceOf("WedgePart")),
+
+	TopLeft = t.instanceOf("Vector3Value"),
+	TopRight = t.instanceOf("Vector3Value"),
+	BottomLeft = t.instanceOf("Vector3Value"),
+	BottomRight = t.instanceOf("Vector3Value"),
+
+	DrawTop = t.optional(t.instanceOf("BoolValue")),
+	DrawBottom = t.optional(t.instanceOf("BoolValue")),
+	DrawLeft = t.optional(t.instanceOf("BoolValue")),
+	DrawRight = t.optional(t.instanceOf("BoolValue")),
+})
+
+function BoxRailSegment.fromInstance(instance)
+	assert(BoxRailSegment.IsInstanceData(instance))
+
+	local wedge = instance:FindFirstChild("Wedge")
+
+	local topLeftValue = instance:FindFirstChild("TopLeft")
+	local topRightValue = instance:FindFirstChild("TopRight")
+	local bottomLeftValue = instance:FindFirstChild("BottomLeft")
+	local bottomRightValue = instance:FindFirstChild("BottomRight")
+
+	local function GetBoolValueOr(valueName, default)
+		local value = instance:FindFirstChild(valueName)
+		if value then
+			return value.Value
+		end
+
+		return default
+	end
+
+	local drawTop = GetBoolValueOr("DrawTop", true)
+	local drawBottom = GetBoolValueOr("DrawBottom", true)
+	local drawLeft = GetBoolValueOr("DrawLeft", true)
+	local drawRight = GetBoolValueOr("DrawRight", true)
+
+	return BoxRailSegment.fromData({
+		Name = instance.Name,
+
+		Wedge = wedge,
+
+		TopLeft = topLeftValue.Value,
+		TopRight = topRightValue.Value,
+		BottomLeft = bottomLeftValue.Value,
+		BottomRight = bottomRightValue.Value,
+
+		DrawTop = drawTop,
+		DrawBottom = drawBottom,
+		DrawLeft = drawLeft,
+		DrawRight = drawRight,
+	})
+end
+
 
 local checkCreate = t.tuple(
 	t.CFrame,

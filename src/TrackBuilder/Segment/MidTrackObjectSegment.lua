@@ -9,6 +9,8 @@ local util = script.Parent.Parent.Util
 local t = require(util.t)
 local IsModelWithPrimaryPart = require(util.IsModelWithPrimaryPart)
 
+local VECTOR_3 = Vector3.new()
+
 local DEFAULT_NAME = "MidTrackObject"
 
 local MidTrackObjectSegment = {
@@ -59,6 +61,43 @@ function MidTrackObjectSegment.fromData(data)
 end
 
 
+MidTrackObjectSegment.IsInstanceData = t.children({
+	Object = t.union(
+		t.instanceIsA("BasePart"),
+		IsModelWithPrimaryPart
+	),
+	Offset = t.optional(t.instanceOf("CFrameValue")),
+	UseLookVector = t.optional(t.instanceOf("BoolValue"))
+})
+
+function MidTrackObjectSegment.fromInstance(instance)
+	assert(MidTrackObjectSegment.IsInstanceData(instance))
+
+	local object = instance:FindFirstChild("Object")
+	local offsetValue = instance:FindFirstChild("Offset")
+	local useLookVectorValue = instance:FindFirstChild("UseLookVector")
+
+	local offset = CFrame.new()
+	if offsetValue then
+		offset = offsetValue.Value
+	end
+
+	local useLookVector = false
+	if useLookVectorValue then
+		useLookVector = useLookVectorValue.Value
+	end
+
+	return MidTrackObjectSegment.fromData({
+		Name = instance.Name,
+
+		Object = object,
+		Offset = offset,
+
+		UseLookVector = useLookVector,
+	})
+end
+
+
 local function GetLookVectorCFrame(cframe)
     local p = cframe.Position
     local lv = cframe.LookVector
@@ -77,9 +116,9 @@ function MidTrackObjectSegment:Create(startCFrame, endCFrame)
 	local cframe, _, _	-- kinda a hack. not optimized
 		= NewSmooth(
 			startCFrame,
-			self.Offset,
+			VECTOR_3,
 			endCFrame,
-			self.Offset,
+			VECTOR_3,
 			Vector3.new(1, 1, 1),
 			Vector3.new(0, 0, 0),
 			false,

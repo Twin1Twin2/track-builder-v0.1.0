@@ -28,8 +28,10 @@ function Section.new(segment)
 
 	self.Segment = segment
 
-	self.Interval = nil
-	self.StartOffset = 0
+	self.SegmentLength = nil
+	self.SegmentOffset = 0
+
+	self.SectionStart = 0
 
 	self.Optimize = true
 	self.BuildEnd = true
@@ -42,8 +44,10 @@ end
 local IsData = t.interface({
 	Segment = Segment.IsType,
 
-	Interval = t.numberPositive,
-	StartOffset = t.number,
+	SegmentLength = t.numberPositive,
+	SegmentOffset = t.optional(t.number),
+
+	SectionStart = t.optional(t.number),
 
 	Optimize = t.boolean,
 	BuildEnd = t.boolean,
@@ -56,8 +60,10 @@ function Section.fromData(data)
 
 	local self = Section.new(segment)
 
-	self.Interval = data.Interval
-	self.StartOffset = data.StartOffset
+	self.SegmentLength = data.SegmentLength
+	self.SegmentOffset = data.SegmentOffset or 0
+
+	self.SectionStart = data.SectionStart or 0
 
 	self.Optimize = data.Optimize
 	self.BuildEnd = data.BuildEnd
@@ -68,32 +74,52 @@ end
 
 
 local HasSectionInstance = t.children({
-	Interval = t.instanceIsA("NumberValue"),
-	StartOffset = t.instanceIsA("NumberValue"),
+	SegmentLength = t.instanceIsA("NumberValue"),
+	SegmentOffset = t.instanceIsA("NumberValue"),
+	SectionStart = t.instanceIsA("NumberValue"),
 
 	Optimize = t.instanceOf("BoolValue"),
 	BuildEnd = t.instanceOf("BoolValue"),
+
+	Segment = t.optional(t.union(
+		t.instanceIsA("Folder"),
+		t.instanceIsA("Model")
+	))
 })
 
-local IsInstance = function(instance)
+Section.IsInstanceData = function(instance)
 	local sectionSuccess, sectionMessage = HasSectionInstance(instance)
 	if sectionSuccess == false then
 		return false, sectionMessage
 	end
 
-	local segmentSuccess, segmentMessage = Section.CheckInstance(instance)
+	local segmentInstance = instance:FindFirstChild("Segment")
+	if segmentInstance == nil then
+		segmentInstance = instance
+	end
+
+	local segmentSuccess, segmentMessage = Segment.CheckInstance(segmentInstance)
 	if segmentSuccess == false then
 		return false, segmentMessage
 	end
+
+	return true
 end
 
 function Section.fromInstance(instance)
-	assert(IsInstance(instance))
+	assert(Section.IsInstanceData(instance))
 
-	local segment = Segment.CreateFromInstance(instance)
+	local segmentInstance = instance:FindFirstChild("Segment")
+	if segmentInstance == nil then
+		segmentInstance = instance
+	end
 
-	local intervalValue = instance:FindFirstChild("Interval")
-	local startOffsetValue = instance:FindFirstChild("StartOffset")
+	local segment = Segment.CreateFromInstance(segmentInstance)
+
+	local segmentLengthValue = instance:FindFirstChild("SegmentLength")
+	local segmentOffsetValue = instance:FindFirstChild("SegmentOffset")
+
+	local startOffsetValue = instance:FindFirstChild("SectionStart")
 
 	local optimizeValue = instance:FindFirstChild("Optimize")
 	local buildEndValue = instance:FindFirstChild("BuildEnd")
@@ -102,8 +128,10 @@ function Section.fromInstance(instance)
 	return Section.fromData({
 		Segment = segment,
 
-		Interval = intervalValue.Value,
-		StartOffset = startOffsetValue.Value,
+		SegmentLength = segmentLengthValue.Value,
+		SegmentOffset = segmentOffsetValue.Value,
+
+		SectionStart = startOffsetValue.Value,
 
 		Optimize = optimizeValue.Value,
 		BuildEnd = buildEndValue.Value
@@ -121,8 +149,9 @@ end
 
 
 function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
-	local interval = self.Interval
-	local startOffset = self.StartOffset
+	local segmentLength = self.SegmentLength
+	local segmentOffset = self.SegmentOffset
+	local startOffset = self.SectionStart
 
 	local optimize = self.Optimize
 	local buildEnd = self.BuildEnd
@@ -132,7 +161,8 @@ function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
 		startPosition,
 		endPosition,
 		startOffset,
-		interval,
+		segmentLength,
+		segmentOffset,
 		optimize,
 		buildEnd,
 		buildSegment
@@ -142,8 +172,6 @@ end
 -- this should probably be CreateAsync():await()
 function Section:Create(cframeTrack, startPosition, endPosition)
 	assert(BaseSection.CheckCreate(cframeTrack, startPosition, endPosition))
-	assert(startPosition ~= endPosition,
-		"start position cannot be equal to end position!")
 
 	local model = Instance.new("Model")
 	model.Name = self.Name

@@ -1,7 +1,24 @@
 --- CreateSection
+--- SegmentLength is the interval
+--- SegmentOffset is the offset
+
+local CFrameTrack = require(script.Parent.CFrameTrack)
 
 local util = script.Parent.Util
+local t = require(util.t)
 local IsCFrameStraightAhead = require(util.IsCFrameStraightAhead)
+
+local CheckArgs = t.tuple(
+	CFrameTrack.IsType,	-- cframeTrack
+	t.number,			-- startPosition
+	t.number,			-- endPosition
+	t.number,			-- startOffset
+	t.numberPositive,	-- segmentLength
+	t.number,			-- segmentOffset
+	t.boolean,			-- optimize
+	t.boolean,			-- buildEnd
+	t.callback			-- buildSegment
+)
 
 return function
 (	-- big block of args. don't feel like using a table
@@ -9,11 +26,26 @@ return function
 	startPosition,
 	endPosition,
 	startOffset,
-	interval,
+	segmentLength,
+	segmentOffset,
 	optimize,
 	buildEnd,
 	buildSegment
 )
+	assert(CheckArgs(
+		cframeTrack,
+		startPosition,
+		endPosition,
+		startOffset,
+		segmentLength,
+		segmentOffset,
+		optimize,
+		buildEnd,
+		buildSegment
+	))
+
+	assert(segmentOffset > -segmentLength,
+		"SegmentOffset must be greater than SegmentLength")
 
 	local trackLength = cframeTrack.Length
 
@@ -38,7 +70,7 @@ return function
 	local lastPosition = currentPosition
 	local lastUsedPosition = currentPosition
 
-	currentPosition = currentPosition + interval
+	currentPosition = currentPosition + segmentLength
 
 	local index = 1
 
@@ -59,34 +91,24 @@ return function
 		lastUsedPosition = endTrackPosition
 	end
 
-	local function BuildOptimized()
-		local currentCFrame = GetCurrentCFrame()
-		local lastUsedCFrame = GetTrackCFrame(lastUsedPosition)
+	while currentPosition < totalLength do
+		if optimize == true then
+			local currentCFrame = GetCurrentCFrame()
+			local lastUsedCFrame = GetTrackCFrame(lastUsedPosition)
 
-		local isStraightAhead = IsCFrameStraightAhead(lastUsedCFrame, currentCFrame)
+			local isStraightAhead = IsCFrameStraightAhead(lastUsedCFrame, currentCFrame)
 
-		if isStraightAhead == false then
-			Build(lastUsedPosition, lastPosition)
+			if isStraightAhead == false then
+				Build(lastUsedPosition, lastPosition)
+			end
+
+			lastPosition = currentPosition
+		else
+			Build(lastUsedPosition, currentPosition)
 		end
 
-		lastPosition = currentPosition
-	end
-
-	local function BuildUnoptimized()
-		Build(lastUsedPosition, currentPosition)
-	end
-
-	local buildFunction
-	if optimize == true then
-		buildFunction = BuildOptimized
-	else
-		buildFunction = BuildUnoptimized
-	end
-
-	while currentPosition < totalLength do
-		buildFunction()
-
-		currentPosition = currentPosition + interval
+		currentPosition = currentPosition + segmentLength
+		-- currentPosition = currentPosition + segmentOffset
 	end
 
 	-- build last
@@ -106,6 +128,6 @@ return function
 
 	-- build end
 	if buildEnd == true then
-        Build(totalLength, totalLength + interval)
+        Build(totalLength, totalLength + segmentLength)
 	end
 end
