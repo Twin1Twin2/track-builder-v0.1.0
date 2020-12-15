@@ -1,9 +1,12 @@
 site_name: Track Builder
 site_description: Documentation for the Track Builder Plugin
 site_author: TheEpicTwin
+repo_name: Twin1Twin2/track-builder
+repo_url: https://github.com/Twin1Twin2/track-builder
 
 nav:
   - Home: index.md
+  - Changelog: changelog.md
   - Quick Start:
     - About: quick_start/index.md
     - Installation: quick_start/installation.md
@@ -29,3 +32,8 @@ plugins:
 markdown_extensions:
   - codehilite:
       guess_lang: false
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
