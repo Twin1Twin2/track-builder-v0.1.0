@@ -16,6 +16,8 @@ local Config = require(script.Parent.Config)
 
 local App = require(script.Parent.Components.App)
 
+local PluginManager = require(script.Parent.PluginManager)
+
 local function getPrefix(plugin)
 	if plugin.isDev then
 		return " [DEV]", "Dev"
@@ -50,6 +52,7 @@ local function Main(plugin, savedState)
 	)
 
 	local store = Rodux.Store.new(Reducer, savedState)
+	PluginManager:InitStore(store)
 
 	local info = DockWidgetPluginGuiInfo.new(Enum.InitialDockState.Float, false, false, 0, 0)
 
@@ -75,6 +78,8 @@ local function Main(plugin, savedState)
 	plugin:beforeUnload(function()
 		Roact.unmount(instance)
 		connection:Disconnect()
+
+		PluginManager:Destroy()
 
 		return store:getState()
 	end)

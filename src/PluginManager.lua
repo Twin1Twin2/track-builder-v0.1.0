@@ -55,6 +55,21 @@ function PluginManager.new()
 end
 
 
+function PluginManager:Destroy()
+	self.Store = nil
+
+	if self.CurrentTrack then
+		self.CurrentTrack:Destroy()
+	end
+
+	if self.CurrentTrackGroup then
+		self.CurrentTrackGroup:Destroy()
+	end
+
+	self.LoadedTracks = nil
+end
+
+
 function PluginManager:InitStore(store)
     self.Store = store
 
