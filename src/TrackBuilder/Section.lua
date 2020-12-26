@@ -42,6 +42,8 @@ end
 
 
 local IsData = t.interface({
+	Name = t.optional(t.string),
+
 	Segment = Segment.IsType,
 
 	SegmentLength = t.numberPositive,
@@ -59,6 +61,8 @@ function Section.fromData(data)
 	local segment = data.Segment
 
 	local self = Section.new(segment)
+
+	self.Name = data.Name or segment.Name
 
 	self.SegmentLength = data.SegmentLength
 	self.SegmentOffset = data.SegmentOffset or 0
@@ -126,6 +130,8 @@ function Section.fromInstance(instance)
 
 
 	return Section.fromData({
+		Name = instance.Name,
+
 		Segment = segment,
 
 		SegmentLength = segmentLengthValue.Value,
@@ -156,6 +162,13 @@ function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
 	local optimize = self.Optimize
 	local buildEnd = self.BuildEnd
 
+	local optimizeFunc
+	if optimize == true then
+		optimizeFunc = function(startCFrame, endCFrame)
+			return self.Segment:IsStraightAhead(startCFrame, endCFrame)
+		end
+	end
+
 	CreateSection(
 		cframeTrack,
 		startPosition,
@@ -163,7 +176,7 @@ function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
 		startOffset,
 		segmentLength,
 		segmentOffset,
-		optimize,
+		optimizeFunc,
 		buildEnd,
 		buildSegment
 	)
@@ -177,10 +190,10 @@ function Section:Create(cframeTrack, startPosition, endPosition)
 	model.Name = self.Name
 
 	self:_Create(cframeTrack, startPosition, endPosition, function(startCFrame, endCFrame, index)
-		local railObject = self.Segment:Create(startCFrame, endCFrame)
+		local segment = self.Segment:Create(startCFrame, endCFrame)
 
-		railObject.Name = tostring(index)
-		railObject.Parent = model
+		segment.Name = tostring(index)
+		segment.Parent = model
 	end)
 
 	return model
@@ -199,10 +212,10 @@ function Section:CreateAsync(cframeTrack, startPosition, endPosition)
 
 	self:_Create(cframeTrack, startPosition, endPosition, function(startCFrame, endCFrame, index)
 		local promise = Promise.new(function(resolve)
-			local railObject = self.Segment:Create(startCFrame, endCFrame)
+			local segment = self.Segment:Create(startCFrame, endCFrame)
 
-			railObject.Name = tostring(index)
-			railObject.Parent = model
+			segment.Name = tostring(index)
+			segment.Parent = model
 
 			resolve()
 		end)

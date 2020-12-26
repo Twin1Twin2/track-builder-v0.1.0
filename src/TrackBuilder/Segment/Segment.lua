@@ -2,6 +2,9 @@
 --- Builds an Instance, usually a Model or a BasePart from either 1 or 2 CFrames
 ---
 
+local segmentUtil = script.Parent.Util
+local IsCFrameStraightAhead = require(segmentUtil.IsCFrameStraightAhead)
+
 local util = script.Parent.Parent.Util
 local InstanceOfClass = require(util.InstanceOfClass)
 local Promise = require(util.Promise)
@@ -17,7 +20,7 @@ Segment.IsType = InstanceOfClass(Segment)
 function Segment.new()
 	local self = setmetatable({}, Segment)
 
-	self.Name = "Object"
+	self.Name = "Segment"
 
 
 	return self
@@ -26,6 +29,11 @@ end
 
 function Segment:Destroy()
 	setmetatable(self, nil)
+end
+
+
+function Segment.IsStraightAhead(_, startCFrame, endCFrame)
+	return IsCFrameStraightAhead(startCFrame, endCFrame)
 end
 
 

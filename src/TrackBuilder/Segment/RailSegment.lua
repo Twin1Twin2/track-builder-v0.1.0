@@ -5,6 +5,7 @@ local MeshData = require(script.Parent.MeshData)
 
 local segmentUtil = script.Parent.Util
 local NewSmooth = require(segmentUtil.NewSmooth)
+local IsCFrameStraightAhead = require(segmentUtil.IsCFrameStraightAhead)
 
 local util = script.Parent.Parent.Util
 local t = require(util.t)
@@ -129,6 +130,14 @@ function RailSegment.fromInstance(instance)
 		Horizontal = horizontal,
 		MeshData = meshData
 	})
+end
+
+
+function RailSegment:IsStraightAhead(startCFrame, endCFrame)
+	return IsCFrameStraightAhead(
+		startCFrame * CFrame.new(self.Offset),
+		endCFrame * CFrame.new(self.Offset)
+	)
 end
 
 

@@ -90,7 +90,6 @@ function PhysicsRails:Create(cframeTrack, startPosition, endPosition, speed)
 
 	local startOffset = 0
 	local segmentLength = self.SegmentLength
-	local optimize = false
 	local buildEnd = false
 
 	local model = Instance.new("Model")
@@ -117,7 +116,7 @@ function PhysicsRails:Create(cframeTrack, startPosition, endPosition, speed)
 		startOffset,
 		segmentLength,
 		0,	-- do not use segmentOffset for rails
-		optimize,
+		nil,	-- no optimization for physics rails
 		buildEnd,
 		buildSegment
 	)

@@ -6,16 +6,15 @@ local CFrameTrack = require(script.Parent.CFrameTrack)
 
 local util = script.Parent.Util
 local t = require(util.t)
-local IsCFrameStraightAhead = require(util.IsCFrameStraightAhead)
 
 local CheckArgs = t.tuple(
-	CFrameTrack.IsType,	-- cframeTrack
+	CFrameTrack.IsType,	-- CFrameTrack
 	t.number,			-- startPosition
 	t.number,			-- endPosition
 	t.number,			-- startOffset
 	t.numberPositive,	-- segmentLength
 	t.number,			-- segmentOffset
-	t.boolean,			-- optimize
+	t.optional(t.callback),		-- optimizeFunc
 	t.boolean,			-- buildEnd
 	t.callback			-- buildSegment
 )
@@ -28,7 +27,7 @@ return function
 	startOffset,
 	segmentLength,
 	segmentOffset,
-	optimize,
+	optimizeFunc,
 	buildEnd,
 	buildSegment
 )
@@ -39,7 +38,7 @@ return function
 		startOffset,
 		segmentLength,
 		segmentOffset,
-		optimize,
+		optimizeFunc,
 		buildEnd,
 		buildSegment
 	))
@@ -92,11 +91,11 @@ return function
 	end
 
 	while currentPosition < totalLength do
-		if optimize == true then
+		if optimizeFunc then
 			local currentCFrame = GetCurrentCFrame()
 			local lastUsedCFrame = GetTrackCFrame(lastUsedPosition)
 
-			local isStraightAhead = IsCFrameStraightAhead(lastUsedCFrame, currentCFrame)
+			local isStraightAhead = optimizeFunc(lastUsedCFrame, currentCFrame)
 
 			if isStraightAhead == false then
 				Build(lastUsedPosition, lastPosition)
@@ -112,11 +111,11 @@ return function
 	end
 
 	-- build last
-	if optimize == true then
+	if optimizeFunc then
 		local lastUsedCFrame = GetTrackCFrame(lastUsedPosition)
 		local endCFrame = cframeTrack:GetCFramePosition(endPosition)
 
-		if IsCFrameStraightAhead(lastUsedCFrame, endCFrame) then
+		if optimizeFunc(lastUsedCFrame, endCFrame) then
 			Build(lastUsedPosition, totalLength)
 		else	-- build to previous, then finish it out
 			Build(lastUsedPosition, lastPosition)
