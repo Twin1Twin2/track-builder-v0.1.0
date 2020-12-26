@@ -53,6 +53,8 @@ local function NewSmooth(previousPointCFrame, previousOffset, currentPointCFrame
     local cframe
     local mesh
 
+    partSize = Vector3.new(partSize.X, partSize.Y, 0)   -- force z = 0
+
     if horizontal then
         size = Vector3.new(partSize.X, 0, partSize.Y)
             + Vector3.new(0, (currentCFrame.Position - previousCFrame.Position).Magnitude + partSize.Z, 0)
