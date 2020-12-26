@@ -49,6 +49,8 @@ function RectRailSegmentBuilder:Build()
 
 		Wedge = self.Wedge,
 
+		UseStart = self.UseStart,
+
 		StartOffset1 = self.StartOffset1,
 		StartOffset2 = self.StartOffset2,
 		EndOffset1 = self.EndOffset1,
@@ -61,6 +63,15 @@ function RectRailSegmentBuilder:WithWedge(wedge)
 	assert(t.instanceIsA("WedgePart")(wedge))
 
 	self.Wedge = wedge
+
+	return self
+end
+
+
+function RectRailSegmentBuilder:WithUseStart(value)
+	assert(t.boolean(value))
+
+	self.UseStart = value
 
 	return self
 end
