@@ -9,6 +9,7 @@ Segment.Segment = require(script.Segment)
 Segment.IsType = Segment.Segment.IsType
 
 Segment.MeshData = require(script.MeshData)
+Segment.MeshDataBuilder = require(script.MeshDataBuilder)
 
 Segment.Rail = require(script.RailSegment)
 Segment.RailBuilder = require(script.RailSegmentBuilder)

@@ -5,19 +5,13 @@ local util = script.Parent.Parent.Util
 local t = require(util.t)
 local InstanceOfClass = require(util.InstanceOfClass)
 
+local EnumType = require(util.EnumType)
+local MeshTypeType = EnumType(Enum.MeshType)
+
 local function IsValidMesh(meshName)
 	return meshName == "BlockMesh"
 		or meshName == "CylinderMesh"
 		or meshName == "SpecialMesh"
-end
-
-local MESH_TYPES = {}
-for _, enumItem in pairs(Enum.MeshType:GetEnumItems()) do
-	MESH_TYPES[enumItem.Name] = true
-end
-
-local function IsValidMeshType(meshType)
-	return MESH_TYPES[meshType] ~= nil
 end
 
 
@@ -28,14 +22,6 @@ local MeshData = {
 MeshData.__index = MeshData
 
 MeshData.IsType = InstanceOfClass(MeshData)
-
-MeshData.IsData = t.interface({
-	Mesh = t.string,
-	MeshType = t.optional(t.string),
-
-	Offset = t.Vector3,
-	Scale = t.Vector3,
-})
 
 
 function MeshData.new()
@@ -52,40 +38,41 @@ function MeshData.new()
 end
 
 
-function MeshData.fromData(data)
-	assert(type(data) == "table",
-		"Arg [1] is not a table!")
+MeshData.IsMeshClassName = function(meshClass)
+	local strSuccess, strMessage
+		= t.string(meshClass)
 
-	local mesh = data.Mesh
-	assert(type(mesh) == "string",
-		"Mesh is not a string!")
-	assert(IsValidMesh(mesh),
-		"Mesh is not a valid mesh! " .. mesh)
-
-	local meshType = data.MeshType
-
-	if meshType ~= nil then
-		assert(type(meshType) == "string",
-			"MeshType is not a string or nil!")
-		assert(IsValidMeshType(meshType),
-			"MeshType is not a valid MeshType! " .. mesh)
+	if strSuccess == false then
+		return false, strMessage
 	end
 
-	local offset = data.Offset
-	assert(typeof(offset) == "Vector3",
-		"Offset is not a Vector3!")
+	if IsValidMesh(meshClass) == false then
+		return false, "not a valid mesh class: " .. meshClass
+	end
 
-	local scale = data.Scale
-	assert(typeof(scale) == "Vector3",
-		"Scale is not a Vector3!")
+	return true
+end
+
+MeshData.IsMeshType = MeshTypeType.Check
+
+MeshData.IsData = t.interface({
+	Mesh = MeshData.IsMeshClassName,
+	MeshType = t.optional(MeshData.IsMeshType),
+
+	Offset = t.Vector3,
+	Scale = t.Vector3,
+})
+
+function MeshData.fromData(data)
+	assert(MeshData.IsData(data))
 
 	local self = MeshData.new()
 
-	self.Mesh = mesh
-	self.MeshType = meshType
+	self.Mesh = data.Mesh
+	self.MeshType = MeshTypeType.Get(data.MeshType)
 
-	self.Offset = offset
-	self.Scale = scale
+	self.Offset = data.Offset
+	self.Scale = data.Scale
 
 
 	return self
@@ -129,17 +116,18 @@ function MeshData.fromInstance(instance)
 	if meshValue == nil and instance:IsA("StringValue") then
 		meshValue = instance
 	end
-	assert(meshValue,
-		"Missing Mesh!")
-	assert(meshValue:IsA("StringValue"),
-		"Mesh is not a StringValue!")
 	local mesh = meshValue.Value
 
 	local meshType
 	local meshTypeValue = instance:FindFirstChild("MeshType")
 	if meshTypeValue then
 		if string.len(meshValue.Value) > 0 then
-			meshType = meshTypeValue.Value
+			local meshTypeEnum, meshTypeMessage
+				= MeshTypeType.CheckAndGet(meshTypeValue.Value)
+
+			assert(meshTypeEnum, meshTypeMessage)
+
+			meshType = meshTypeEnum
 		end
 	end
 
