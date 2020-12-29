@@ -205,32 +205,19 @@ function Section:CreateAsync(cframeTrack, startPosition, endPosition)
 	assert(startPosition ~= endPosition,
 		"start position cannot be equal to end position!")
 
-	local model = Instance.new("Model")
-	model.Name = self.Name
+	return Promise.new(function(resolve, _, _)
+		local model = Instance.new("Model")
+		model.Name = self.Name
 
-	local promises = {}
-
-	self:_Create(cframeTrack, startPosition, endPosition, function(startCFrame, endCFrame, index)
-		local promise = Promise.new(function(resolve)
+		self:_Create(cframeTrack, startPosition, endPosition, function(startCFrame, endCFrame, index)
 			local segment = self.Segment:Create(startCFrame, endCFrame)
 
 			segment.Name = tostring(index)
 			segment.Parent = model
-
-			resolve()
-		end)
-		:catch(function(err)
-			warn(err)
 		end)
 
-		table.insert(promises, promise)
+		resolve(model)
 	end)
-
-	return Promise.all(promises)
-		:andThen(function()
-			print("Section Finished!")
-		end)
-		:andThenReturn(model)
 end
 
 
