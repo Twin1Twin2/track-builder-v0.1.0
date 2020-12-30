@@ -15,6 +15,8 @@ local TextField = require(components.TextField)
 
 local PluginManager = require(root.PluginManager)
 
+local VERSION = root.VERSION
+
 
 local App = Roact.PureComponent:extend("App")
 
@@ -49,7 +51,7 @@ function App:render()
 					ZIndex = 100,
 				}),
 				AppMenu = Roact.createElement("Frame", {
-					Size = UDim2.new(1, 0, 1, -56),
+					Size = UDim2.new(1, 0, 1, -72),
 					Position = UDim2.new(0, 0, 0, 56),
 					BackgroundTransparency = 1,
 					ZIndex = 1,
@@ -137,7 +139,18 @@ function App:render()
 						Text = props.currentTrackGroup or "[NOTHING]",
 						LayoutOrder = 3,
 					}),
-				})
+				}),
+				Title = Roact.createElement(RoactMaterial.TextView, {
+					Class = "Caption",
+
+					AnchorPoint = Vector2.new(0, 1),
+					Position = UDim2.new(0, 4, 1, -4),
+					Size = UDim2.new(1, -8, 0, 8),
+					ZIndex = 1,
+
+					Text = "v" .. VERSION.Value,
+					TextXAlignment = Enum.TextXAlignment.Right,
+				}),
 			})
 		})
 	end)
