@@ -53,6 +53,7 @@ function PhysicsRails.fromData(data)
 	self.Rails = data.Rails
 	self.SegmentLength = data.SegmentLength
 
+
 	return self
 end
 
@@ -115,8 +116,7 @@ function PhysicsRails:Create(cframeTrack, startPosition, endPosition, speed)
 		endPosition,
 		startOffset,
 		segmentLength,
-		0,	-- do not use segmentOffset for rails
-		nil,	-- no optimization for physics rails
+		0,	-- do not use segment offset for rails
 		buildEnd,
 		buildSegment
 	)

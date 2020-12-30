@@ -1,5 +1,5 @@
--- simpler version of CreateSection
--- no optimization
+-- simpler version of CreateSection's Optimization
+-- does not use segment offset
 
 local CFrameTrack = require(script.Parent.CFrameTrack)
 
@@ -12,19 +12,19 @@ local CheckArgs = t.tuple(
 	t.number,			-- endPosition
 	t.number,			-- startOffset
 	t.numberPositive,	-- segmentLength
-	t.number,			-- segmentOffset
+	t.callback,			-- checkIsStraightAhead
 	t.boolean,			-- buildEnd
 	t.callback			-- buildSegment
 )
 
 return function
-(
+(	-- big block of args. don't feel like using a table
 	cframeTrack,
 	startPosition,
 	endPosition,
 	startOffset,
 	segmentLength,
-	segmentOffset,
+	checkIsStraightAhead,
 	buildEnd,
 	buildSegment
 )
@@ -34,18 +34,14 @@ return function
 		endPosition,
 		startOffset,
 		segmentLength,
-		segmentOffset,
+		checkIsStraightAhead,
 		buildEnd,
 		buildSegment
 	))
 
-	assert(segmentOffset > -segmentLength,
-		"SegmentOffset must be greater than SegmentLength")
-
 	local trackLength = cframeTrack.Length
 
 	local totalLength
-
 	if startPosition < endPosition then
 		totalLength = endPosition - startPosition
 	else
@@ -58,16 +54,24 @@ return function
 		if trackPosition ~= trackLength then	-- trackLength can be used
 			position = position % trackLength
 		end
+
 		return cframeTrack:GetCFramePosition(position)
 	end
 
 	local currentPosition = startOffset
 
+	local function GetCurrentCFrame()
+		return GetTrackCFrame(currentPosition)
+	end
+
+	local lastPosition = currentPosition
+	local lastUsedPosition = currentPosition
+
 	currentPosition = currentPosition + segmentLength
 
 	local index = 1
 
-	local function BuildSegment(startTrackPosition, endTrackPosition)
+	local function Build(startTrackPosition, endTrackPosition)
 		local startCFrame = GetTrackCFrame(startTrackPosition)
 		local endCFrame = GetTrackCFrame(endTrackPosition)
 		local midTrackPosition = (startTrackPosition + endTrackPosition) / 2
@@ -81,20 +85,37 @@ return function
 		)
 
 		index = index + 1
+		lastUsedPosition = endTrackPosition
 	end
 
 	while currentPosition < totalLength do
-		local endTrackPosition = currentPosition + segmentLength
-		BuildSegment(currentPosition, endTrackPosition)
+		local currentCFrame = GetCurrentCFrame()
+		local lastUsedCFrame = GetTrackCFrame(lastUsedPosition)
 
-		currentPosition = endTrackPosition + segmentOffset
+		local isStraightAhead = checkIsStraightAhead(lastUsedCFrame, currentCFrame)
+
+		if isStraightAhead == false then
+			Build(lastUsedPosition, lastPosition)
+		end
+
+		lastPosition = currentPosition
+
+		currentPosition = currentPosition + segmentLength
 	end
 
 	-- build last
-	BuildSegment(currentPosition, totalLength)
+	local lastUsedCFrame = GetTrackCFrame(lastUsedPosition)
+	local endCFrame = cframeTrack:GetCFramePosition(endPosition)
+
+	if checkIsStraightAhead(lastUsedCFrame, endCFrame) then
+		Build(lastUsedPosition, totalLength)
+	else	-- build to previous, then finish it out
+		Build(lastUsedPosition, lastPosition)
+		Build(lastUsedPosition, totalLength)
+	end
 
 	-- build end
 	if buildEnd == true then
-		BuildSegment(totalLength, totalLength + segmentLength)
+        Build(totalLength, totalLength + segmentLength)
 	end
 end

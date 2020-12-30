@@ -9,7 +9,7 @@ local t = require(util.t)
 local Promise = require(util.Promise)
 
 local CreateSection = require(script.Parent.CreateSection)
-
+local CreateSectionOptimized = require(script.Parent.CreateSectionOptimized)
 
 local Section = {
 	ClassName = "Section";
@@ -162,24 +162,35 @@ function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
 	local optimize = self.Optimize
 	local buildEnd = self.BuildEnd
 
-	local optimizeFunc
 	if optimize == true then
-		optimizeFunc = function(startCFrame, endCFrame)
+		local checkIsStraightAhead = function(startCFrame, endCFrame)
 			return self.Segment:IsStraightAhead(startCFrame, endCFrame)
 		end
+
+		CreateSectionOptimized(
+			cframeTrack,
+			startPosition,
+			endPosition,
+			startOffset,
+			segmentLength,
+			checkIsStraightAhead,
+			buildEnd,
+			buildSegment
+		)
+	else
+		CreateSection(
+			cframeTrack,
+			startPosition,
+			endPosition,
+			startOffset,
+			segmentLength,
+			segmentOffset,
+			buildEnd,
+			buildSegment
+		)
 	end
 
-	CreateSection(
-		cframeTrack,
-		startPosition,
-		endPosition,
-		startOffset,
-		segmentLength,
-		segmentOffset,
-		optimizeFunc,
-		buildEnd,
-		buildSegment
-	)
+	
 end
 
 -- this should probably be CreateAsync():await()
