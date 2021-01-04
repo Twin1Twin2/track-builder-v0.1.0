@@ -63,8 +63,6 @@ return function
 
 	local currentPosition = startOffset
 
-	currentPosition = currentPosition + segmentLength
-
 	local index = 1
 
 	local function BuildSegment(startTrackPosition, endTrackPosition)
@@ -85,13 +83,20 @@ return function
 
 	while currentPosition < totalLength do
 		local endTrackPosition = currentPosition + segmentLength
+
+		if endTrackPosition > totalLength then
+			break
+		end
+
 		BuildSegment(currentPosition, endTrackPosition)
 
 		currentPosition = endTrackPosition + segmentOffset
 	end
 
-	-- build last
-	BuildSegment(currentPosition, totalLength)
+	-- build last (to end)
+	if currentPosition < totalLength then
+		BuildSegment(currentPosition, totalLength)
+	end
 
 	-- build end
 	if buildEnd == true then
