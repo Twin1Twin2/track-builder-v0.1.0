@@ -1,14 +1,18 @@
+--- Vector3Instance
+--
 
 local t = require(script.Parent.t)
 local ReduceObjectValue = require(script.Parent.ReduceObjectValue)
+local IsModelWithPrimaryPart = require(script.Parent.IsModelWithPrimaryPart)
 
 local Vector3Instance = {}
 
 local isValidVector3Instance = t.union(
-	t.instanceIsA("CFrameValue"),
 	t.instanceIsA("Vector3Value"),
+	t.instanceIsA("CFrameValue"),
 	t.instanceIsA("BasePart"),
-	t.instanceIsA("Attachment")
+	t.instanceIsA("Attachment"),
+	IsModelWithPrimaryPart
 )
 
 Vector3Instance.Check = function(value)
@@ -40,6 +44,8 @@ Vector3Instance.Get = function(instance)
 		return instance.Position
 	elseif instance:IsA("Attachment") then
 		return instance.WorldPosition
+	elseif instance:IsA("Model") then
+		return instance:GetPrimaryPartCFrame().Position
 	end
 
 	return false,

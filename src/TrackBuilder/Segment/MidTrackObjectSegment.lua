@@ -8,10 +8,11 @@ local NewSmooth = require(segmentUtil.NewSmooth)
 local util = script.Parent.Parent.Util
 local t = require(util.t)
 local IsModelWithPrimaryPart = require(util.IsModelWithPrimaryPart)
+local CFrameOffsetInstance = require(util.CFrameOffsetInstance)
 
 local VECTOR_3 = Vector3.new()
-
 local DEFAULT_NAME = "MidTrackObject"
+
 
 local MidTrackObjectSegment = {
 	ClassName = "MidTrackObjectSegment";
@@ -66,7 +67,7 @@ MidTrackObjectSegment.IsInstanceData = t.children({
 		t.instanceIsA("BasePart"),
 		IsModelWithPrimaryPart
 	),
-	Offset = t.optional(t.instanceOf("CFrameValue")),
+	Offset = t.optional(CFrameOffsetInstance.IsInstanceData),
 	UseLookVector = t.optional(t.instanceOf("BoolValue"))
 })
 
@@ -79,7 +80,7 @@ function MidTrackObjectSegment.fromInstance(instance)
 
 	local offset = CFrame.new()
 	if offsetValue then
-		offset = offsetValue.Value
+		offset = CFrameOffsetInstance.Get(offsetValue)
 	end
 
 	local useLookVector = false

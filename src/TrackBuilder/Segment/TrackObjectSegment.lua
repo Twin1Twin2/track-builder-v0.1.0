@@ -5,6 +5,8 @@ local Segment = require(script.Parent.Segment)
 local util = script.Parent.Parent.Util
 local t = require(util.t)
 local IsModelWithPrimaryPart = require(util.IsModelWithPrimaryPart)
+local CFrameOffsetInstance = require(util.CFrameOffsetInstance)
+
 
 local DEFAULT_NAME = "TrackObject"
 
@@ -61,7 +63,7 @@ TrackObjectSegment.IsInstanceData = t.children({
 		t.instanceIsA("BasePart"),
 		IsModelWithPrimaryPart
 	),
-	Offset = t.optional(t.instanceOf("CFrameValue")),
+	Offset = t.optional(CFrameOffsetInstance.IsInstanceData),
 	UseLookVector = t.optional(t.instanceOf("BoolValue"))
 })
 
@@ -74,7 +76,12 @@ function TrackObjectSegment.fromInstance(instance)
 
 	local offset = CFrame.new()
 	if offsetValue then
-		offset = offsetValue.Value
+		local _offset, message = CFrameOffsetInstance.CheckAndGet(offsetValue)
+		if _offset == false then
+			error(message)
+		end
+
+		offset = _offset
 	end
 
 	local useLookVector = false

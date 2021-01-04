@@ -8,6 +8,8 @@ local NewSmooth = require(segmentUtil.NewSmooth)
 
 local util = script.Parent.Parent.Util
 local t = require(util.t)
+local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+
 
 local DEFAULT_RAIL_NAME = "Rail"
 
@@ -73,8 +75,10 @@ end
 
 CrossbeamSegment.IsInstanceData = t.children({
 	BasePart = t.instanceIsA("BasePart"),
-	StartOffset = t.optional(t.instanceIsA("Vector3Value")),
-	EndOffset = t.optional(t.instanceIsA("Vector3Value")),
+
+	StartOffset = t.optional(Vector3OffsetInstance.IsInstanceData),
+	EndOffset = t.optional(Vector3OffsetInstance.IsInstanceData),
+
 	Size = t.optional(t.instanceIsA("Vector3Value")),
 	Rotation = t.instanceIsA("Vector3Value"),
 	Horizontal = t.optional(t.instanceOf("BoolValue")),
@@ -94,12 +98,12 @@ function CrossbeamSegment.fromInstance(instance)
 
 	local startOffset = Vector3.new()
 	if startOffsetValue then
-		startOffset = startOffsetValue.Value
+		startOffset = Vector3OffsetInstance.Get(startOffsetValue)
 	end
 
 	local endOffset = Vector3.new()
 	if endOffsetValue then
-		endOffset = endOffsetValue.Value
+		endOffset = Vector3OffsetInstance.Get(endOffsetValue)
 	end
 
 	local size = basePart.Size

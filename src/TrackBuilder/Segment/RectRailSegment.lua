@@ -8,6 +8,8 @@ local DEFAULT_WEDGE = require(segmentUtil.DEFAULT_WEDGE)
 
 local util = script.Parent.Parent.Util
 local t = require(util.t)
+local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+
 
 local DEFAULT_NAME = "RectRail"
 
@@ -83,11 +85,13 @@ end
 RectRailSegment.IsInstanceData = t.children({
 	Wedge = t.optional(t.instanceOf("WedgePart")),
 
-	StartOffset1 = t.instanceOf("Vector3Value"),
-	StartOffset2 = t.instanceOf("Vector3Value"),
-	EndOffset1 = t.instanceOf("Vector3Value"),
-	EndOffset2 = t.instanceOf("Vector3Value"),
+	StartOffset1 = Vector3OffsetInstance.IsInstanceData,
+	StartOffset2 = Vector3OffsetInstance.IsInstanceData,
+	EndOffset1 = Vector3OffsetInstance.IsInstanceData,
+	EndOffset2 = Vector3OffsetInstance.IsInstanceData,
 })
+
+local GetVector3OffsetFromInstance = Vector3OffsetInstance.Get
 
 function RectRailSegment.fromInstance(instance)
 	assert(RectRailSegment.IsInstanceData(instance))
@@ -104,10 +108,10 @@ function RectRailSegment.fromInstance(instance)
 
 		Wedge = wedge,
 
-		StartOffset1 = startOffset1Value.Value,
-		StartOffset2 = startOffset2Value.Value,
-		EndOffset1 = endOffset1Value.Value,
-		EndOffset2 = endOffset2Value.Value,
+		StartOffset1 = GetVector3OffsetFromInstance(startOffset1Value),
+		StartOffset2 = GetVector3OffsetFromInstance(startOffset2Value),
+		EndOffset1 = GetVector3OffsetFromInstance(endOffset1Value),
+		EndOffset2 = GetVector3OffsetFromInstance(endOffset2Value),
 	})
 end
 

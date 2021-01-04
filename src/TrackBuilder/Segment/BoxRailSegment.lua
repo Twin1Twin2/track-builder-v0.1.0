@@ -9,6 +9,8 @@ local DEFAULT_WEDGE = require(segmentUtil.DEFAULT_WEDGE)
 
 local util = script.Parent.Parent.Util
 local t = require(util.t)
+local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+
 
 local DEFAULT_NAME = "BoxRail"
 
@@ -97,16 +99,18 @@ end
 BoxRailSegment.IsInstanceData = t.children({
 	Wedge = t.optional(t.instanceOf("WedgePart")),
 
-	TopLeft = t.instanceOf("Vector3Value"),
-	TopRight = t.instanceOf("Vector3Value"),
-	BottomLeft = t.instanceOf("Vector3Value"),
-	BottomRight = t.instanceOf("Vector3Value"),
+	TopLeft = Vector3OffsetInstance.IsInstanceData,
+	TopRight = Vector3OffsetInstance.IsInstanceData,
+	BottomLeft = Vector3OffsetInstance.IsInstanceData,
+	BottomRight = Vector3OffsetInstance.IsInstanceData,
 
 	DrawTop = t.optional(t.instanceOf("BoolValue")),
 	DrawBottom = t.optional(t.instanceOf("BoolValue")),
 	DrawLeft = t.optional(t.instanceOf("BoolValue")),
 	DrawRight = t.optional(t.instanceOf("BoolValue")),
 })
+
+local GetVector3OffsetInstance = Vector3OffsetInstance.Get
 
 function BoxRailSegment.fromInstance(instance)
 	assert(BoxRailSegment.IsInstanceData(instance))
@@ -137,10 +141,10 @@ function BoxRailSegment.fromInstance(instance)
 
 		Wedge = wedge,
 
-		TopLeft = topLeftValue.Value,
-		TopRight = topRightValue.Value,
-		BottomLeft = bottomLeftValue.Value,
-		BottomRight = bottomRightValue.Value,
+		TopLeft = GetVector3OffsetInstance(topLeftValue),
+		TopRight = GetVector3OffsetInstance(topRightValue),
+		BottomLeft = GetVector3OffsetInstance(bottomLeftValue),
+		BottomRight = GetVector3OffsetInstance(bottomRightValue),
 
 		DrawTop = drawTop,
 		DrawBottom = drawBottom,

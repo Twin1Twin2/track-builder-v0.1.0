@@ -10,6 +10,8 @@ local IsCFrameStraightAhead = require(segmentUtil.IsCFrameStraightAhead)
 local util = script.Parent.Parent.Util
 local t = require(util.t)
 local InstanceOfClass = require(util.InstanceOfClass)
+local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+
 
 local DEFAULT_NAME = "Rail"
 
@@ -79,7 +81,7 @@ end
 
 RailSegment.IsInstanceData = t.children({
 	BasePart = t.instanceIsA("BasePart"),
-	Offset = t.optional(t.instanceIsA("Vector3Value")),
+	Offset = t.optional(Vector3OffsetInstance.IsInstanceData),
 	Size = t.optional(t.instanceIsA("Vector3Value")),
 	Rotation = t.instanceIsA("Vector3Value"),
 	Horizontal = t.optional(t.instanceOf("BoolValue")),
@@ -98,7 +100,7 @@ function RailSegment.fromInstance(instance)
 
 	local offset = Vector3.new()
 	if offsetValue then
-		offset = offsetValue.Value
+		offset = Vector3OffsetInstance.Get(offsetValue)
 	end
 
 	local size = basePart.Size

@@ -3,6 +3,8 @@
 
 local t = require(script.Parent.t)
 local ReduceObjectValue = require(script.Parent.ReduceObjectValue)
+local IsModelWithPrimaryPart = require(script.Parent.IsModelWithPrimaryPart)
+
 
 local CFrameInstance = {}
 
@@ -10,7 +12,8 @@ local isValidCFrameInstance = t.union(
 	t.instanceIsA("CFrameValue"),
 	t.instanceIsA("Vector3Value"),
 	t.instanceIsA("BasePart"),
-	t.instanceIsA("Attachment")
+	t.instanceIsA("Attachment"),
+	IsModelWithPrimaryPart
 )
 
 CFrameInstance.Check = function(value)
@@ -41,7 +44,9 @@ CFrameInstance.Get = function(instance)
     elseif instance:IsA("BasePart") then
         return instance.CFrame
 	elseif instance:IsA("Attachment") then
-        return instance.WorldCFrame
+		return instance.WorldCFrame
+	elseif instance:IsA("Model") then
+		return instance:GetPrimaryPartCFrame()
     end
 
     return nil, "Unable to get CFrame from Object!"
