@@ -9,6 +9,7 @@ local DEFAULT_WEDGE = require(segmentUtil.DEFAULT_WEDGE)
 local util = script.Parent.Parent.Util
 local t = require(util.t)
 local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+local ObjectValueUtil = require(util.ObjectValueUtil)
 
 
 local DEFAULT_NAME = "RectRail"
@@ -83,7 +84,9 @@ end
 
 
 RectRailSegment.IsInstanceData = t.children({
-	Wedge = t.optional(t.instanceOf("WedgePart")),
+	Wedge = t.optional(
+		ObjectValueUtil.Type(t.instanceOf("WedgePart"))
+	),
 
 	StartOffset1 = Vector3OffsetInstance.IsInstanceData,
 	StartOffset2 = Vector3OffsetInstance.IsInstanceData,
@@ -97,6 +100,10 @@ function RectRailSegment.fromInstance(instance)
 	assert(RectRailSegment.IsInstanceData(instance))
 
 	local wedge = instance:FindFirstChild("Wedge")
+	if wedge then
+		wedge = ObjectValueUtil.Reduce(wedge)
+		wedge = wedge:Clone()
+	end
 
 	local startOffset1Value = instance:FindFirstChild("StartOffset1")
 	local startOffset2Value = instance:FindFirstChild("StartOffset2")

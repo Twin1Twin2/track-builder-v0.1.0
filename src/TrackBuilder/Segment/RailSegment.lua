@@ -11,6 +11,7 @@ local util = script.Parent.Parent.Util
 local t = require(util.t)
 local InstanceOfClass = require(util.InstanceOfClass)
 local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+local ObjectValueUtil = require(util.ObjectValueUtil)
 
 
 local DEFAULT_NAME = "Rail"
@@ -80,7 +81,7 @@ function RailSegment.fromData(data)
 end
 
 RailSegment.IsInstanceData = t.children({
-	BasePart = t.instanceIsA("BasePart"),
+	BasePart = ObjectValueUtil.Type(t.instanceIsA("BasePart")),
 	Offset = t.optional(Vector3OffsetInstance.IsInstanceData),
 	Size = t.optional(t.instanceIsA("Vector3Value")),
 	Rotation = t.instanceIsA("Vector3Value"),
@@ -97,6 +98,9 @@ function RailSegment.fromInstance(instance)
 	local rotationValue = instance:FindFirstChild("Rotation")
 	local horizontalValue = instance:FindFirstChild("Horizontal")
 	local meshDataValue = instance:FindFirstChild("MeshData")
+
+	basePart = ObjectValueUtil.Reduce(basePart)
+	basePart = basePart:Clone()
 
 	local offset = Vector3.new()
 	if offsetValue then

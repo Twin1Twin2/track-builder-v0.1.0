@@ -2,7 +2,7 @@
 --
 
 local t = require(script.Parent.t)
-local ReduceObjectValue = require(script.Parent.ReduceObjectValue)
+local ObjectValueUtil = require(script.Parent.ObjectValueUtil)
 local IsModelWithPrimaryPart = require(script.Parent.IsModelWithPrimaryPart)
 
 
@@ -22,7 +22,7 @@ CFrameInstance.Check = function(value)
 		return false, instanceErrMsg or ""
 	end
 
-	local _value, reduceObjectMessage = ReduceObjectValue(value)
+	local _value, reduceObjectMessage = ObjectValueUtil.Reduce(value)
 	if _value == false then
 		return false, reduceObjectMessage
 	end

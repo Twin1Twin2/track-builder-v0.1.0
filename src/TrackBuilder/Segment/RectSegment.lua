@@ -9,6 +9,7 @@ local DEFAULT_WEDGE = require(segmentUtil.DEFAULT_WEDGE)
 local util = script.Parent.Parent.Util
 local t = require(util.t)
 local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+local ObjectValueUtil = require(util.ObjectValueUtil)
 
 
 local DEFAULT_NAME = "Rect"
@@ -70,7 +71,9 @@ end
 
 
 RectSegment.IsInstanceData = t.children({
-	Wedge = t.optional(t.instanceOf("WedgePart")),
+	Wedge = t.optional(
+		ObjectValueUtil.Type(t.instanceOf("WedgePart"))
+	),
 
 	P0 = Vector3OffsetInstance.IsInstanceData,
 	P1 = Vector3OffsetInstance.IsInstanceData,
@@ -84,6 +87,10 @@ function RectSegment.fromInstance(instance)
 	assert(RectSegment.IsInstanceData(instance))
 
 	local wedge = instance:FindFirstChild("Wedge")
+	if wedge then
+		wedge = ObjectValueUtil.Reduce(wedge)
+		wedge = wedge:Clone()
+	end
 
 	local p0Value = instance:FindFirstChild("P0")
 	local p1Value = instance:FindFirstChild("P1")

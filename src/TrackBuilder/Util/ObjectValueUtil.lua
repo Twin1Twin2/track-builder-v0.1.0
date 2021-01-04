@@ -1,8 +1,9 @@
--- reduce value if object value to it's value. returns false if value is not set
+--- ObjectValueUtil
+--
 
 local t = require(script.Parent.t)
 
-return function(value)
+local function Reduce(value)
 	local instanceSuccess, instanceErrMsg = t.Instance(value)
 	if not instanceSuccess then
 		return false, instanceErrMsg or ""
@@ -17,3 +18,23 @@ return function(value)
 
 	return value
 end
+
+local function Type(check)
+	assert(t.callback(check))
+
+	return function(value)
+		local reduceValue, reduceMessage
+			= Reduce(value)
+
+		if reduceValue == false then
+			return false, reduceMessage
+		end
+
+		return check(reduceValue)
+	end
+end
+
+return {
+	Reduce = Reduce,
+	Type = Type,
+}

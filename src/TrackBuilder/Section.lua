@@ -189,8 +189,6 @@ function Section:_Create(cframeTrack, startPosition, endPosition, buildSegment)
 			buildSegment
 		)
 	end
-
-	
 end
 
 -- this should probably be CreateAsync():await()

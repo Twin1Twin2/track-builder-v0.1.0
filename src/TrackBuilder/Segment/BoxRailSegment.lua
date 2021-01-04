@@ -10,6 +10,7 @@ local DEFAULT_WEDGE = require(segmentUtil.DEFAULT_WEDGE)
 local util = script.Parent.Parent.Util
 local t = require(util.t)
 local Vector3OffsetInstance = require(util.Vector3OffsetInstance)
+local ObjectValueUtil = require(util.ObjectValueUtil)
 
 
 local DEFAULT_NAME = "BoxRail"
@@ -97,7 +98,9 @@ end
 
 
 BoxRailSegment.IsInstanceData = t.children({
-	Wedge = t.optional(t.instanceOf("WedgePart")),
+	Wedge = t.optional(
+		ObjectValueUtil.Type(t.instanceOf("WedgePart"))
+	),
 
 	TopLeft = Vector3OffsetInstance.IsInstanceData,
 	TopRight = Vector3OffsetInstance.IsInstanceData,
@@ -116,6 +119,10 @@ function BoxRailSegment.fromInstance(instance)
 	assert(BoxRailSegment.IsInstanceData(instance))
 
 	local wedge = instance:FindFirstChild("Wedge")
+	if wedge then
+		wedge = ObjectValueUtil.Reduce(wedge)
+		wedge = wedge:Clone()
+	end
 
 	local topLeftValue = instance:FindFirstChild("TopLeft")
 	local topRightValue = instance:FindFirstChild("TopRight")
