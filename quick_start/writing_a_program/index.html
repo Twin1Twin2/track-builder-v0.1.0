@@ -1,0 +1,1107 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Track Builder Plugin">
+      
+      
+      
+        <meta name="author" content="TheEpicTwin">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.0.1">
+    
+    
+      
+        <title>Writing A Program - Track Builder</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.38780c08.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f72e892.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#2094f3">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="blue" data-md-color-accent="">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#writing-a-program" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Track Builder" class="md-header-nav__button md-logo" aria-label="Track Builder">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Track Builder
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Writing A Program
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/Twin1Twin2/track-builder/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Twin1Twin2/track-builder
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Track Builder" class="md-nav__button md-logo" aria-label="Track Builder">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Track Builder
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/Twin1Twin2/track-builder/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Twin1Twin2/track-builder
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../changelog/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Quick Start
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Quick Start" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        Quick Start
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="About" class="md-nav__link">
+      About
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../installation/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Writing A Program
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" title="Writing A Program" class="md-nav__link md-nav__link--active">
+      Writing A Program
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-program" class="md-nav__link">
+    Why Program?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-program" class="md-nav__link">
+    What is a Program?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-setup" class="md-nav__link">
+    Track Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Track Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-points" class="md-nav__link">
+    Setup Points
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-api" class="md-nav__link">
+    Program API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#left-rail" class="md-nav__link">
+    Left Rail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#right-rail" class="md-nav__link">
+    Right Rail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tie" class="md-nav__link">
+    Tie
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crossbeam" class="md-nav__link">
+    Crossbeam
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code" class="md-nav__link">
+    Full Code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../porting_from_newsmooth/" title="Porting From NewSmooth" class="md-nav__link">
+      Porting From NewSmooth
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../examples/" title="Examples" class="md-nav__link">
+      Examples
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      API
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="API" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/" title="Main" class="md-nav__link">
+      Main
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/cframe_track/" title="CFrameTrack" class="md-nav__link">
+      CFrameTrack
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/segment/" title="Segment" class="md-nav__link">
+      Segment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/section/" title="Section" class="md-nav__link">
+      Section
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/track_group/" title="TrackGroup" class="md-nav__link">
+      TrackGroup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/physics_rails/" title="PhysicsRails" class="md-nav__link">
+      PhysicsRails
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-program" class="md-nav__link">
+    Why Program?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-program" class="md-nav__link">
+    What is a Program?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#track-setup" class="md-nav__link">
+    Track Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Track Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-points" class="md-nav__link">
+    Setup Points
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#program-api" class="md-nav__link">
+    Program API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#left-rail" class="md-nav__link">
+    Left Rail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#right-rail" class="md-nav__link">
+    Right Rail
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tie" class="md-nav__link">
+    Tie
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crossbeam" class="md-nav__link">
+    Crossbeam
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code" class="md-nav__link">
+    Full Code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/Twin1Twin2/track-builder/edit/master/docs/quick_start/writing_a_program.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="writing-a-program">Writing A Program</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is still a work in progress. The API is still changing and thus this code may not work properly.</p>
+</div>
+<h2 id="why-program">Why Program?</h2>
+<p>For programmers or anyone with a good handle of Roblox Lua, it can be faster than setting it up manually.
+Additionally, the GUI is still a work in progress, so you still have access to all of the API.</p>
+<h2 id="what-is-a-program">What is a Program?</h2>
+<p>ModuleScript that returns a function. This function takes the API as it's argument</p>
+<blockquote>
+<p>The API is passed in as an argument instead of injected into the script environment as Roblox would yell at you for errors.</p>
+</blockquote>
+<h2 id="track-setup">Track Setup</h2>
+<p>As there are a ton a points, we will set this up via Instance.</p>
+<h3 id="setup-points">Setup Points</h3>
+<p>Requires that the points be named in order from start to end.</p>
+<p>TheEpicTwin's Edit of Spacek's Coaster Plugin</p>
+<p>OrderedPoints</p>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">trackPoints</span> <span class="o">=</span> <span class="n">workspace</span><span class="p">:</span><span class="n">FindFirstChild</span><span class="p">(</span><span class="s2">&quot;Track&quot;</span><span class="p">)</span>
+
+<span class="kd">local</span> <span class="n">cframeTrack</span> <span class="o">=</span> <span class="n">PointToPoint2Builder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;MyTrack&quot;</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithPoints</span><span class="p">(</span><span class="n">trackPoints</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithIsCircuited</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithHashInterval</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="program-api">Program API</h2>
+<ul>
+<li>CFrameTrack</li>
+<li>Segment</li>
+<li>Section</li>
+<li>TrackGroup</li>
+<li>PhysicsRails</li>
+</ul>
+<p>CFrameTrack a 3D line that defines the position of the track.</p>
+<p>Segment builds a Part or Model from on a start and an end CFrame.</p>
+<p>Section builds segments from a start and end position for a given track.</p>
+<p>TrackGroup builds multiple sections for a track from a start and end position.</p>
+<p>Segments:</p>
+<ul>
+<li>Rail</li>
+<li>TrackObject</li>
+<li>MidTrackObject</li>
+<li>Crossbeam</li>
+<li>Rect</li>
+<li>RectRail</li>
+<li>BoxRail</li>
+</ul>
+<p>For now, we will only be using 3. Check the examples if you would like to see how the others are used.</p>
+<h2 id="left-rail">Left Rail</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">RailSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">RailBuilder</span>
+
+<span class="kd">local</span> <span class="n">leftRailSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;LeftRail&quot;</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">RailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithBasePart</span><span class="p">(</span><span class="n">RAIL_PART</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="p">:</span><span class="n">WithHorizontal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithMeshData</span><span class="p">(</span><span class="n">MeshDataBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithMesh</span><span class="p">(</span><span class="s2">&quot;CylinderMesh&quot;</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithScale</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="right-rail">Right Rail</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">rightRailSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;RightRail&quot;</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">RailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithBasePart</span><span class="p">(</span><span class="n">RAIL_PART</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="p">:</span><span class="n">WithHorizontal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithMeshData</span><span class="p">(</span><span class="n">MeshDataBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithMesh</span><span class="p">(</span><span class="s2">&quot;CylinderMesh&quot;</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithScale</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="tie">Tie</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">tieSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Tie&quot;</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">TrackObjectSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithTrackObject</span><span class="p">(</span><span class="n">TIE_PART</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">CFrame</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="crossbeam">Crossbeam</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">crossbeamSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Crossbeam&quot;</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">CrossbeamSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithBasePart</span><span class="p">(</span><span class="n">CROSSBEAM_PART</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithStartOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="p">:</span><span class="n">WithEndOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+</code></pre></div>
+
+<h2 id="build">Build</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">trackGroup</span> <span class="o">=</span> <span class="n">TrackGroupBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+    <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;MyTrack&quot;</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">leftRailSection</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">rightRailSection</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">tieSection</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">crossbeamSection</span><span class="p">)</span>
+    <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+</code></pre></div>
+
+<div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">trackModel</span> <span class="o">=</span> <span class="n">trackGroup</span><span class="p">:</span><span class="n">Create</span><span class="p">(</span>
+    <span class="n">cframeTrack</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">cframeTrack</span><span class="p">.</span><span class="n">Length</span>
+<span class="p">)</span>
+
+<span class="n">trackModel</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">workspace</span>
+</code></pre></div>
+
+<h2 id="full-code">Full Code</h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kr">return</span> <span class="kr">function</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">TrackGroup</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">TrackGroup</span>
+    <span class="kd">local</span> <span class="n">Section</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">Section</span>
+
+    <span class="kd">local</span> <span class="n">CFrameTrack</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">CFrameTrack</span>
+    <span class="kd">local</span> <span class="n">PointToPoint2Builder</span> <span class="o">=</span> <span class="n">CFrameTrack</span><span class="p">.</span><span class="n">PointToPoint2Builder</span>
+
+    <span class="kd">local</span> <span class="n">Segment</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">Segment</span>
+    <span class="kd">local</span> <span class="n">RailSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">RailBuilder</span>
+    <span class="kd">local</span> <span class="n">TrackObjectSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">TrackObjectBuilder</span>
+    <span class="kd">local</span> <span class="n">CrossbeamBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">CrossbeamBuilder</span>
+
+    <span class="kd">local</span> <span class="n">trackPoints</span> <span class="o">=</span> <span class="n">workspace</span><span class="p">:</span><span class="n">FindFirstChild</span><span class="p">(</span><span class="s2">&quot;Track&quot;</span><span class="p">)</span>
+
+    <span class="kd">local</span> <span class="n">cframeTrack</span> <span class="o">=</span> <span class="n">PointToPoint2Builder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;MyTrack&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithPoints</span><span class="p">(</span><span class="n">trackPoints</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithIsCircuited</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithHashInterval</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+
+    <span class="kd">local</span> <span class="n">leftRailSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;LeftRail&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">RailSegment</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithBasePart</span><span class="p">(</span><span class="n">RAIL_PART</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithHorizontal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithMeshData</span><span class="p">(</span><span class="n">MeshDataBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+                <span class="p">:</span><span class="n">WithMesh</span><span class="p">(</span><span class="s2">&quot;CylinderMesh&quot;</span><span class="p">)</span>
+                <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="p">:</span><span class="n">WithScale</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+                <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+
+    <span class="kd">local</span> <span class="n">rightRailSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;RightRail&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">RailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithBasePart</span><span class="p">(</span><span class="n">RAIL_PART</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithHorizontal</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithMeshData</span><span class="p">(</span><span class="n">MeshDataBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+                <span class="p">:</span><span class="n">WithMesh</span><span class="p">(</span><span class="s2">&quot;CylinderMesh&quot;</span><span class="p">)</span>
+                <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="p">:</span><span class="n">WithScale</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+                <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+
+    <span class="kd">local</span> <span class="n">tieSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Tie&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">TrackObjectSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithTrackObject</span><span class="p">(</span><span class="n">TIE_PART</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">CFrame</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+
+    <span class="kd">local</span> <span class="n">crossbeamSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Crossbeam&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">CrossbeamSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithBasePart</span><span class="p">(</span><span class="n">CROSSBEAM_PART</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithStartOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithEndOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+
+    <span class="kd">local</span> <span class="n">trackGroup</span> <span class="o">=</span> <span class="n">TrackGroupBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;MyTrack&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">leftRailSection</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">rightRailSection</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">tieSection</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">crossbeamSection</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+
+    <span class="kd">local</span> <span class="n">model</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+
+    <span class="kd">local</span> <span class="n">trackModel</span> <span class="o">=</span> <span class="n">trackGroup</span><span class="p">:</span><span class="n">Create</span><span class="p">(</span>
+        <span class="n">cframeTrack</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span>
+        <span class="n">cframeTrack</span><span class="p">.</span><span class="n">Length</span>
+    <span class="p">)</span>
+    <span class="n">trackModel</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="kd">local</span> <span class="n">chainLiftModel</span> <span class="o">=</span> <span class="n">chainLiftSection</span><span class="p">:</span><span class="n">Create</span><span class="p">(</span>
+        <span class="n">cframeTrack</span><span class="p">,</span>
+        <span class="mi">100</span><span class="p">,</span>
+        <span class="mi">200</span>
+    <span class="p">)</span>
+    <span class="n">chainLiftModel</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="kd">local</span> <span class="n">brakesModel</span> <span class="o">=</span> <span class="n">brakesSection</span><span class="p">:</span><span class="n">Create</span><span class="p">(</span>
+        <span class="n">cframeTrack</span><span class="p">,</span>
+        <span class="mi">400</span><span class="p">,</span>
+        <span class="mi">500</span>
+    <span class="p">)</span>
+    <span class="n">brakesModel</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="n">model</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">workspace</span>
+<span class="kr">end</span>
+</code></pre></div>
+</td></tr></table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../installation/" title="Installation" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Installation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../porting_from_newsmooth/" title="Porting From NewSmooth" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Porting From NewSmooth
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.77e55a48.min.js"></script>
+      <script src="../../assets/javascripts/bundle.aa3f9871.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
