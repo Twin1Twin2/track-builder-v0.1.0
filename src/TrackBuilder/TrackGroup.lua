@@ -8,6 +8,7 @@ local t = require(util.t)
 local Promise = require(util.Promise)
 
 local DEFAULT_NAME = "TrackGroup"
+local ASSETS_NAME = "ASSETS"
 
 local TrackGroup = {
 	ClassName = "TrackGroup";
@@ -74,19 +75,21 @@ TrackGroup.IsInstanceData = function(instance)
 
 	local children = instance:GetChildren()
 	for _, child in pairs(children) do
-		local sectionSuccess, sectionMessage
+		if child.Name ~= ASSETS_NAME then
+			local sectionSuccess, sectionMessage
 
-		if child:IsA("Configuration") then
-			sectionSuccess, sectionMessage
-				= TrackGroup.IsInstanceData(child)
-		else
-			sectionSuccess, sectionMessage
-				= Section.IsInstanceData(child)
-		end
+			if child:IsA("Configuration") then
+				sectionSuccess, sectionMessage
+					= TrackGroup.IsInstanceData(child)
+			else
+				sectionSuccess, sectionMessage
+					= Section.IsInstanceData(child)
+			end
 
-		if sectionSuccess == false then
-			childrenSuccess = false
-			table.insert(childrenMessages, sectionMessage)
+			if sectionSuccess == false then
+				childrenSuccess = false
+				table.insert(childrenMessages, sectionMessage)
+			end
 		end
 	end
 
@@ -108,15 +111,17 @@ function TrackGroup.fromInstance(instance)
 	local sections = {}
 
 	for _, child in pairs(instance:GetChildren()) do
-		local section
+		if child.Name ~= ASSETS_NAME then
+			local section
 
-		if child:IsA("Configuration") then
-			section = TrackGroup.fromInstance(child)
-		else
-			section = Section.fromInstance(child)
+			if child:IsA("Configuration") then
+				section = TrackGroup.fromInstance(child)
+			else
+				section = Section.fromInstance(child)
+			end
+
+			table.insert(sections, section)
 		end
-
-		table.insert(sections, section)
 	end
 
 	return TrackGroup.fromData({
