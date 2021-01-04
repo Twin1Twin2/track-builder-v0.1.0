@@ -45,6 +45,7 @@ Builder.Check = function(checkTable)
 
 	return function(builder)
 		local notSetList = {}
+
 		for _, name in ipairs(checkTable) do
 			if builder[name] == nil then
 				table.insert(notSetList, name)
@@ -57,7 +58,7 @@ Builder.Check = function(checkTable)
 				errorMessage = errorMessage .. "\n    - " .. name
 			end
 
-			return false,errorMessage
+			return false, errorMessage
 		end
 
 		return true
