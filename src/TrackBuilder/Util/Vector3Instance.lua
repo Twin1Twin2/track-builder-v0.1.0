@@ -2,7 +2,7 @@
 local t = require(script.Parent.t)
 local ReduceObjectValue = require(script.Parent.ReduceObjectValue)
 
-local Vector3FromInstance = {}
+local Vector3Instance = {}
 
 local isValidVector3Instance = t.union(
 	t.instanceIsA("CFrameValue"),
@@ -11,7 +11,7 @@ local isValidVector3Instance = t.union(
 	t.instanceIsA("Attachment")
 )
 
-Vector3FromInstance.Check = function(value)
+Vector3Instance.Check = function(value)
 	local instanceSuccess, instanceErrMsg = t.Instance(value)
 	if not instanceSuccess then
 		return false, instanceErrMsg or ""
@@ -27,7 +27,7 @@ Vector3FromInstance.Check = function(value)
 end
 
 -- assume already checked. for performance
-Vector3FromInstance.Get = function(instance)
+Vector3Instance.Get = function(instance)
 	if instance:IsA("ObjectValue") then
 		instance = instance.Value
 	end
@@ -42,20 +42,20 @@ Vector3FromInstance.Get = function(instance)
 		return instance.WorldPosition
 	end
 
-	-- idk how it will get here, but hey
-	return false, "Invalid Instance! ClassName = " .. instance.ClassName .. "; Path = " .. instance:GetFullName()
+	return false,
+		"invalid instance! ClassName = " .. instance.ClassName .. "; Path = " .. instance:GetFullName()
 end
 
 
-Vector3FromInstance.CheckAndGet = function(value)
+Vector3Instance.CheckAndGet = function(value)
 	local success, message
-		= Vector3FromInstance.Check(value)
+		= Vector3Instance.Check(value)
 	if success == false then
 		return false, message
 	end
 
-	return Vector3FromInstance.Get(value)
+	return Vector3Instance.Get(value)
 end
 
 
-return Vector3FromInstance
+return Vector3Instance

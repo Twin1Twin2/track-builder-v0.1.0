@@ -2,6 +2,10 @@
 -- HashInterval is the lengths
 --
 
+local util = script.Parent.Parent.Util
+local t = require(util.t)
+
+local DEFAULT_HASH_INTERVAL = 5
 
 local TrackDataHasher = {
     ClassName = "TrackDataHasher";
@@ -12,37 +16,34 @@ TrackDataHasher.__index = TrackDataHasher
 
 --- Creates a new TrackDataHasher
 -- @treturn TrackDataHasher
-function TrackDataHasher.new(trackData, getLengthFunction, hashInterval)
+function TrackDataHasher.new()
+
     local self = setmetatable({}, TrackDataHasher)
 
     self.TrackData = {}
 
-    self.HashInterval = 10
+    self.HashInterval = DEFAULT_HASH_INTERVAL
     self.HashData = {}
 
     self.Length = 0
-
-    self:SetData(trackData, getLengthFunction, hashInterval)
 
 
     return self
 end
 
 
-function TrackDataHasher:Destroy()
-    self.TrackData = nil
-    self.HashData = nil
+local CreateArgs = t.tuple(
+    t.array(t.any),
+    t.callback,
+    t.numberPositive
+)
 
-    setmetatable(self, nil)
-end
+function TrackDataHasher.create(trackData, getLengthFunction, hashInterval)
+    assert(CreateArgs(trackData, getLengthFunction, hashInterval))
 
-
-function TrackDataHasher:SetData(trackData, getLengthFunction, hashInterval)
-    assert(type(trackData) == "table")
-    assert(type(getLengthFunction) == "function")
-
-    hashInterval = hashInterval or self.HashInterval
-    assert(type(hashInterval) == "number")
+    if hashInterval == nil then
+        hashInterval = DEFAULT_HASH_INTERVAL
+    end
 
     local hashData = {}
     local currentLength = 0
@@ -80,13 +81,46 @@ function TrackDataHasher:SetData(trackData, getLengthFunction, hashInterval)
         previousDataIndex = currentDataIndex
     end
 
+    local self = TrackDataHasher.new()
+
     self.TrackData = trackData
     self.Length = currentLength
     self.HashData = hashData
     self.HashInterval = hashInterval
     self.GetLengthFunction = getLengthFunction
+
+    return self
 end
 
+
+local IsData = t.interface({
+    TrackData = t.array(t.any),
+    GetLengthFunction = t.callback,
+
+    HashInterval = t.optional(t.numberPositive)
+})
+
+function TrackDataHasher.fromData(data)
+    assert(IsData(data))
+
+    local trackData = data.TrackData
+    local getLengthFunction = data.GetLengthFunction
+    local hashInterval = data.HashInterval
+
+    return TrackDataHasher.create(
+        trackData,
+        getLengthFunction,
+        hashInterval
+    )
+end
+
+
+function TrackDataHasher:Destroy()
+    self.TrackData = nil
+    self.HashData = nil
+
+    setmetatable(self, nil)
+end
 
 ---
 -- @tparam number position
@@ -94,6 +128,8 @@ end
 -- @treturn T Data 2
 -- @treturn number
 function TrackDataHasher:GetData(position)
+    assert(t.number(position))
+
     local trackLength = self.Length
 
     local trackData = self.TrackData

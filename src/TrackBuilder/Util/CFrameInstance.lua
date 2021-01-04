@@ -1,8 +1,10 @@
+--- CFrameInstance
+--
 
 local t = require(script.Parent.t)
 local ReduceObjectValue = require(script.Parent.ReduceObjectValue)
 
-local CFrameFromInstance = {}
+local CFrameInstance = {}
 
 local isValidCFrameInstance = t.union(
 	t.instanceIsA("CFrameValue"),
@@ -11,7 +13,7 @@ local isValidCFrameInstance = t.union(
 	t.instanceIsA("Attachment")
 )
 
-CFrameFromInstance.Check = function(value)
+CFrameInstance.Check = function(value)
 	local instanceSuccess, instanceErrMsg = t.Instance(value)
 	if not instanceSuccess then
 		return false, instanceErrMsg or ""
@@ -27,7 +29,7 @@ CFrameFromInstance.Check = function(value)
 end
 
 
-CFrameFromInstance.Get = function(instance)
+CFrameInstance.Get = function(instance)
 	if instance:IsA("ObjectValue") then
 		instance = instance.Value
 	end
@@ -46,15 +48,15 @@ CFrameFromInstance.Get = function(instance)
 end
 
 
-CFrameFromInstance.CheckAndGet = function(value)
+CFrameInstance.CheckAndGet = function(value)
 	local success, message
-		= CFrameFromInstance.Check(value)
+		= CFrameInstance.Check(value)
 	if success == false then
 		return false, message
 	end
 
-	return CFrameFromInstance.Get(value)
+	return CFrameInstance.Get(value)
 end
 
 
-return CFrameFromInstance
+return CFrameInstance

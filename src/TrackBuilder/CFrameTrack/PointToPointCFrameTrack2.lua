@@ -4,9 +4,15 @@
 local root = script.Parent
 local CFrameTrack = require(root.CFrameTrack)
 local TrackDataHasher = require(root.TrackDataHasher)
+local PointsUtil = require(root.PointsUtil)
 
 local util = script.Parent.Parent.Util
-local CFrameFromInstance = require(util.CFrameFromInstance)
+local t = require(util.t)
+
+local function GetLengthFunction(p1, p2)
+    return (p1.Position - p2.Position).Magnitude
+end
+
 
 local PointToPointCFrameTrack2 = {
     ClassName = "PointToPointCFrameTrack2";
@@ -30,117 +36,116 @@ function PointToPointCFrameTrack2.new()
 end
 
 
+local IsData = t.interface({
+    Name = t.optional(t.string),
+
+    Points = PointsUtil.IsType,
+
+    HashInterval = t.optional(t.numberPositive),
+    IsCircuited = t.boolean,
+})
+
 function PointToPointCFrameTrack2.fromData(data)
-    assert(type(data) == "table")
+    assert(IsData(data))
 
     local self = PointToPointCFrameTrack2.new()
-    self:SetData(data)
+
+    local points = data.Points
+    local isCircuited = data.IsCircuited
+    local hashInterval = data.HashInterval
+
+    local hasher = TrackDataHasher.create(
+        points,
+        GetLengthFunction,
+        hashInterval
+    )
+
+    local length = hasher.Length
+    local circuitRemainder = 0
+    local lengthWithoutCircuitRemainder = length
+
+    if isCircuited == true then
+        circuitRemainder = GetLengthFunction(
+            points[#points],
+            points[1]
+        )
+        length = length + circuitRemainder
+    end
+
+    self.Hasher = hasher
+    self.Length = length
+    self.CircuitRemainder = circuitRemainder
+    self.LengthWithoutCircuitRemainder = lengthWithoutCircuitRemainder
+    self.IsCircuited = isCircuited
+
 
     return self
 end
 
 
+local IsInstance = t.union(
+    t.instanceIsA("ModuleScript"),
+    t.children({
+        Points = PointsUtil.IsInstanceData,
+
+        HashInterval = t.optional(t.instanceIsA("NumberValue")),
+        IsCircuited = t.instanceOf("BoolValue")
+    })
+)
+
 --- Creates a new PointToPointCFrameTrack2, but using instance data
 --
-function PointToPointCFrameTrack2.fromInstance(instanceData)
-    assert(typeof(instanceData) == "Instance",
-        "Arg [1] is not an Instance!")
+function PointToPointCFrameTrack2.fromInstance(instance)
+    assert(IsInstance(instance))
 
     -- module script
     local data
 
-    if instanceData:IsA("ModuleScript") == true then
-        data = PointToPointCFrameTrack2.GetDataFromModuleScript(instanceData)
+    if instance:IsA("ModuleScript") == true then
+        data = PointToPointCFrameTrack2.GetDataFromModuleScript(instance)
     else    -- model
-        data = PointToPointCFrameTrack2.GetDataFromModel(instanceData)
+        data = PointToPointCFrameTrack2.GetDataFromInstance(instance)
     end
 
     return PointToPointCFrameTrack2.fromData(data)
 end
 
 
-function PointToPointCFrameTrack2.GetDataFromModel(instance)
-    assert(typeof(instance) == "Instance",
-        "Arg [1] is not an Instance")
+function PointToPointCFrameTrack2.GetDataFromInstance(instance)
+    assert(t.Instance(instance))
 
-    local pointsData = instance:FindFirstChild("Points")
-    local isCircuitedValue = instance:FindFirstChild("IsCircuited")
+    local pointsModel = instance:FindFirstChild("Points")
     local hashIntervalValue = instance:FindFirstChild("HashInterval")
+    local isCircuitedValue = instance:FindFirstChild("IsCircuited")
 
-    assert(pointsData,
-        "Missing Points! An Instance!")
-    assert(isCircuitedValue and isCircuitedValue:IsA("BoolValue"),
-        "Missing IsCircuited! A BoolValue")
+    local points = PointsUtil.fromInstance(pointsModel)
 
-    local points = {}
-    local missingPoints = {}
-    local isMissingPoints = false
-
-    for index = 1, #pointsData:GetChildren(), 1 do
-        local point = pointsData:FindFirstChild(tostring(index))
-        local cframe, message = CFrameFromInstance.CheckAndGet(point)
-        if cframe ~= nil then
-            table.insert(points, index, cframe)
-        else
-            missingPoints[index] = message
-            isMissingPoints = true
-        end
-    end
-
-    if isMissingPoints then
-        local errorMessage = ""
-
-        for i, message in ipairs(missingPoints) do
-            errorMessage = errorMessage .. "\n    " .. tostring(i) .. " " .. message
-        end
-
-        error(("Could not convert from InstanceData. Missing Points:%s"):format(
-            errorMessage
-        ))
-    end
-
-    local hashInterval = 10
-
-    if hashIntervalValue ~= nil then
-        assert(hashIntervalValue:IsA("ValueBase"),
-            "Missing HashInterval! A NumberValue")
+    local hashInterval = nil
+    if hashIntervalValue then
         hashInterval = hashIntervalValue.Value
-        assert(type(hashInterval) == "number" and hashInterval > 0,
-            "HashInterval is not a number > 0!")
     end
 
-    local data = {
-        Points = points;
-        IsCircuited = isCircuitedValue.Value;
-        HashInterval = hashInterval;
-    }
+    return {
+        Name = instance.Name,
 
-    return data
+        Points = points,
+        HashInterval = hashInterval,
+        IsCircuited = isCircuitedValue.Value,
+    }
 end
 
 
 function PointToPointCFrameTrack2.GetDataFromModuleScript(moduleScript)
-    assert(typeof(moduleScript) == "Instance" and moduleScript:IsA("ModuleScript"),
-        "Arg [1] is not a ModuleScript!")
+    assert(t.instanceIsA("ModuleScript")(moduleScript))
 
     local data = require(moduleScript)
     assert(type(data) == "table",
-        "ModuleScript did not return a table!")
+        "Module did not return a table!")
 
-    local points = data.Points
-    local isCircuited = data.IsCircuited
-    local hashInterval = data.HashInterval
+    assert(IsData(data))
 
-    assert(type(points) == "table",
-        "Missing Points! A table")
-    assert(type(isCircuited) == "boolean",
-        "Missing IsCircuited! A boolean")
-    assert(type(hashInterval) == "number" and hashInterval > 0,
-        "Missing HashInterval! A number > 0")
-
-    for index, point in pairs(points) do
-        assert(typeof(point) == "CFrame",
-            "Point " .. tostring(index) .. " is not a CFrame!")
+    if data.Name == nil then
+        data.Name = moduleScript.Name
     end
 
     return data

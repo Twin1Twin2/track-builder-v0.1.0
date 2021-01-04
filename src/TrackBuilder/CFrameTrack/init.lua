@@ -1,11 +1,18 @@
 
 local CFrameTrack = {}
 
+local PointsUtil = require(script.PointsUtil)
+CFrameTrack.IsPoints = PointsUtil.IsType
+CFrameTrack.GetPointsFromInstance = PointsUtil.fromInstance
+
 CFrameTrack.CFrameTrack = require(script.CFrameTrack)
 CFrameTrack.IsType = CFrameTrack.CFrameTrack.IsType
 
 CFrameTrack.PointToPoint = require(script.PointToPointCFrameTrack)
+CFrameTrack.PointToPointBuilder = require(script.PointToPointCFrameTrackBuilder)
+
 CFrameTrack.PointToPoint2 = require(script.PointToPointCFrameTrack2)
+CFrameTrack.PointToPoint2Builder = require(script.PointToPointCFrameTrack2Builder)
 
 
 local TRACKS = {
