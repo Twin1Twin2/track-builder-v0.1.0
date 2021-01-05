@@ -17,7 +17,7 @@
     
     
       
-        <title>Segment - Track Builder</title>
+        <title>Module - Track Builder</title>
       
     
     
@@ -92,7 +92,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              Segment
+              Module
             
           </span>
         </div>
@@ -348,6 +348,29 @@
   
 
 
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3" checked>
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Segment
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Segment" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Segment
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -356,12 +379,12 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Segment
+        Module
         <span class="md-nav__icon md-icon"></span>
       </label>
     
-    <a href="./" title="Segment" class="md-nav__link md-nav__link--active">
-      Segment
+    <a href="./" title="Module" class="md-nav__link md-nav__link--active">
+      Module
     </a>
     
       
@@ -378,6 +401,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#module" class="md-nav__link">
     Module
   </a>
@@ -386,11 +416,46 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#type-checking" class="md-nav__link">
+    Type Checking
+  </a>
+  
+    <nav class="md-nav" aria-label="Type Checking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#istype" class="md-nav__link">
     IsType
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#isinstancedata" class="md-nav__link">
+    IsInstanceData
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkinstance" class="md-nav__link">
+    CheckInstance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-pattern" class="md-nav__link">
+    Factory Pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="Factory Pattern">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
@@ -413,10 +478,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#factory-pattern" class="md-nav__link">
-    Factory Pattern
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -465,1221 +528,123 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#meshdata" class="md-nav__link">
-    MeshData
-  </a>
-  
-    <nav class="md-nav" aria-label="MeshData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    Properties
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mesh" class="md-nav__link">
-    Mesh
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frommesh" class="md-nav__link">
-    fromMesh
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#meshdatabuilder" class="md-nav__link">
-    MeshDataBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="MeshDataBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#methods_1" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withmesh" class="md-nav__link">
-    WithMesh
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withmeshtype" class="md-nav__link">
-    WithMeshType
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withscale" class="md-nav__link">
-    WithScale
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#railsegment" class="md-nav__link">
-    RailSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="RailSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_1" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_1" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_1" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_1" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_1" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_1" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#railsegmentbuilder" class="md-nav__link">
-    RailSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="RailSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_2" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_2" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withbasepart" class="md-nav__link">
-    WithBasePart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_1" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withsize" class="md-nav__link">
-    WithSize
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withhorizontal" class="md-nav__link">
-    WithHorizontal
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withmeshdata" class="md-nav__link">
-    WithMeshData
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trackobjectsegment" class="md-nav__link">
-    TrackObjectSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="TrackObjectSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_2" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_3" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_2" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_2" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_2" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_2" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trackobjectsegmentbuilder" class="md-nav__link">
-    TrackObjectSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="TrackObjectSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_4" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_1" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_3" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withobject" class="md-nav__link">
-    WithObject
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_2" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withuselookvector" class="md-nav__link">
-    WithUseLookVector
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#midtrackobjectsegment" class="md-nav__link">
-    MidTrackObjectSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="MidTrackObjectSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_3" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_5" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_3" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_3" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_3" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_3" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#midtrackobjectsegmentbuilder" class="md-nav__link">
-    MidTrackObjectSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="MidTrackObjectSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_6" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_2" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_4" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withobject_1" class="md-nav__link">
-    WithObject
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_3" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withuselookvector_1" class="md-nav__link">
-    WithUseLookVector
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crossbeamsegment" class="md-nav__link">
-    CrossbeamSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="CrossbeamSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_4" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_7" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_4" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_4" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_4" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_4" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crossbeamsegmentbuilder" class="md-nav__link">
-    CrossbeamSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="CrossbeamSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_8" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_3" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_5" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withbasepart_1" class="md-nav__link">
-    WithBasePart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withstartoffset" class="md-nav__link">
-    WithStartOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withendoffset" class="md-nav__link">
-    WithEndOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withsize_1" class="md-nav__link">
-    WithSize
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withhorizontal_1" class="md-nav__link">
-    WithHorizontal
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withmeshdata_1" class="md-nav__link">
-    WithMeshData
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectsegment" class="md-nav__link">
-    RectSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="RectSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_5" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_9" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_5" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_5" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_5" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_5" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectsegmentbuilder" class="md-nav__link">
-    RectSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="RectSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_10" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_4" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_6" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withwedge" class="md-nav__link">
-    WithWedge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp0" class="md-nav__link">
-    WithP0
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp1" class="md-nav__link">
-    WithP1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp2" class="md-nav__link">
-    WithP2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp3" class="md-nav__link">
-    WithP3
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectrailsegment" class="md-nav__link">
-    RectRailSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="RectRailSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_6" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_11" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_6" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_6" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_6" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_6" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectrailsegmentbuilder" class="md-nav__link">
-    RectRailSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="RectRailSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_12" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_5" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_7" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withwedge_1" class="md-nav__link">
-    WithWedge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_4" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#boxrailsegment" class="md-nav__link">
-    BoxRailSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="BoxRailSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_7" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_13" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_7" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_7" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_7" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_7" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#boxrailsegmentbuilder" class="md-nav__link">
-    BoxRailSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="BoxRailSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_14" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_6" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_8" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withwedge_2" class="md-nav__link">
-    WithWedge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withtopleft" class="md-nav__link">
-    WithTopLeft
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withtopright" class="md-nav__link">
-    WithTopRight
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withbottomleft" class="md-nav__link">
-    WithBottomLeft
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withbottomright" class="md-nav__link">
-    WithBottomRight
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawtop" class="md-nav__link">
-    WithDrawTop
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawbottom" class="md-nav__link">
-    WithDrawBottom
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawleft" class="md-nav__link">
-    WithDrawLeft
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawright" class="md-nav__link">
-    WithDrawRight
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="mesh_data/" title="MeshData" class="md-nav__link">
+      MeshData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="rail/" title="Rail" class="md-nav__link">
+      Rail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="track_object/" title="TrackObject" class="md-nav__link">
+      TrackObject
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="mid_track_object/" title="MidTrackObject" class="md-nav__link">
+      MidTrackObject
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="crossbeam/" title="Crossbeam" class="md-nav__link">
+      Crossbeam
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="rect/" title="Rect" class="md-nav__link">
+      Rect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="rect_rail/" title="RectRail" class="md-nav__link">
+      RectRail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="box_rail/" title="BoxRail" class="md-nav__link">
+      BoxRail
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../base_section/" title="BaseSection" class="md-nav__link">
+      BaseSection
+    </a>
   </li>
 
         
@@ -1719,8 +684,44 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cframe_util/" title="CFrame Util" class="md-nav__link">
+      CFrame Util
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vector3_util/" title="Vector3 Util" class="md-nav__link">
+      Vector3 Util
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../credits/" title="Credits" class="md-nav__link">
+      Credits
+    </a>
   </li>
 
     
@@ -1748,6 +749,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#module" class="md-nav__link">
     Module
   </a>
@@ -1756,11 +764,46 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#type-checking" class="md-nav__link">
+    Type Checking
+  </a>
+  
+    <nav class="md-nav" aria-label="Type Checking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#istype" class="md-nav__link">
     IsType
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#isinstancedata" class="md-nav__link">
+    IsInstanceData
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkinstance" class="md-nav__link">
+    CheckInstance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factory-pattern" class="md-nav__link">
+    Factory Pattern
+  </a>
+  
+    <nav class="md-nav" aria-label="Factory Pattern">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
@@ -1783,10 +826,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#factory-pattern" class="md-nav__link">
-    Factory Pattern
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -1835,1217 +876,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#meshdata" class="md-nav__link">
-    MeshData
-  </a>
-  
-    <nav class="md-nav" aria-label="MeshData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    Properties
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mesh" class="md-nav__link">
-    Mesh
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frommesh" class="md-nav__link">
-    fromMesh
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#meshdatabuilder" class="md-nav__link">
-    MeshDataBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="MeshDataBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#methods_1" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withmesh" class="md-nav__link">
-    WithMesh
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withmeshtype" class="md-nav__link">
-    WithMeshType
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withscale" class="md-nav__link">
-    WithScale
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#railsegment" class="md-nav__link">
-    RailSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="RailSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_1" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_1" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_1" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_1" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_1" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_1" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#railsegmentbuilder" class="md-nav__link">
-    RailSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="RailSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_2" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_2" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withbasepart" class="md-nav__link">
-    WithBasePart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_1" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withsize" class="md-nav__link">
-    WithSize
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withhorizontal" class="md-nav__link">
-    WithHorizontal
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withmeshdata" class="md-nav__link">
-    WithMeshData
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trackobjectsegment" class="md-nav__link">
-    TrackObjectSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="TrackObjectSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_2" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_3" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_2" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_2" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_2" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_2" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#trackobjectsegmentbuilder" class="md-nav__link">
-    TrackObjectSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="TrackObjectSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_4" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_1" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_3" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withobject" class="md-nav__link">
-    WithObject
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_2" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withuselookvector" class="md-nav__link">
-    WithUseLookVector
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#midtrackobjectsegment" class="md-nav__link">
-    MidTrackObjectSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="MidTrackObjectSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_3" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_5" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_3" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_3" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_3" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_3" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#midtrackobjectsegmentbuilder" class="md-nav__link">
-    MidTrackObjectSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="MidTrackObjectSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_6" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_2" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_4" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withobject_1" class="md-nav__link">
-    WithObject
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_3" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withuselookvector_1" class="md-nav__link">
-    WithUseLookVector
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crossbeamsegment" class="md-nav__link">
-    CrossbeamSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="CrossbeamSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_4" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_7" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_4" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_4" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_4" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_4" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crossbeamsegmentbuilder" class="md-nav__link">
-    CrossbeamSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="CrossbeamSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_8" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_3" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_5" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withbasepart_1" class="md-nav__link">
-    WithBasePart
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withstartoffset" class="md-nav__link">
-    WithStartOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withendoffset" class="md-nav__link">
-    WithEndOffset
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withsize_1" class="md-nav__link">
-    WithSize
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withhorizontal_1" class="md-nav__link">
-    WithHorizontal
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withmeshdata_1" class="md-nav__link">
-    WithMeshData
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectsegment" class="md-nav__link">
-    RectSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="RectSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_5" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_9" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_5" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_5" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_5" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_5" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectsegmentbuilder" class="md-nav__link">
-    RectSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="RectSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_10" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_4" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_6" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withwedge" class="md-nav__link">
-    WithWedge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp0" class="md-nav__link">
-    WithP0
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp1" class="md-nav__link">
-    WithP1
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp2" class="md-nav__link">
-    WithP2
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withp3" class="md-nav__link">
-    WithP3
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectrailsegment" class="md-nav__link">
-    RectRailSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="RectRailSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_6" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_11" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_6" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_6" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_6" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_6" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rectrailsegmentbuilder" class="md-nav__link">
-    RectRailSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="RectRailSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_12" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_5" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_7" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withwedge_1" class="md-nav__link">
-    WithWedge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withoffset_4" class="md-nav__link">
-    WithOffset
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#boxrailsegment" class="md-nav__link">
-    BoxRailSegment
-  </a>
-  
-    <nav class="md-nav" aria-label="BoxRailSegment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#properties_7" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#constructors_13" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fromdata_7" class="md-nav__link">
-    fromData
-  </a>
-  
-    <nav class="md-nav" aria-label="fromData">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data_7" class="md-nav__link">
-    data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#frominstance_7" class="md-nav__link">
-    fromInstance
-  </a>
-  
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children_7" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#boxrailsegmentbuilder" class="md-nav__link">
-    BoxRailSegmentBuilder
-  </a>
-  
-    <nav class="md-nav" aria-label="BoxRailSegmentBuilder">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constructors_14" class="md-nav__link">
-    Constructors
-  </a>
-  
-    <nav class="md-nav" aria-label="Constructors">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#new_6" class="md-nav__link">
-    new
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#methods_8" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#withwedge_2" class="md-nav__link">
-    WithWedge
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withtopleft" class="md-nav__link">
-    WithTopLeft
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withtopright" class="md-nav__link">
-    WithTopRight
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withbottomleft" class="md-nav__link">
-    WithBottomLeft
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withbottomright" class="md-nav__link">
-    WithBottomRight
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawtop" class="md-nav__link">
-    WithDrawTop
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawbottom" class="md-nav__link">
-    WithDrawBottom
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawleft" class="md-nav__link">
-    WithDrawLeft
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#withdrawright" class="md-nav__link">
-    WithDrawRight
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -3058,19 +888,31 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Twin1Twin2/track-builder/edit/master/docs/api/segment.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Twin1Twin2/track-builder/edit/master/docs/api/segment/index.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
                 <h1 id="segment-module">Segment (Module)</h1>
 <p>Describes how to build a piece of track.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="mesh_data/">MeshData</a></li>
+<li><a href="rail/">Rail</a></li>
+<li><a href="track_object/">TrackObject</a></li>
+<li><a href="mid_track_object/">MidTrackObject</a></li>
+<li><a href="crossbeam/">Crossbeam</a></li>
+<li><a href="rect/">Rect</a></li>
+<li><a href="rect_rail/">RectRail</a></li>
+<li><a href="box_rail/">BoxRail</a></li>
+</ul>
 <h2 id="module">Module</h2>
 <div class="highlight"><pre><span></span><code><span class="n">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="n">Segment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">IsType</span><span class="w"> </span>: <span class="nc">function</span><span class="p">(</span><span class="n">object</span><span class="w"> </span>: <span class="nc">any</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="p">(</span><span class="n">boolean</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="n">string</span><span class="p">),</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">MeshData</span><span class="w"> </span>: <span class="nc">MeshData</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">MeshDataBuilder</span><span class="w"> </span>: <span class="nc">MeshDataBuilder</span><span class="p">,</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">Rail</span><span class="w"> </span>: <span class="nc">RailSegment</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">RailBuilder</span><span class="w"> </span>: <span class="nc">RailSegmentBuilder</span><span class="p">,</span><span class="w"></span>
@@ -3090,8 +932,8 @@
 <span class="w">    </span><span class="n">RectRail</span><span class="w"> </span>: <span class="nc">RectRailSegment</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">RectRailBuilder</span><span class="w"> </span>: <span class="nc">RectRailSegmentBuilder</span><span class="p">,</span><span class="w"></span>
 
-<span class="w">    </span><span class="nb">Box</span><span class="w"> </span>: <span class="nc">BoxSegment</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BoxBuilder</span><span class="w"> </span>: <span class="nc">BoxSegmentBuilder</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">BoxRail</span><span class="w"> </span>: <span class="nc">BoxRailSegment</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">BoxRailBuilder</span><span class="w"> </span>: <span class="nc">BoxRailSegmentBuilder</span><span class="p">,</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">Create</span><span class="w"> </span>: <span class="nc">function</span><span class="p">(</span><span class="n">object</span><span class="w"> </span>: <span class="nc">table</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Instance</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Segment</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="n">CreateFromData</span><span class="w"> </span>: <span class="nc">function</span><span class="p">(</span><span class="n">data</span><span class="w"> </span>: <span class="nc">table</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Segment</span><span class="p">,</span><span class="w"></span>
@@ -3099,30 +941,25 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div>
 
-<h3 id="istype">IsType</h3>
+<h3 id="type-checking">Type Checking</h3>
+<p>The following functions are used for type checking.</p>
+<h4 id="istype">IsType</h4>
 <div class="highlight"><pre><span></span><code>Segment.IsType(object : any) -&gt; boolean, ?string
 </code></pre></div>
 
 <p>Type checking function for a Segment. Returns true if a Segment</p>
-<h3 id="create">Create</h3>
-<div class="highlight"><pre><span></span><code>Segment.Create(object : any) -&gt; boolean, ?string
+<h4 id="isinstancedata">IsInstanceData</h4>
+<div class="highlight"><pre><span></span><code>Segment.IsInstanceData(object : any) -&gt; boolean, ?string
 </code></pre></div>
 
-<p>Type checking function for a Segment. Returns true if a Segment</p>
-<h3 id="createfromdata">CreateFromData</h3>
-<div class="highlight"><pre><span></span><code>Segment.CreateFromData(object : any) -&gt; boolean, ?string
+<p>Type checking function for a Instance. Returns true if it has a <code>StringValue</code> called <code>SegmentType</code></p>
+<h4 id="checkinstance">CheckInstance</h4>
+<div class="highlight"><pre><span></span><code>Segment.CheckInstance(object : any) -&gt; boolean, ?string
 </code></pre></div>
 
-<p>Factory pattern for creating a Segment.</p>
-<p>Table must have a string called <code>SegmentType</code> as a value.</p>
-<h3 id="createfrominstance">CreateFromInstance</h3>
-<div class="highlight"><pre><span></span><code>Segment.CreateFromInstance(object : any) -&gt; boolean, ?string
-</code></pre></div>
-
-<p>Factory pattern for creating a Segment. Creates a Segment from an Instance.</p>
-<p>Instance must have a <code>StringValue</code> named <code>SegmentType</code> as one of it's children.</p>
+<p>Type checking function for a Instance. Returns true if it can be converted into a Segment.</p>
 <h3 id="factory-pattern">Factory Pattern</h3>
-<p>The Segment module provides methods to use a factory pattern.</p>
+<p>The Segment module provides methods to use a factory pattern for the following functions.</p>
 <p>Here's a list of the names used and their corresponding classes:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="n">Rail</span> <span class="o">=</span> <span class="n">RailSegment</span><span class="p">,</span>
@@ -3135,6 +972,23 @@
 <span class="p">}</span>
 </code></pre></div>
 
+<h4 id="create">Create</h4>
+<div class="highlight"><pre><span></span><code>Segment.Create(object : any) -&gt; boolean, ?string
+</code></pre></div>
+
+<p>Type checking function for a Segment. Returns true if a Segment</p>
+<h4 id="createfromdata">CreateFromData</h4>
+<div class="highlight"><pre><span></span><code>Segment.CreateFromData(object : any) -&gt; boolean, ?string
+</code></pre></div>
+
+<p>Factory pattern for creating a Segment.</p>
+<p>Table must have a string called <code>SegmentType</code> as a value.</p>
+<h4 id="createfrominstance">CreateFromInstance</h4>
+<div class="highlight"><pre><span></span><code>Segment.CreateFromInstance(object : any) -&gt; boolean, ?string
+</code></pre></div>
+
+<p>Factory pattern for creating a Segment. Creates a Segment from an Instance.</p>
+<p>Instance must have a <code>StringValue</code> named <code>SegmentType</code> as one of it's children.</p>
 <h2 id="segment">Segment</h2>
 <p>Base Class for all Segments</p>
 <div class="highlight"><pre><span></span><code>Segment {
@@ -3151,705 +1005,6 @@
 <h4 id="createasync">CreateAsync</h4>
 <p>Like Create, but wraps this call in a Promise and returns it.</p>
 <div class="highlight"><pre><span></span><code><span class="n">Segment</span><span class="p">:</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">startCFrame</span><span class="p">:</span> <span class="n">CFrame</span><span class="p">,</span> <span class="n">endCFrame</span><span class="p">:</span> <span class="n">CFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Promise</span> <span class="o">-&gt;</span> <span class="n">Instance</span>
-</code></pre></div>
-
-<h2 id="meshdata">MeshData</h2>
-<div class="highlight"><pre><span></span><code>{
-    Mesh : string,
-    MeshType : Enum.MeshType,
-
-    Offset : Vector3,
-    Scale : Vector3,
-}
-</code></pre></div>
-
-<p>Mesh data struct for the NewSmooth Algorithm.</p>
-<p>Used by:</p>
-<ul>
-<li><a href="#railsegment">RailSegment</a></li>
-<li><a href="#crossbeamsegment">CrossbeamSegment</a></li>
-</ul>
-<h3 id="properties">Properties</h3>
-<h4 id="mesh">Mesh</h4>
-<h3 id="constructors">Constructors</h3>
-<h4 id="fromdata">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MeshData</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MeshData</span>
-</code></pre></div>
-
-<h5 id="data">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Mesh</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">MeshType</span><span class="w"> </span>: <span class="nc">Enum</span><span class="p">.</span><span class="n">MeshType</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Scale</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MeshData</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MeshData</span>
-</code></pre></div>
-
-<h5 id="instance-children">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Mesh</span><span class="w"> </span>: <span class="nc">StringValue</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">MeshType</span><span class="w"> </span>: <span class="nc">StringValue</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Scale</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frommesh">fromMesh</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MeshData</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MeshData</span>
-</code></pre></div>
-
-<p>Instance must have a child which is a Mesh.</p>
-<h2 id="meshdatabuilder">MeshDataBuilder</h2>
-<div class="highlight"><pre><span></span><code>MeshDataBuilder {
-    Mesh : string,
-    MeshType : string,
-
-    Offset : Vector3,
-    Scale : Vector3,
-}
-</code></pre></div>
-
-<h3 id="methods_1">Methods</h3>
-<h4 id="withmesh">WithMesh</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MeshDataBuilder</span>:<span class="nc">WithMesh</span><span class="p">(</span><span class="n">mesh</span><span class="w"> </span>: <span class="nc">string</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withmeshtype">WithMeshType</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MeshDataBuilder</span>:<span class="nc">WithMeshType</span><span class="p">(</span><span class="n">mesh</span><span class="w"> </span>: <span class="nc">string</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withoffset">WithOffset</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MeshDataBuilder</span>:<span class="nc">WithOffset</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withscale">WithScale</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MeshDataBuilder</span>:<span class="nc">WithScale</span><span class="p">(</span><span class="n">scale</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="railsegment">RailSegment</h2>
-<p><strong>Extends <a href="#segment">Segment</a></strong></p>
-<p>Creates a BasePart that is positioned and sized parallel to the Track.
-Similar to Rails in NewSmooth plugins</p>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">BasePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Size</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Rotation</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Horizontal</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">MeshData</span><span class="w"> </span>: <span class="nc">MeshData</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="properties_1">Properties</h3>
-<p><strong>BasePart</strong></p>
-<p>The part used to make the rails. This will be cloned each time a new segment is created.</p>
-<p><strong>Offset</strong></p>
-<p>The offset from the CFrame</p>
-<p><strong>Size</strong></p>
-<p>Z is ignored</p>
-<p><strong>Rotation</strong></p>
-<p>Rotation</p>
-<p><strong>Horizontal</strong></p>
-<p>If this is horizontal. Used by CylinderMesh rails</p>
-<p><strong>MeshData</strong></p>
-<p>Data for a mesh that will be added to the rail on segment creation.</p>
-<p>See <a href="#meshdata">MeshData</a></p>
-<h3 id="constructors_1">Constructors</h3>
-<h4 id="fromdata_1">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RailSegment</span>
-</code></pre></div>
-
-<h5 id="data_1">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">BasePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Size</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Rotation</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Horizontal</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">MeshData</span><span class="w"> </span>: <span class="o">?</span><span class="n">MeshData</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance_1">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegment</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RailSegment</span>
-</code></pre></div>
-
-<h5 id="instance-children_1">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">BasePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Size</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Rotation</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Horizontal</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">MeshData</span><span class="w"> </span>: <span class="nc">Instance</span><span class="p">,</span><span class="w"> </span><span class="c1">// see MeshData.fromInstance</span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="railsegmentbuilder">RailSegmentBuilder</h2>
-<h3 id="constructors_2">Constructors</h3>
-<h4 id="new">new</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">RailSegmentBuilder</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="methods_2">Methods</h3>
-<h4 id="withbasepart">WithBasePart</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegmentBuilder</span>:<span class="nc">WithBasePart</span><span class="p">(</span><span class="n">basePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withoffset_1">WithOffset</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegmentBuilder</span>:<span class="nc">WithOffset</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withsize">WithSize</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegmentBuilder</span>:<span class="nc">WithSize</span><span class="p">(</span><span class="n">size</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withhorizontal">WithHorizontal</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegmentBuilder</span>:<span class="nc">WithHorizontal</span><span class="p">(</span><span class="n">horizontal</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withmeshdata">WithMeshData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RailSegmentBuilder</span>:<span class="nc">WithMeshData</span><span class="p">(</span><span class="n">meshData</span><span class="w"> </span>: <span class="nc">MeshData</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="trackobjectsegment">TrackObjectSegment</h2>
-<p><strong>Extends <a href="#segment">Segment</a></strong></p>
-<p>Creates an object, either a BasePart or a Model, that is positioned at a given point in the track.</p>
-<p>Similar to ties in NewSmooth.</p>
-<div class="highlight"><pre><span></span><code><span class="n">TrackObjectSegment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">CFrame</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">UseLookVector</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="properties_2">Properties</h3>
-<p><strong>Object</strong></p>
-<p>The part used to make the rails. This will be cloned each time a new segment is created.</p>
-<p><strong>Offset</strong></p>
-<p>The offset from the CFrame</p>
-<p><strong>UseLookVector</strong></p>
-<p>If true, uses LookVector and applies no rotation.</p>
-<h3 id="constructors_3">Constructors</h3>
-<h4 id="fromdata_2">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">TrackObjectSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TrackObjectSegment</span>
-</code></pre></div>
-
-<h5 id="data_2">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">CFrame</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">UseLookVector</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance_2">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">TrackObjectSegment</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TrackObjectSegment</span>
-</code></pre></div>
-
-<h5 id="instance-children_2">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">CFrameValue</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">UseLookVector</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="trackobjectsegmentbuilder">TrackObjectSegmentBuilder</h2>
-<h3 id="constructors_4">Constructors</h3>
-<h4 id="new_1">new</h4>
-<div class="highlight"><pre><span></span><code><span class="n">TrackObjectSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">TrackObjectSegmentBuilder</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="methods_3">Methods</h3>
-<h4 id="withobject">WithObject</h4>
-<div class="highlight"><pre><span></span><code><span class="n">TrackObjectSegmentBuilder</span>:<span class="nc">WithObject</span><span class="p">(</span><span class="n">object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withoffset_2">WithOffset</h4>
-<div class="highlight"><pre><span></span><code><span class="n">TrackObjectSegmentBuilder</span>:<span class="nc">WithOffset</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">CFrame</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withuselookvector">WithUseLookVector</h4>
-<div class="highlight"><pre><span></span><code><span class="n">TrackObjectSegmentBuilder</span>:<span class="nc">WithUseLookVector</span><span class="p">(</span><span class="n">useLookVector</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="midtrackobjectsegment">MidTrackObjectSegment</h2>
-<p><strong>Extends <a href="#segment">Segment</a></strong></p>
-<p>Creates an object, either a BasePart or a Model, that is positioned at a given point in the track.</p>
-<p>Compared to TrackObject, will position the object between two TrackPositions.</p>
-<div class="highlight"><pre><span></span><code><span class="n">MidTrackObjectSegment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">CFrame</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">UseLookVector</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="properties_3">Properties</h3>
-<p><strong>Object</strong></p>
-<p>The part used to make the rails. This will be cloned each time a new segment is created.</p>
-<p><strong>Offset</strong></p>
-<p>The offset from the CFrame</p>
-<p><strong>UseLookVector</strong></p>
-<p>If true, uses LookVector and applies no rotation.</p>
-<h3 id="constructors_5">Constructors</h3>
-<h4 id="fromdata_3">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MidTrackObjectSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MidTrackObjectSegment</span>
-</code></pre></div>
-
-<h5 id="data_3">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">CFrame</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">UseLookVector</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance_3">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MidTrackObjectSegment</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MidTrackObjectSegment</span>
-</code></pre></div>
-
-<h5 id="instance-children_3">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">CFrameValue</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">UseLookVector</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="midtrackobjectsegmentbuilder">MidTrackObjectSegmentBuilder</h2>
-<h3 id="constructors_6">Constructors</h3>
-<h4 id="new_2">new</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MidTrackObjectSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">MidTrackObjectSegmentBuilder</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="methods_4">Methods</h3>
-<h4 id="withobject_1">WithObject</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MidTrackObjectSegmentBuilder</span>:<span class="nc">WithObject</span><span class="p">(</span><span class="n">object</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Model</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withoffset_3">WithOffset</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MidTrackObjectSegmentBuilder</span>:<span class="nc">WithOffset</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">CFrame</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withuselookvector_1">WithUseLookVector</h4>
-<div class="highlight"><pre><span></span><code><span class="n">MidTrackObjectSegmentBuilder</span>:<span class="nc">WithUseLookVector</span><span class="p">(</span><span class="n">useLookVector</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="crossbeamsegment">CrossbeamSegment</h2>
-<p><strong>Extends <a href="#segment">Segment</a></strong></p>
-<p>Creates a BasePart that is positioned and sized parallel to the Track.
-Similar to Crossbeams in NewSmooth plugins</p>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">BasePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">StartOffset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Size</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Rotation</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Horizontal</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">MeshData</span><span class="w"> </span>: <span class="nc">MeshData</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="properties_4">Properties</h3>
-<p><strong>BasePart</strong></p>
-<p>The part used to make the rails. This will be cloned each time a new segment is created.</p>
-<p><strong>StartOffset</strong></p>
-<p>The offset from the CFrame</p>
-<p><strong>EndOffset</strong></p>
-<p>The offset from the CFrame</p>
-<p><strong>Size</strong></p>
-<p>Z is ignored</p>
-<p><strong>Rotation</strong></p>
-<p>Rotation</p>
-<p><strong>Horizontal</strong></p>
-<p>If this is horizontal. Used by CylinderMesh rails</p>
-<p><strong>MeshData</strong></p>
-<p>Data for a mesh that will be added to the rail on segment creation.</p>
-<p>See <a href="#meshdata">MeshData</a></p>
-<h3 id="constructors_7">Constructors</h3>
-<h4 id="fromdata_4">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CrossbeamSegment</span>
-</code></pre></div>
-
-<h5 id="data_4">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">BasePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Size</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Rotation</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Horizontal</span><span class="w"> </span>: <span class="nc">boolean</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">MeshData</span><span class="w"> </span>: <span class="o">?</span><span class="n">MeshData</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance_4">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegment</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CrossbeamSegment</span>
-</code></pre></div>
-
-<h5 id="instance-children_4">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">BasePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Offset</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Size</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Rotation</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">Horizontal</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">MeshData</span><span class="w"> </span>: <span class="nc">Instance</span><span class="p">,</span><span class="w"> </span><span class="c1">// see MeshData.fromInstance</span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="crossbeamsegmentbuilder">CrossbeamSegmentBuilder</h2>
-<h3 id="constructors_8">Constructors</h3>
-<h4 id="new_3">new</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">CrossbeamSegmentBuilder</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="methods_5">Methods</h3>
-<h4 id="withbasepart_1">WithBasePart</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegmentBuilder</span>:<span class="nc">WithBasePart</span><span class="p">(</span><span class="n">basePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withstartoffset">WithStartOffset</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegmentBuilder</span>:<span class="nc">WithStartOffset</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withendoffset">WithEndOffset</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegmentBuilder</span>:<span class="nc">WithEndOffset</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withsize_1">WithSize</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegmentBuilder</span>:<span class="nc">WithSize</span><span class="p">(</span><span class="n">size</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withhorizontal_1">WithHorizontal</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegmentBuilder</span>:<span class="nc">WithHorizontal</span><span class="p">(</span><span class="n">horizontal</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withmeshdata_1">WithMeshData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">CrossbeamSegmentBuilder</span>:<span class="nc">WithMeshData</span><span class="p">(</span><span class="n">meshData</span><span class="w"> </span>: <span class="nc">MeshData</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="rectsegment">RectSegment</h2>
-<p><strong>Extends <a href="#segment">Segment</a></strong></p>
-<p>Creates a Rectangle made out of 2 triangle/wedges and positioned at a given point in the track.</p>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">P0</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P3</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="properties_5">Properties</h3>
-<p><strong>Wedge</strong></p>
-<p>The WedgePart used to make the rectangle. This will be cloned each time a new segment is created.</p>
-<p><strong>P0</strong></p>
-<p>Offset 1</p>
-<p><strong>P1</strong></p>
-<p>Offset 2</p>
-<p><strong>P2</strong></p>
-<p>Offset 3</p>
-<p><strong>P3</strong></p>
-<p>Offset 4</p>
-<h3 id="constructors_9">Constructors</h3>
-<h4 id="fromdata_5">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RectSegment</span>
-</code></pre></div>
-
-<h5 id="data_5">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">P0</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P3</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance_5">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegment</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RectSegment</span>
-</code></pre></div>
-
-<h5 id="instance-children_5">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">P0</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P1</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P2</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">P3</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="rectsegmentbuilder">RectSegmentBuilder</h2>
-<h3 id="constructors_10">Constructors</h3>
-<h4 id="new_4">new</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">RectSegmentBuilder</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="methods_6">Methods</h3>
-<h4 id="withwedge">WithWedge</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegmentBuilder</span>:<span class="nc">WithWedge</span><span class="p">(</span><span class="n">basePart</span><span class="w"> </span>: <span class="nc">BasePart</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withp0">WithP0</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegmentBuilder</span>:<span class="nc">WithP0</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withp1">WithP1</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegmentBuilder</span>:<span class="nc">WithP1</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withp2">WithP2</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegmentBuilder</span>:<span class="nc">WithP2</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withp3">WithP3</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectSegmentBuilder</span>:<span class="nc">WithP3</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="rectrailsegment">RectRailSegment</h2>
-<p><strong>Extends <a href="#segment">Segment</a></strong></p>
-<p>Creates a BasePart that is positioned and sized parallel to the Track.
-Similar to Rails in NewSmooth plugins</p>
-<div class="highlight"><pre><span></span><code><span class="n">RectRailSegment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">StartOffset1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">StartOffset2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="properties_6">Properties</h3>
-<p><strong>Wedge</strong></p>
-<p><strong>StartOffset1</strong></p>
-<p>Offset relative to the start position</p>
-<p><strong>StartOffset2</strong></p>
-<p>Offset relative to the start position</p>
-<p><strong>EndOffset1</strong></p>
-<p>Offset relative to the end position</p>
-<p><strong>EndOffset2</strong></p>
-<p>Offset relative to the end position</p>
-<h3 id="constructors_11">Constructors</h3>
-<h4 id="fromdata_6">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectRailSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RectRailSegment</span>
-</code></pre></div>
-
-<h5 id="data_6">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">StartOffset1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">StartOffset2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance_6">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectRailSegment</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RectRailSegment</span>
-</code></pre></div>
-
-<h5 id="instance-children_6">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">StartOffset1</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">StartOffset2</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset1</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset2</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="rectrailsegmentbuilder">RectRailSegmentBuilder</h2>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">StartOffset1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">StartOffset2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset1</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">EndOffset2</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="constructors_12">Constructors</h3>
-<h4 id="new_5">new</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectRailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">RectRailSegmentBuilder</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="methods_7">Methods</h3>
-<h4 id="withwedge_1">WithWedge</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectRailSegmentBuilder</span>:<span class="nc">WithWedge</span><span class="p">(</span><span class="n">wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withoffset_4">WithOffset</h4>
-<div class="highlight"><pre><span></span><code><span class="n">RectRailSegmentBuilder</span>:<span class="nc">WithOffset</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="boxrailsegment">BoxRailSegment</h2>
-<p><strong>Extends <a href="#segment">Segment</a></strong></p>
-<p>Creates a BasePart that is positioned and sized parallel to the Track.
-Similar to Rails in NewSmooth plugins</p>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegment</span><span class="w"> </span>: <span class="nc">Segment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">TopLeft</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">TopRight</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BottomLeft</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BottomRight</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">DrawTop</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawBottom</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawLeft</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawRight</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="properties_7">Properties</h3>
-<p><strong>Wedge</strong></p>
-<p>The wedge used to make the box. This will be cloned each time a new segment is created.</p>
-<p><strong>TopLeft</strong></p>
-<p><strong>TopRight</strong></p>
-<p><strong>BottomLeft</strong></p>
-<p><strong>BottomRight</strong></p>
-<p><strong>DrawTop</strong></p>
-<p><strong>DrawBottom</strong></p>
-<p><strong>DrawLeft</strong></p>
-<p><strong>DrawRight</strong></p>
-<h3 id="constructors_13">Constructors</h3>
-<h4 id="fromdata_7">fromData</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">table</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoxRailSegment</span>
-</code></pre></div>
-
-<h5 id="data_7">data</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Name</span><span class="w"> </span>: <span class="nc">string</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">TopLeft</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">TopRight</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BottomLeft</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BottomRight</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">DrawTop</span><span class="w"> </span>: <span class="o">?</span><span class="n">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawBottom</span><span class="w"> </span>: <span class="o">?</span><span class="n">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawLeft</span><span class="w"> </span>: <span class="o">?</span><span class="n">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawRight</span><span class="w"> </span>: <span class="o">?</span><span class="n">boolean</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="frominstance_7">fromInstance</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegment</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BoxRailSegment</span>
-</code></pre></div>
-
-<h5 id="instance-children_7">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">Wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">TopLeft</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">TopRight</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BottomLeft</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">BottomRight</span><span class="w"> </span>: <span class="nc">Vector3Value</span><span class="p">,</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">DrawTop</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawBottom</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawLeft</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">DrawRight</span><span class="w"> </span>: <span class="nc">BoolValue</span><span class="p">,</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
-
-<h2 id="boxrailsegmentbuilder">BoxRailSegmentBuilder</h2>
-<h3 id="constructors_14">Constructors</h3>
-<h4 id="new_6">new</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nc">BoxRailSegmentBuilder</span><span class="w"></span>
-</code></pre></div>
-
-<h3 id="methods_8">Methods</h3>
-<h4 id="withwedge_2">WithWedge</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithWedge</span><span class="p">(</span><span class="n">wedge</span><span class="w"> </span>: <span class="nc">WedgePart</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withtopleft">WithTopLeft</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithTopLeft</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withtopright">WithTopRight</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithTopRight</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withbottomleft">WithBottomLeft</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithBottomLeft</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withbottomright">WithBottomRight</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithBottomRight</span><span class="p">(</span><span class="n">offset</span><span class="w"> </span>: <span class="nc">Vector3</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withdrawtop">WithDrawTop</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithDrawTop</span><span class="p">(</span><span class="n">value</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withdrawbottom">WithDrawBottom</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithDrawBottom</span><span class="p">(</span><span class="n">value</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withdrawleft">WithDrawLeft</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithDrawLeft</span><span class="p">(</span><span class="n">value</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
-</code></pre></div>
-
-<h4 id="withdrawright">WithDrawRight</h4>
-<div class="highlight"><pre><span></span><code><span class="n">BoxRailSegmentBuilder</span>:<span class="nc">WithDrawRight</span><span class="p">(</span><span class="n">value</span><span class="w"> </span>: <span class="nc">boolean</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">self</span><span class="w"></span>
 </code></pre></div>
                 
               
@@ -3884,13 +1039,13 @@ Similar to Rails in NewSmooth plugins</p>
           </a>
         
         
-          <a href="../section/" title="Section" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="mesh_data/" title="MeshData" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Section
+                MeshData
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

@@ -389,9 +389,143 @@
           
 
 
-  <li class="md-nav__item">
-    <a href="../api/segment/" title="Segment" class="md-nav__link">
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
       Segment
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Segment" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Segment
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/" title="Module" class="md-nav__link">
+      Module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/mesh_data/" title="MeshData" class="md-nav__link">
+      MeshData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/rail/" title="Rail" class="md-nav__link">
+      Rail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/track_object/" title="TrackObject" class="md-nav__link">
+      TrackObject
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/mid_track_object/" title="MidTrackObject" class="md-nav__link">
+      MidTrackObject
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/crossbeam/" title="Crossbeam" class="md-nav__link">
+      Crossbeam
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/rect/" title="Rect" class="md-nav__link">
+      Rect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/rect_rail/" title="RectRail" class="md-nav__link">
+      RectRail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/segment/box_rail/" title="BoxRail" class="md-nav__link">
+      BoxRail
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/base_section/" title="BaseSection" class="md-nav__link">
+      BaseSection
     </a>
   </li>
 
@@ -432,8 +566,44 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/cframe_util/" title="CFrame Util" class="md-nav__link">
+      CFrame Util
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/vector3_util/" title="Vector3 Util" class="md-nav__link">
+      Vector3 Util
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../credits/" title="Credits" class="md-nav__link">
+      Credits
+    </a>
   </li>
 
     
@@ -515,6 +685,8 @@
     <span class="n">BASE_PART</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
     <span class="n">BASE_PART</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
     <span class="n">BASE_PART</span><span class="p">.</span><span class="n">FormFactor</span> <span class="o">=</span> <span class="s2">&quot;Custom&quot;</span>
+    <span class="n">BASE_PART</span><span class="p">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">Material</span><span class="p">.</span><span class="n">Metal</span>
+    <span class="n">BASE_PART</span><span class="p">.</span><span class="n">BrickColor</span> <span class="o">=</span> <span class="n">BrickColor</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Really black&quot;</span><span class="p">)</span>
 
 
     <span class="kd">local</span> <span class="n">leftRailSection</span> <span class="o">=</span> <span class="n">Section</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
@@ -533,8 +705,8 @@
             <span class="p">}</span>
         <span class="p">}),</span>
 
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">SegmentLength</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">SectionStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
         <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
     <span class="p">})</span>
@@ -555,8 +727,8 @@
             <span class="p">}</span>
         <span class="p">}),</span>
 
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">SegmentLength</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">SectionStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
         <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
     <span class="p">})</span>
@@ -577,18 +749,15 @@
             <span class="p">},</span>
         <span class="p">}),</span>
 
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">SegmentLength</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">SectionStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
         <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
     <span class="p">})</span>
 
-    <span class="kd">local</span> <span class="n">TIE_PART</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Part&quot;</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">TIE_PART</span> <span class="o">=</span> <span class="n">BASE_PART</span><span class="p">:</span><span class="n">Clone</span><span class="p">()</span>
     <span class="n">TIE_PART</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">)</span>
     <span class="n">TIE_PART</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="n">TIE_PART</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
-    <span class="n">TIE_PART</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
-    <span class="n">TIE_PART</span><span class="p">.</span><span class="n">FormFactor</span> <span class="o">=</span> <span class="s2">&quot;Custom&quot;</span>
 
     <span class="kd">local</span> <span class="n">tieSection</span> <span class="o">=</span> <span class="n">Section</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
         <span class="n">Segment</span> <span class="o">=</span> <span class="n">TrackObjectSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
@@ -598,8 +767,8 @@
             <span class="n">UseLookVector</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
         <span class="p">}),</span>
 
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">SegmentLength</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">SectionStart</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
         <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
         <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
     <span class="p">})</span>
@@ -623,147 +792,135 @@
 <div class="highlight"><pre><span></span><code><span class="kd">local</span> <span class="n">ReplicatedStorage</span> <span class="o">=</span> <span class="n">game</span><span class="p">:</span><span class="n">GetService</span><span class="p">(</span><span class="s2">&quot;ReplicatedStorage&quot;</span><span class="p">)</span>
 
 <span class="kr">return</span> <span class="kr">function</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
-    <span class="kd">local</span> <span class="n">TrackGroup</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">TrackGroup</span>
-    <span class="kd">local</span> <span class="n">Section</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">Section</span>
+    <span class="kd">local</span> <span class="n">TrackGroupBuilder</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">TrackGroupBuilder</span>
+    <span class="kd">local</span> <span class="n">SectionBuilder</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">SectionBuilder</span>
 
     <span class="kd">local</span> <span class="n">Segment</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">Segment</span>
-    <span class="kd">local</span> <span class="n">RailSegment</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">Rail</span>
-    <span class="kd">local</span> <span class="n">TrackObjectSegment</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">TrackObject</span>
-    <span class="kd">local</span> <span class="n">CrossbeamSegment</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">Crossbeam</span>
-    <span class="kd">local</span> <span class="n">BoxRailSegment</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">BoxRail</span>
-    <span class="kd">local</span> <span class="n">RectSegment</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">Rect</span>
-    <span class="kd">local</span> <span class="n">RectRailSegment</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">RectRail</span>
+
+    <span class="kd">local</span> <span class="n">RailSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">RailBuilder</span>
+    <span class="kd">local</span> <span class="n">MidTrackObjectSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">MidTrackObjectBuilder</span>
+    <span class="kd">local</span> <span class="n">BoxRailSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">BoxRailBuilder</span>
+    <span class="kd">local</span> <span class="n">RectSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">RectBuilder</span>
+    <span class="kd">local</span> <span class="n">RectRailSegmentBuilder</span> <span class="o">=</span> <span class="n">Segment</span><span class="p">.</span><span class="n">RectRailBuilder</span>
 
     <span class="kd">local</span> <span class="n">CFrameTrack</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">CFrameTrack</span>
     <span class="kd">local</span> <span class="n">mainTrack</span> <span class="o">=</span> <span class="n">CFrameTrack</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="n">ReplicatedStorage</span><span class="p">:</span><span class="n">FindFirstChild</span><span class="p">(</span><span class="s2">&quot;MainTrack&quot;</span><span class="p">))</span>
 
     <span class="kd">local</span> <span class="n">BASE_PART</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Part&quot;</span><span class="p">)</span>
-    <span class="n">BASE_PART</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="n">BASE_PART</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
-    <span class="n">BASE_PART</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
-    <span class="n">BASE_PART</span><span class="p">.</span><span class="n">FormFactor</span> <span class="o">=</span> <span class="s2">&quot;Custom&quot;</span>
+        <span class="n">BASE_PART</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">BASE_PART</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
+        <span class="n">BASE_PART</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="s2">&quot;Smooth&quot;</span>
+        <span class="n">BASE_PART</span><span class="p">.</span><span class="n">FormFactor</span> <span class="o">=</span> <span class="s2">&quot;Custom&quot;</span>
 
     <span class="kd">local</span> <span class="n">WEDGE</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;WedgePart&quot;</span><span class="p">)</span>
-    <span class="n">WEDGE</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">WEDGE</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="n">WEDGE</span><span class="p">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">Material</span><span class="p">.</span><span class="n">Metal</span>
-    <span class="n">WEDGE</span><span class="p">.</span><span class="n">BrickColor</span> <span class="o">=</span> <span class="n">BrickColor</span><span class="p">.</span><span class="n">Black</span><span class="p">()</span>
-    <span class="n">WEDGE</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>
-    <span class="n">WEDGE</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>
+        <span class="n">WEDGE</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">WEDGE</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">WEDGE</span><span class="p">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">Material</span><span class="p">.</span><span class="n">Metal</span>
+        <span class="n">WEDGE</span><span class="p">.</span><span class="n">BrickColor</span> <span class="o">=</span> <span class="n">BrickColor</span><span class="p">.</span><span class="n">Black</span><span class="p">()</span>
+        <span class="n">WEDGE</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>
+        <span class="n">WEDGE</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>
 
     <span class="kd">local</span> <span class="n">specialMesh</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;SpecialMesh&quot;</span><span class="p">)</span>
-    <span class="n">specialMesh</span><span class="p">.</span><span class="n">MeshType</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">MeshType</span><span class="p">.</span><span class="n">Wedge</span>
-    <span class="n">specialMesh</span><span class="p">.</span><span class="n">Scale</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">specialMesh</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">WEDGE</span>
+        <span class="n">specialMesh</span><span class="p">.</span><span class="n">MeshType</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">MeshType</span><span class="p">.</span><span class="n">Wedge</span>
+        <span class="n">specialMesh</span><span class="p">.</span><span class="n">Scale</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">specialMesh</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">WEDGE</span>
 
-    <span class="kd">local</span> <span class="n">topBuilder</span> <span class="o">=</span> <span class="n">Section</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-        <span class="n">Segment</span> <span class="o">=</span> <span class="n">BoxRailSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-            <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Top&quot;</span><span class="p">,</span>
+    <span class="kd">local</span> <span class="n">topSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Top&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">BoxRailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithWedge</span><span class="p">(</span><span class="n">WEDGE</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithTopLeft</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithTopRight</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithBottomLeft</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithBottomRight</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
 
-            <span class="n">TopLeft</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">TopRight</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">BottomLeft</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">BottomRight</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-
-            <span class="n">Wedge</span> <span class="o">=</span> <span class="n">WEDGE</span><span class="p">,</span>
-        <span class="p">}),</span>
-
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="p">})</span>
-
-    <span class="kd">local</span> <span class="n">spineBuilder</span> <span class="o">=</span> <span class="n">Section</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-        <span class="n">Segment</span> <span class="o">=</span> <span class="n">BoxRailSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-            <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Spine&quot;</span><span class="p">,</span>
-
-            <span class="n">TopLeft</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">TopRight</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">BottomLeft</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">BottomRight</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-
-            <span class="n">DrawTop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="n">DrawBottom</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-
-            <span class="n">Wedge</span> <span class="o">=</span> <span class="n">WEDGE</span><span class="p">,</span>
-        <span class="p">}),</span>
-
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="p">})</span>
+    <span class="kd">local</span> <span class="n">spineSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Spine&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">BoxRailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithWedge</span><span class="p">(</span><span class="n">WEDGE</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithTopLeft</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithTopRight</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithBottomLeft</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithBottomRight</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithDrawTop</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithDrawBottom</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
 
 
     <span class="kd">local</span> <span class="n">BOTTOM_WEDGE</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;WedgePart&quot;</span><span class="p">)</span>
-    <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
-    <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">Material</span><span class="p">.</span><span class="n">Metal</span>
-    <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">BrickColor</span> <span class="o">=</span> <span class="n">BrickColor</span><span class="p">.</span><span class="n">Black</span><span class="p">()</span>
-    <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>
-    <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>    
+        <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">Material</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">Material</span><span class="p">.</span><span class="n">Metal</span>
+        <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">BrickColor</span> <span class="o">=</span> <span class="n">BrickColor</span><span class="p">.</span><span class="n">Black</span><span class="p">()</span>
+        <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">TopSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>
+        <span class="n">BOTTOM_WEDGE</span><span class="p">.</span><span class="n">BottomSurface</span> <span class="o">=</span> <span class="n">Enum</span><span class="p">.</span><span class="n">SurfaceType</span><span class="p">.</span><span class="n">Smooth</span>
 
-    <span class="kd">local</span> <span class="n">bottomBuilder</span> <span class="o">=</span> <span class="n">Section</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-        <span class="n">Segment</span> <span class="o">=</span> <span class="n">RectRailSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-            <span class="n">StartOffset1</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">StartOffset2</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="kd">local</span> <span class="n">bottomSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Bottom&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">RectRailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithWedge</span><span class="p">(</span><span class="n">WEDGE</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithUseStart</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithStartOffset1</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithStartOffset2</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
 
-            <span class="n">EndOffset1</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">EndOffset2</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-
-            <span class="n">UseStart</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-
-            <span class="n">Wedge</span> <span class="o">=</span> <span class="n">BOTTOM_WEDGE</span><span class="p">,</span>
-        <span class="p">}),</span>
-
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="p">})</span>
-
-    <span class="c1">-- Creates a ChainLift</span>
     <span class="kd">local</span> <span class="n">CHAIN_PART</span> <span class="o">=</span> <span class="n">BASE_PART</span><span class="p">:</span><span class="n">Clone</span><span class="p">()</span>
-    <span class="n">CHAIN_PART</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">CHAIN_PART</span><span class="p">.</span><span class="n">BrickColor</span> <span class="o">=</span> <span class="n">BrickColor</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Dark stone grey&quot;</span><span class="p">)</span>
-    <span class="n">CHAIN_PART</span><span class="p">.</span><span class="n">CanCollide</span> <span class="o">=</span> <span class="kc">false</span>
-    <span class="n">CHAIN_PART</span><span class="p">.</span><span class="n">Anchored</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="n">CHAIN_PART</span><span class="p">.</span><span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">CHAIN_PART</span><span class="p">.</span><span class="n">BrickColor</span> <span class="o">=</span> <span class="n">BrickColor</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Dark stone grey&quot;</span><span class="p">)</span>
+        <span class="n">CHAIN_PART</span><span class="p">.</span><span class="n">CanCollide</span> <span class="o">=</span> <span class="kc">false</span>
 
     <span class="kd">local</span> <span class="n">CHAIN_IMAGE</span> <span class="o">=</span> <span class="n">Instance</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;Texture&quot;</span><span class="p">)</span>
-    <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">StudsPerTileU</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">StudsPerTileV</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">Texture</span> <span class="o">=</span> <span class="s2">&quot;http://www.roblox.com/asset/?id=56334448&quot;</span>
-    <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">Face</span> <span class="o">=</span> <span class="s2">&quot;Top&quot;</span>
-    <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">CHAIN_PART</span>
+        <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">StudsPerTileU</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">StudsPerTileV</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">Texture</span> <span class="o">=</span> <span class="s2">&quot;http://www.roblox.com/asset/?id=56334448&quot;</span>
+        <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">Face</span> <span class="o">=</span> <span class="s2">&quot;Top&quot;</span>
+        <span class="n">CHAIN_IMAGE</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">CHAIN_PART</span>
 
-    <span class="kd">local</span> <span class="n">chainSection</span> <span class="o">=</span> <span class="n">Section</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-        <span class="n">Segment</span> <span class="o">=</span> <span class="n">RailSegment</span><span class="p">.</span><span class="n">fromData</span><span class="p">({</span>
-            <span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;Chain&quot;</span><span class="p">,</span>
+    <span class="kd">local</span> <span class="n">chainSection</span> <span class="o">=</span> <span class="n">SectionBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;Chain&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegment</span><span class="p">(</span><span class="n">RailSegmentBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+            <span class="p">:</span><span class="n">WithBasePart</span><span class="p">(</span><span class="n">CHAIN_PART</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">WithSize</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithOffset</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="p">:</span><span class="n">WithRotation</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">())</span>
+            <span class="p">:</span><span class="n">WithHorizontal</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+            <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSegmentLength</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSectionStart</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithOptimize</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithBuildEnd</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
 
-            <span class="n">BasePart</span> <span class="o">=</span> <span class="n">CHAIN_PART</span><span class="p">,</span>
-            <span class="n">Offset</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">Size</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-            <span class="n">Rotation</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">new</span><span class="p">(),</span>
-            <span class="n">Horizontal</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-        <span class="p">}),</span>
-
-        <span class="n">Interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="n">StartOffset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="n">Optimize</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="n">BuildEnd</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="p">})</span>
-
-    <span class="kd">local</span> <span class="n">trackGroup</span> <span class="o">=</span> <span class="n">TrackGroup</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
-    <span class="n">trackGroup</span><span class="p">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;TestingTrack&quot;</span>
-    <span class="n">trackGroup</span><span class="p">:</span><span class="n">Add</span><span class="p">(</span><span class="n">topBuilder</span><span class="p">)</span>
-    <span class="n">trackGroup</span><span class="p">:</span><span class="n">Add</span><span class="p">(</span><span class="n">spineBuilder</span><span class="p">)</span>
-    <span class="n">trackGroup</span><span class="p">:</span><span class="n">Add</span><span class="p">(</span><span class="n">bottomBuilder</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">trackGroup</span> <span class="o">=</span> <span class="n">TrackGroupBuilder</span><span class="p">.</span><span class="n">new</span><span class="p">()</span>
+        <span class="p">:</span><span class="n">WithName</span><span class="p">(</span><span class="s2">&quot;BoxRailTrack&quot;</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">topSection</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">spineSection</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">WithSection</span><span class="p">(</span><span class="n">bottomSection</span><span class="p">)</span>
+        <span class="p">:</span><span class="n">Finish</span><span class="p">()</span>
 
     <span class="kd">local</span> <span class="n">model</span> <span class="o">=</span> <span class="n">trackGroup</span><span class="p">:</span><span class="n">Create</span><span class="p">(</span><span class="n">mainTrack</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mainTrack</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span>
-
     <span class="kd">local</span> <span class="n">chainModel</span> <span class="o">=</span> <span class="n">chainSection</span><span class="p">:</span><span class="n">Create</span><span class="p">(</span><span class="n">mainTrack</span><span class="p">,</span> <span class="mi">410</span><span class="p">,</span> <span class="mi">670</span><span class="p">)</span>
-    <span class="n">chainModel</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">chainModel</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">model</span>
 
     <span class="n">model</span><span class="p">.</span><span class="n">Parent</span> <span class="o">=</span> <span class="n">workspace</span>
 

@@ -346,9 +346,143 @@
           
 
 
-  <li class="md-nav__item">
-    <a href="../segment/" title="Segment" class="md-nav__link">
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
       Segment
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Segment" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        <span class="md-nav__icon md-icon"></span>
+        Segment
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/" title="Module" class="md-nav__link">
+      Module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/mesh_data/" title="MeshData" class="md-nav__link">
+      MeshData
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/rail/" title="Rail" class="md-nav__link">
+      Rail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/track_object/" title="TrackObject" class="md-nav__link">
+      TrackObject
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/mid_track_object/" title="MidTrackObject" class="md-nav__link">
+      MidTrackObject
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/crossbeam/" title="Crossbeam" class="md-nav__link">
+      Crossbeam
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/rect/" title="Rect" class="md-nav__link">
+      Rect
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/rect_rail/" title="RectRail" class="md-nav__link">
+      RectRail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../segment/box_rail/" title="BoxRail" class="md-nav__link">
+      BoxRail
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../base_section/" title="BaseSection" class="md-nav__link">
+      BaseSection
     </a>
   </li>
 
@@ -461,19 +595,6 @@
     fromInstance
   </a>
   
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -500,8 +621,44 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cframe_util/" title="CFrame Util" class="md-nav__link">
+      CFrame Util
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vector3_util/" title="Vector3 Util" class="md-nav__link">
+      Vector3 Util
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../credits/" title="Credits" class="md-nav__link">
+      Credits
+    </a>
   </li>
 
     
@@ -588,19 +745,6 @@
     fromInstance
   </a>
   
-    <nav class="md-nav" aria-label="fromInstance">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#instance-children" class="md-nav__link">
-    instance Children
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -626,6 +770,7 @@
                 
                 
                 <h1 id="trackgroup">TrackGroup</h1>
+<p><strong>Extends <a href="../base_section/">Section</a></strong></p>
 <p>Builds all the Sections it holds along a section of track at once.</p>
 <div class="highlight"><pre><span></span><code>TrackGroup : BaseSection {
     Name : string,
@@ -637,12 +782,12 @@
 <h3 id="methods">Methods</h3>
 <h4 id="create">Create</h4>
 <p>Creates a Model</p>
-<div class="highlight"><pre><span></span><code><span class="n">TrackGroup</span><span class="p">:</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">cframeTrack</span><span class="p">:</span> <span class="n">CFrameTrack</span><span class="p">,</span> <span class="n">startPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">endPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span>
+<div class="highlight"><pre><span></span><code><span class="n">TrackGroup</span><span class="p">:</span><span class="n">Create</span><span class="p">(</span><span class="n">cframeTrack</span><span class="p">:</span> <span class="n">CFrameTrack</span><span class="p">,</span> <span class="n">startPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">endPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Model</span>
 </code></pre></div>
 
 <h4 id="createasync">CreateAsync</h4>
-<p>Like Create, but wraps this call in a Promise and returns it.</p>
-<div class="highlight"><pre><span></span><code><span class="n">TrackGroup</span><span class="p">:</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">cframeTrack</span><span class="p">:</span> <span class="n">CFrameTrack</span><span class="p">,</span> <span class="n">startPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">endPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Promise</span> <span class="o">-&gt;</span> <span class="n">Model</span>
+<p>Like <a href="#create">Create</a>, but wraps this call in a Promise and returns it.</p>
+<div class="highlight"><pre><span></span><code><span class="n">TrackGroup</span><span class="p">:</span><span class="n">CreateAsync</span><span class="p">(</span><span class="n">cframeTrack</span><span class="p">:</span> <span class="n">CFrameTrack</span><span class="p">,</span> <span class="n">startPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">,</span> <span class="n">endPosition</span><span class="p">:</span> <span class="n">number</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Promise</span><span class="o">&lt;</span><span class="n">Model</span><span class="o">&gt;</span>
 </code></pre></div>
 
 <h3 id="constructors">Constructors</h3>
@@ -662,11 +807,9 @@
 <div class="highlight"><pre><span></span><code><span class="n">TrackGroup</span><span class="p">.</span><span class="n">fromInstance</span><span class="p">(</span><span class="n">instance</span><span class="p">:</span> <span class="n">Instance</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TrackGroup</span>
 </code></pre></div>
 
-<h5 id="instance-children">instance Children</h5>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
-
-<span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<p>Configurations will be converted to TrackGroups</p>
+<p>Instances named ASSETS will be ignored.</p>
+<p>Everything else will be converted to Sections.</p>
                 
               
               
