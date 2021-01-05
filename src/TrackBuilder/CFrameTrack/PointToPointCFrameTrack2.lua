@@ -161,58 +161,6 @@ function PointToPointCFrameTrack2:Destroy()
 end
 
 
-function PointToPointCFrameTrack2:SetData(data)
-    assert(type(data) == "table",
-        "Arg [1] is not a table!")
-
-    local points = data.Points
-    local isCircuited = data.IsCircuited
-    local hashInterval = data.HashInterval
-
-    assert(type(points) == "table",
-        "Missing Points! A table")
-    assert(type(isCircuited) == "boolean",
-        "Missing IsCircuited! A boolean")
-    assert(type(hashInterval) == "number" and hashInterval > 0,
-        "Missing HashInterval! A number > 0")
-
-    for index, point in pairs(points) do
-        assert(typeof(point) == "CFrame",
-            "Point " .. tostring(index) .. " is not a CFrame!")
-    end
-
-    local function getLengthFunction(p1, p2)
-        return (p1.Position - p2.Position).Magnitude
-    end
-
-    local hasher = TrackDataHasher.new(
-        points,
-        getLengthFunction,
-        hashInterval
-    )
-
-    local length = hasher.Length
-    local circuitRemainder = 0
-    local lengthWithoutCircuitRemainder = length
-
-    if isCircuited == true then
-        circuitRemainder = getLengthFunction(
-            points[#points],
-            points[1]
-        )
-        length = length + circuitRemainder
-    end
-
-    self.Hasher = hasher
-    self.Length = length
-    self.CircuitRemainder = circuitRemainder
-    self.LengthWithoutCircuitRemainder = lengthWithoutCircuitRemainder
-    self.IsCircuited = isCircuited
-
-    return self
-end
-
-
 function PointToPointCFrameTrack2:GetCFramePosition(position)
     local hasher = self.Hasher
     local circuited = self.IsCircuited
