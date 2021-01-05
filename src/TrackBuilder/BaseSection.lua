@@ -1,4 +1,4 @@
---- BaseSegment
+--- BaseSection
 
 local CFrameTrack = require(script.Parent.CFrameTrack)
 
