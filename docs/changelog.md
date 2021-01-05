@@ -7,33 +7,40 @@
 
 ## [Unreleased]
 
+## [0.1.0] - 2021-01-04
+
 ### Added
 
 - Able to Build TrackGroups from the GUI
 	- Load TrackGroups and Tracks from the GUI
 	- Set Start and End Position
+- Overhauled type checking to use [t](https://github.com/osyrisrblx/t)
 - Build Pattern constructors for:
 	- Segments
 	- Section
 	- TrackGroup
+	- PhysicsRails
+	- MeshData
+	- CFrameTracks
 - fromInstance constructors for:
 	- Segments
 	- Section
+	- PhysicsRails
 	- TrackGroup
-- Added Section SegmentOffset (not implemented)
+- Added Section SegmentOffset
+- MidTrackObject Segment
+- Plugin Version Text
 
 ### Changed
 
 - Section
 	- Interval to SegmentLength
 
-### Deprecated
-
-
-
 ### Fixed
 
 - Crossbeam offsets not being passed correctly
+- Reduced amount of Promises created for Section:CreateAsync()
+- Optimization not using Segment's own offsets
 
 ## [0.0.2] - 2020-12-06
 

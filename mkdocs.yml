@@ -16,10 +16,23 @@ nav:
   - API:
     - Main: api/index.md
     - CFrameTrack: api/cframe_track.md
-    - Segment: api/segment.md
+    - Segment:
+      - Module: api/segment/index.md
+      - MeshData: api/segment/mesh_data.md
+      - Rail: api/segment/rail.md
+      - TrackObject: api/segment/track_object.md
+      - MidTrackObject: api/segment/mid_track_object.md
+      - Crossbeam: api/segment/crossbeam.md
+      - Rect: api/segment/rect.md
+      - RectRail: api/segment/rect_rail.md
+      - BoxRail: api/segment/box_rail.md
+    - BaseSection: api/base_section.md
     - Section: api/section.md
     - TrackGroup: api/track_group.md
     - PhysicsRails: api/physics_rails.md
+    - CFrame Util: api/cframe_util.md
+    - Vector3 Util: api/vector3_util.md
+  - Credits: credits.md
 
 theme:
   name: material

@@ -1,5 +1,7 @@
 # TrackGroup
 
+**Extends [Section](./base_section.md)**
+
 Builds all the Sections it holds along a section of track at once.
 
 ```
@@ -17,15 +19,15 @@ TrackGroup : BaseSection {
 Creates a Model
 
 ```lua
-TrackGroup:CreateAsync(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Model
+TrackGroup:Create(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Model
 ```
 
 #### CreateAsync
 
-Like Create, but wraps this call in a Promise and returns it.
+Like [Create](#create), but wraps this call in a Promise and returns it.
 
 ```lua
-TrackGroup:CreateAsync(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Promise -> Model
+TrackGroup:CreateAsync(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Promise<Model>
 ```
 
 ### Constructors
@@ -52,10 +54,8 @@ TrackGroup.fromData(data: table) -> TrackGroup
 TrackGroup.fromInstance(instance: Instance) -> TrackGroup
 ```
 
-##### instance Children
+Configurations will be converted to TrackGroups
 
-```rs
-{
+Instances named ASSETS will be ignored.
 
-}
-```
+Everything else will be converted to Sections.

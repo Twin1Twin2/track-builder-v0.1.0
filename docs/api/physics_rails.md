@@ -1,5 +1,7 @@
 # PhysicsRails
 
+**Extends [Section](./base_section.md)**
+
 Builds all the RailSegments it holds along a section of track at once and gives it physics properties.
 These physics can help move a track.
 
@@ -21,15 +23,15 @@ PhysicsRails : BaseSection {
 Creates a Model whose children are segments created from startPosition to endPosition
 
 ```lua
-Segment:CreateAsync(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Model
+Segment:Create(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Model
 ```
 
 #### CreateAsync
 
-Like Create, but wraps this call in a Promise and returns it.
+Like [Create](#create), but wraps this call in a Promise and returns it.
 
 ```lua
-Segment:CreateAsync(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Promise -> Model
+Segment:CreateAsync(cframeTrack: CFrameTrack, startPosition: number, endPosition: number) -> Promise<Model>
 ```
 
 ### Constructors

@@ -9,7 +9,6 @@ Assume MainTrack is the Track you want to build on.
 Builds a track similar to Intamin's 2 Rail track
 
 ```lua
-
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 return function(api)
@@ -29,6 +28,8 @@ return function(api)
 	BASE_PART.TopSurface = "Smooth"
 	BASE_PART.BottomSurface = "Smooth"
 	BASE_PART.FormFactor = "Custom"
+	BASE_PART.Material = Enum.Material.Metal
+	BASE_PART.BrickColor = BrickColor.new("Really black")
 	
 
 	local leftRailSection = Section.fromData({
@@ -47,8 +48,8 @@ return function(api)
 			}
 		}),
 		
-		Interval = 5,
-		StartOffset = 0,
+		SegmentLength = 5,
+		SectionStart = 0,
 		Optimize = true,
 		BuildEnd = false,
 	})
@@ -69,8 +70,8 @@ return function(api)
 			}
 		}),
 		
-		Interval = 5,
-		StartOffset = 0,
+		SegmentLength = 5,
+		SectionStart = 0,
 		Optimize = true,
 		BuildEnd = false,
 	})
@@ -91,18 +92,15 @@ return function(api)
 			},
 		}),
 		
-		Interval = 5,
-		StartOffset = 0,
+		SegmentLength = 5,
+		SectionStart = 0,
 		Optimize = false,
 		BuildEnd = false,
 	})
 
-	local TIE_PART = Instance.new("Part")
+	local TIE_PART = BASE_PART:Clone()
 	TIE_PART.Size = Vector3.new(6, 0.6, 0.6)
 	TIE_PART.Anchored = true
-	TIE_PART.TopSurface = "Smooth"
-	TIE_PART.BottomSurface = "Smooth"
-	TIE_PART.FormFactor = "Custom"
 
 	local tieSection = Section.fromData({
 		Segment = TrackObjectSegment.fromData({
@@ -112,8 +110,8 @@ return function(api)
 			UseLookVector = false,
 		}),
 
-		Interval = 5,
-		StartOffset = 0,
+		SegmentLength = 5,
+		SectionStart = 0,
 		Optimize = false,
 		BuildEnd = true,
 	})
@@ -140,150 +138,138 @@ Creates a RMC Single Rail Track
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 return function(api)
-	local TrackGroup = api.TrackGroup
-	local Section = api.Section
+	local TrackGroupBuilder = api.TrackGroupBuilder
+	local SectionBuilder = api.SectionBuilder
 
 	local Segment = api.Segment
-	local RailSegment = Segment.Rail
-	local TrackObjectSegment = Segment.TrackObject
-	local CrossbeamSegment = Segment.Crossbeam
-	local BoxRailSegment = Segment.BoxRail
-	local RectSegment = Segment.Rect
-	local RectRailSegment = Segment.RectRail
+
+	local RailSegmentBuilder = Segment.RailBuilder
+	local MidTrackObjectSegmentBuilder = Segment.MidTrackObjectBuilder
+	local BoxRailSegmentBuilder = Segment.BoxRailBuilder
+	local RectSegmentBuilder = Segment.RectBuilder
+	local RectRailSegmentBuilder = Segment.RectRailBuilder
 
 	local CFrameTrack = api.CFrameTrack
 	local mainTrack = CFrameTrack.Create(ReplicatedStorage:FindFirstChild("MainTrack"))
 	
 	local BASE_PART = Instance.new("Part")
-	BASE_PART.Anchored = true
-	BASE_PART.TopSurface = "Smooth"
-	BASE_PART.BottomSurface = "Smooth"
-	BASE_PART.FormFactor = "Custom"
+		BASE_PART.Anchored = true
+		BASE_PART.TopSurface = "Smooth"
+		BASE_PART.BottomSurface = "Smooth"
+		BASE_PART.FormFactor = "Custom"
 
 	local WEDGE = Instance.new("WedgePart")
-	WEDGE.Size = Vector3.new(0.2, 1, 1)
-	WEDGE.Anchored = true
-	WEDGE.Material = Enum.Material.Metal
-	WEDGE.BrickColor = BrickColor.Black()
-	WEDGE.TopSurface = Enum.SurfaceType.Smooth
-	WEDGE.BottomSurface = Enum.SurfaceType.Smooth
+		WEDGE.Size = Vector3.new(0.2, 1, 1)
+		WEDGE.Anchored = true
+		WEDGE.Material = Enum.Material.Metal
+		WEDGE.BrickColor = BrickColor.Black()
+		WEDGE.TopSurface = Enum.SurfaceType.Smooth
+		WEDGE.BottomSurface = Enum.SurfaceType.Smooth
 
 	local specialMesh = Instance.new("SpecialMesh")
-	specialMesh.MeshType = Enum.MeshType.Wedge
-	specialMesh.Scale = Vector3.new(0.001, 1, 1)
-	specialMesh.Parent = WEDGE
-
-	local topBuilder = Section.fromData({
-		Segment = BoxRailSegment.fromData({
-			Name = "Top",
-
-			TopLeft = Vector3.new(1.5, 0.3, 0),
-			TopRight = Vector3.new(-1.5, 0.3, 0),
-			BottomLeft = Vector3.new(1.5, -0.3, 0),
-			BottomRight = Vector3.new(-1.5, -0.3, 0),
-
-			Wedge = WEDGE,
-		}),
-		
-		Interval = 5,
-		StartOffset = 0,
-		Optimize = true,
-		BuildEnd = false,
-	})
-
-	local spineBuilder = Section.fromData({
-		Segment = BoxRailSegment.fromData({
-			Name = "Spine",
-
-			TopLeft = Vector3.new(1, -0.2, 0),
-			TopRight = Vector3.new(-1, -0.2, 0),
-			BottomLeft = Vector3.new(1, -1.5, 0),
-			BottomRight = Vector3.new(-1, -1.5, 0),
-
-			DrawTop = false,
-			DrawBottom = false,
-
-			Wedge = WEDGE,
-		}),
-		
-		Interval = 5,
-		StartOffset = 0,
-		Optimize = true,
-		BuildEnd = false,
-	})
+		specialMesh.MeshType = Enum.MeshType.Wedge
+		specialMesh.Scale = Vector3.new(0.001, 1, 1)
+		specialMesh.Parent = WEDGE
+	
+	local topSection = SectionBuilder.new()
+		:WithName("Top")
+		:WithSegment(BoxRailSegmentBuilder.new()
+			:WithWedge(WEDGE)
+			:WithTopLeft(Vector3.new(1.5, 0.3, 0))
+			:WithTopRight(Vector3.new(-1.5, 0.3, 0))
+			:WithBottomLeft(Vector3.new(1.5, -0.3, 0))
+			:WithBottomRight(Vector3.new(-1.5, -0.3, 0))
+			:Finish()
+		)
+		:WithSegmentLength(5)
+		:WithSectionStart(0)
+		:WithOptimize(true)
+		:WithBuildEnd(false)
+		:Finish()
+	
+	local spineSection = SectionBuilder.new()
+		:WithName("Spine")
+		:WithSegment(BoxRailSegmentBuilder.new()
+			:WithWedge(WEDGE)
+			:WithTopLeft(Vector3.new(1, -0.2, 0))
+			:WithTopRight(Vector3.new(-1, -0.2, 0))
+			:WithBottomLeft(Vector3.new(1, -1.5, 0))
+			:WithBottomRight(Vector3.new(-1, -1.5, 0))
+			:WithDrawTop(false)
+			:WithDrawBottom(false)
+			:Finish()
+		)
+		:WithSegmentLength(5)
+		:WithSectionStart(0)
+		:WithOptimize(true)
+		:WithBuildEnd(false)
+		:Finish()
 	
 
 	local BOTTOM_WEDGE = Instance.new("WedgePart")
-	BOTTOM_WEDGE.Size = Vector3.new(0.05, 0, 0)
-	BOTTOM_WEDGE.Anchored = true
-	BOTTOM_WEDGE.Material = Enum.Material.Metal
-	BOTTOM_WEDGE.BrickColor = BrickColor.Black()
-	BOTTOM_WEDGE.TopSurface = Enum.SurfaceType.Smooth
-	BOTTOM_WEDGE.BottomSurface = Enum.SurfaceType.Smooth	
-
-	local bottomBuilder = Section.fromData({
-		Segment = RectRailSegment.fromData({
-			StartOffset1 = Vector3.new(1.5, -1.5, 0),
-			StartOffset2 = Vector3.new(-1.5, -1.5, 0),
-			
-			EndOffset1 = Vector3.new(1.5, -1.5, 0),
-			EndOffset2 = Vector3.new(-1.5, -1.5, 0),
-
-			UseStart = true,
-
-			Wedge = BOTTOM_WEDGE,
-		}),
-		
-		Interval = 5,
-		StartOffset = 0,
-		Optimize = true,
-		BuildEnd = false,
-	})
+		BOTTOM_WEDGE.Size = Vector3.new(0.05, 0, 0)
+		BOTTOM_WEDGE.Anchored = true
+		BOTTOM_WEDGE.Material = Enum.Material.Metal
+		BOTTOM_WEDGE.BrickColor = BrickColor.Black()
+		BOTTOM_WEDGE.TopSurface = Enum.SurfaceType.Smooth
+		BOTTOM_WEDGE.BottomSurface = Enum.SurfaceType.Smooth
 	
-	-- Creates a ChainLift
+	local bottomSection = SectionBuilder.new()
+		:WithName("Bottom")
+		:WithSegment(RectRailSegmentBuilder.new()
+			:WithWedge(WEDGE)
+			:WithUseStart(true)
+			:WithStartOffset1(Vector3.new(1.2, -1.5, 0))
+			:WithStartOffset2(Vector3.new(-1.2, -1.5, 0))
+			:Finish()
+		)
+		:WithSegmentLength(5)
+		:WithSectionStart(0)
+		:WithOptimize(true)
+		:WithBuildEnd(false)
+		:Finish()
+	
 	local CHAIN_PART = BASE_PART:Clone()
-	CHAIN_PART.Size = Vector3.new(1, 0.8, 1)
-	CHAIN_PART.BrickColor = BrickColor.new("Dark stone grey")
-	CHAIN_PART.CanCollide = false
-	CHAIN_PART.Anchored = true
+		CHAIN_PART.Size = Vector3.new(1, 0.8, 1)
+		CHAIN_PART.BrickColor = BrickColor.new("Dark stone grey")
+		CHAIN_PART.CanCollide = false
 
 	local CHAIN_IMAGE = Instance.new("Texture")
-	CHAIN_IMAGE.StudsPerTileU = 1
-	CHAIN_IMAGE.StudsPerTileV = 1
-	CHAIN_IMAGE.Texture = "http://www.roblox.com/asset/?id=56334448"
-	CHAIN_IMAGE.Face = "Top"
-	CHAIN_IMAGE.Parent = CHAIN_PART
-
-	local chainSection = Section.fromData({
-		Segment = RailSegment.fromData({
-			Name = "Chain",
-
-			BasePart = CHAIN_PART,
-			Offset = Vector3.new(0, 0.3, 0),
-			Size = Vector3.new(1, 0.2, 0),
-			Rotation = Vector3.new(),
-			Horizontal = false,
-		}),
-
-		Interval = 5,
-		StartOffset = 0,
-		Optimize = true,
-		BuildEnd = false,
-	})
-
-	local trackGroup = TrackGroup.new()
-	trackGroup.Name = "TestingTrack"
-	trackGroup:Add(topBuilder)
-	trackGroup:Add(spineBuilder)
-	trackGroup:Add(bottomBuilder)
+		CHAIN_IMAGE.StudsPerTileU = 1
+		CHAIN_IMAGE.StudsPerTileV = 1
+		CHAIN_IMAGE.Texture = "http://www.roblox.com/asset/?id=56334448"
+		CHAIN_IMAGE.Face = "Top"
+		CHAIN_IMAGE.Parent = CHAIN_PART
 	
+	local chainSection = SectionBuilder.new()
+		:WithName("Chain")
+		:WithSegment(RailSegmentBuilder.new()
+			:WithBasePart(CHAIN_PART)
+			:WithSize(Vector3.new(1, 0.2, 0))
+			:WithOffset(Vector3.new(0, 0.3, 0))
+			:WithRotation(Vector3.new())
+			:WithHorizontal(false)
+			:Finish()
+		)
+		:WithSegmentLength(5)
+		:WithSectionStart(0)
+		:WithOptimize(true)
+		:WithBuildEnd(false)
+		:Finish()
+		
+	local trackGroup = TrackGroupBuilder.new()
+		:WithName("BoxRailTrack")
+		:WithSection(topSection)
+		:WithSection(spineSection)
+		:WithSection(bottomSection)
+		:Finish()
+		
 	local model = trackGroup:Create(mainTrack, 0, mainTrack.Length)
-
 	local chainModel = chainSection:Create(mainTrack, 410, 670)
-	chainModel.Parent = model
-
+		chainModel.Parent = model
+	
 	model.Parent = workspace
-
+	
 	warn("Finished!")
 end
 ```
